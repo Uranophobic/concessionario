@@ -54,19 +54,43 @@ public class MacchinaImplement implements MacchinaModel {
 
 	@Override
 	public void doDelete(Macchina macchina) throws SQLException {
-		// TODO Auto-generated method stub
+		 String query = "DELETE FROM macchina WHERE id_auto ='"+macchina.getId_auto()+"'";
+	        
+	        try {
+	            con = Connessione.getInstance().getConnection();
+	            PreparedStatement pst = con.prepareStatement(query);
+	            pst.executeUpdate();
+	        } catch (SQLException | ClassNotFoundException e) {
+	            System.out.println(e.getMessage());
+	        }
 		
 	}
 
 	@Override
 	public Macchina doRetrieveByKey(String id_auto) throws SQLException {
-		// TODO Auto-generated method stub
+		 String query = "SELECT FROM macchina WHERE id_auto ='"+id_auto+"'";
+	        
+	        try {
+	            con = Connessione.getInstance().getConnection();
+	            PreparedStatement pst = con.prepareStatement(query);
+	            pst.executeUpdate();
+	        } catch (SQLException | ClassNotFoundException e) {
+	            System.out.println(e.getMessage());
+	        }
 		return null;
 	}
 
 	@Override
 	public ArrayList<Macchina> doRetrieveAll() throws SQLException {
-		// TODO Auto-generated method stub
+		 String query = "SELECT * FROM macchina ";
+	        
+	        try {
+	            con = Connessione.getInstance().getConnection();
+	            PreparedStatement pst = con.prepareStatement(query);
+	            pst.executeUpdate();
+	        } catch (SQLException | ClassNotFoundException e) {
+	            System.out.println(e.getMessage());
+	        }
 		return null;
 	}
 
