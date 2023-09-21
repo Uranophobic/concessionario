@@ -17,7 +17,7 @@ public void doSave(Feedback feedback) throws SQLException;
 	
 	public void doDelete(Feedback feedback) throws SQLException;
 	
-	public Feedback doRetrieveByKey(String id_feedback) throws SQLException;
+	public Feedback doRetrieveByKey(int id_feedback) throws SQLException;
 	
 	public ArrayList<Feedback> doRetrieveAll() throws SQLException;
 }
