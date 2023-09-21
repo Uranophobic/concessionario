@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,700;1,300;1,500;1,700&display=swap');
+
+body{
+    font-family: 'Poppins';
+}
+
+
+*{
+  margin: 0;
+  padding: 0;
+}
+.menu{
+  padding: 80px 20px;
+  
+}
+.menu-1, .menu-5{
+  background: black;
+}
+
+.menu ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+.menu li{
+  display: inline-block;
+  margin: 0 15px;
+}
+.menu a{
+  font-size: 22px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  position: relative;
+  padding: 4px 0;
+}
+.menu a::before{
+  content: "";
+  width: 100%;
+  height: 4px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #fff;
+  transition: 0.5s transform ease;
+  transform: scale3d(0,1,1);
+  transform-origin: 0 50%;
+}
+.menu a:hover::before{
+  transform: scale3d(1,1,1);
+}
+
+
+/*  SEZIONE 1=carosello */
+.carousel {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+  }
+  
+  .carousel-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .carousel-slide {
+    flex: 0 0 100%; 
+    margin-right: 20px; 
+  }
+  
+  .carousel img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .carousel-buttons {
+    text-align: center; 
+    margin-top: 10px; 
+  }
+  
+  .carousel-button {
+    cursor: pointer;
+    font-size: 24px;
+    margin: 0 10px;
+  }
+  
+
+  .carousel-slide.active {
+    opacity: 1;
+  }
+  
+  .carousel-slide.prev,
+  .carousel-slide.next {
+    opacity: 0.5;
+  }
+
+/* SEZIONE 2 = TITOLI E PARAGRAFI */
+.container1 {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-top: 1%;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1%;
+    
+}
+
+.titolo1{
+    margin-left: 20px;
+}
+
+.img{
+    width: 30%;
+    height: auto;
+    border-radius: 4%;
+}
+  
