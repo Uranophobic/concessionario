@@ -66,7 +66,7 @@ public class LoginServlet extends HttpServlet {
 				if (ammImpl.doRetrieveByKey(email) != null) {
 					amm = ammImpl.doRetrieveByKey(email);
 					session = request.getSession(); //creo la sessione
-					session.setAttribute("Amministratore", amm); //sessione amministratore
+					session.setAttribute("AmministratoreSessione", amm); //sessione amministratore
 					//System.out.println("amm " + amm.toString());
 				}
 				
@@ -74,7 +74,7 @@ public class LoginServlet extends HttpServlet {
 				if (acqImpl.doRetrieveByKey(email) != null) {
 					acq = acqImpl.doRetrieveByKey(email);
 					session = request.getSession(); //creo la sessione
-					session.setAttribute("Acquirente", acq); //sessione acquirente
+					session.setAttribute("AcquirenteSessione", acq); //sessione acquirente
 					//System.out.println("acq " + acq.toString());
 				}
 				

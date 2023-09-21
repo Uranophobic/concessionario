@@ -15,7 +15,7 @@
 		
 		
 		<div class="form">
-			<form action="LoginServlet" method="post">
+			<form action="Login" method="post">
 				<h2>Login</h2>
 				<h3>Username</h3>
 				<input type="text" name="email" id="email" class="username">
