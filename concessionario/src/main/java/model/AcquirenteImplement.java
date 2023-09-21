@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import bean.Acquirente;
-import bean.Macchina;
+
 import connessione.Connessione;
 
 public class AcquirenteImplement implements AcquirenteModel {
