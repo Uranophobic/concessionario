@@ -17,7 +17,7 @@ public void doSave(Richiesta richiesta) throws SQLException;
 	
 	public void doDelete(Richiesta richiesta) throws SQLException;
 	
-	public Richiesta doRetrieveByKey(String id_richiesta) throws SQLException;
+	public Richiesta doRetrieveByKey(int id_richiesta) throws SQLException;
 	
 	public ArrayList<Richiesta> doRetrieveAll() throws SQLException;
 }
