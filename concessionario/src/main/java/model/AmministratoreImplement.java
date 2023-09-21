@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import bean.Amministratore;
-import bean.Macchina;
 import connessione.Connessione;
 
 public class AmministratoreImplement implements AmministratoreModel{

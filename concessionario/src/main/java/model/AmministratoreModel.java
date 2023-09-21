@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import bean.Amministratore;
-import bean.Macchina;
 
 public interface AmministratoreModel {
 	
