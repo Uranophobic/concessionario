@@ -38,10 +38,10 @@ public class AcquirenteImplement implements AcquirenteModel {
 	}
 
 	@Override
-	public Acquirente doRetrieveByKey(String email_acquirente) throws SQLException {
+	public Acquirente doRetrieveByKey(String email) throws SQLException {
 		ResultSet result = null;
 		Acquirente m = new Acquirente();
-		String query = "SELECT FROM acquirente WHERE email_acquirente ='"+email_acquirente+"'";
+		String query = "SELECT * FROM acquirente WHERE email ='"+email+"'";
 	        
 	        try {
 	            con = Connessione.getInstance().getConnection();

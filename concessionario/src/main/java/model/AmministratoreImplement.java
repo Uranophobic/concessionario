@@ -72,7 +72,7 @@ public class AmministratoreImplement implements AmministratoreModel{
 	public Amministratore doRetrieveByKey(String email) throws SQLException {
 		ResultSet result = null;
 		Amministratore m = new Amministratore();
-		String query = "SELECT FROM amministratore WHERE email ='"+email+"'";
+		String query = "SELECT * FROM amministratore WHERE email ='"+email+"'";
 	        
 	        try {
 	            con = Connessione.getInstance().getConnection();
