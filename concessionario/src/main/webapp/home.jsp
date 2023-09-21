@@ -1,11 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
+<meta charset="ISO-8859-1">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="static/css/style.css">
+     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 
 <body>
@@ -13,11 +16,11 @@
     <header>
         <nav class="menu menu-1">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Menu</a></li>
-                <li><a href="#">Contatti</a></li>
-                <li><a href="#">Chi siamo</a></li>
-                <li><a href="#">Accedi</a></li>
+                <li><a href="home.jsp">Home</a></li>
+                <li><a href="menu2.jsp">Menu</a></li>
+                <li><a href="contatti.jsp">Contatti</a></li>
+                <li><a href="about.jsp">Chi siamo</a></li>
+                <li><a href="login.jsp">Accedi</a></li>
             </ul>
         </nav>
 
@@ -70,9 +73,41 @@
 
 
     <!-- inizio footer -->
-    <footer>
-
-    </footer> <!-- fine footer -->
+    <footer class="footer">
+        <div class="containerf">
+         <div class="row">
+           <div class="footer-col">
+             <h4>Sezione 1</h4>
+             <ul>
+               <li><a href="#">Chi siamo</a></li>
+               <li><a href="#">I nostri servizi</a></li>
+               <li><a href="#">Privacy Policy</a></li>
+               <li><a href="#">Accedi</a></li>
+             </ul>
+           </div>
+           <div class="footer-col">
+             <h4>Sezione 2</h4>
+             <ul>
+               <li><a href="#">FAQ</a></li>
+               <li><a href="#">Spedizioni</a></li>
+               
+               <li><a href="#">Modalità Di Pagamento</a></li>
+             </ul>
+           </div>
+           
+           <div class="footer-col">
+             <h4>Seguici</h4>
+             <div class="social-links">
+               <a href="#"><i class="fab fa-facebook-f"></i></a>
+               <a href="#"><i class="fab fa-twitter"></i></a>
+               <a href="#"><i class="fab fa-instagram"></i></a>
+               <a href="#"><i class="fab fa-linkedin-in"></i></a>
+             </div>
+           </div>
+         </div>
+        </div>
+     </footer>
+ <!-- fine footer -->
     <script src="static/js/js.js"></script>
 </body>
 
