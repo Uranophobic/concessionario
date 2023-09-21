@@ -2,6 +2,7 @@ package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -91,30 +92,72 @@ public class MacchinaImplement implements MacchinaModel {
 
 	@Override
 	public Macchina doRetrieveByKey(String id_auto) throws SQLException {
-		 String query = "SELECT FROM macchina WHERE id_auto ='"+id_auto+"'";
+		ResultSet result = null;
+		Macchina m = new Macchina();
+		String query = "SELECT FROM macchina WHERE id_auto ='"+id_auto+"'";
 	        
 	        try {
 	            con = Connessione.getInstance().getConnection();
 	            PreparedStatement pst = con.prepareStatement(query);
-	            pst.executeUpdate();
+	            result = pst.executeQuery();
+	            while(result.next()) {
+	            	m.setAnno_produzione(result.getString("anno_prod"));
+	            	m.setCarburante(result.getString("carburante"));
+	            	m.setCategoria(result.getString("categoria"));
+	            	m.setCilindrata(result.getInt("cilindrata"));
+	            	m.setColore(result.getString("colore"));
+	            	m.setDescrizione(result.getString("descrizione"));
+	            	m.setId_auto(result.getInt("id_auto"));
+	            	m.setKilometraggio(result.getInt("kilometraggio"));
+	            	m.setkW(result.getInt("kW"));
+	            	m.setMarca(result.getString("marca"));
+	            	m.setModello(result.getString("modello"));
+	            	m.setPosti(result.getInt("posti"));
+	            	m.setPrezzo(result.getDouble("prezzo"));
+	            	m.setStato_veicolo(result.getString("stato_veicolo"));
+	            	m.setTipo_cambio(result.getString("tipo_cambio"));
+	            }
 	        } catch (SQLException | ClassNotFoundException e) {
 	            System.out.println(e.getMessage());
 	        }
-		return null;
+		return m;
 	}
 
 	@Override
 	public ArrayList<Macchina> doRetrieveAll() throws SQLException {
-		 String query = "SELECT * FROM macchina ";
+		ResultSet result = null;
+		Macchina m = new Macchina();
+		ArrayList<Macchina> allMacchine =  new ArrayList<Macchina>();
+		String query = "SELECT * FROM macchina ";
 	        
 	        try {
 	            con = Connessione.getInstance().getConnection();
 	            PreparedStatement pst = con.prepareStatement(query);
-	            pst.executeUpdate();
+	            result = pst.executeQuery();
+	            
+	            while(result.next()) {
+	            	m.setAnno_produzione(result.getString("anno_prod"));
+	            	m.setCarburante(result.getString("carburante"));
+	            	m.setCategoria(result.getString("categoria"));
+	            	m.setCilindrata(result.getInt("cilindrata"));
+	            	m.setColore(result.getString("colore"));
+	            	m.setDescrizione(result.getString("descrizione"));
+	            	m.setId_auto(result.getInt("id_auto"));
+	            	m.setKilometraggio(result.getInt("kilometraggio"));
+	            	m.setkW(result.getInt("kW"));
+	            	m.setMarca(result.getString("marca"));
+	            	m.setModello(result.getString("modello"));
+	            	m.setPosti(result.getInt("posti"));
+	            	m.setPrezzo(result.getDouble("prezzo"));
+	            	m.setStato_veicolo(result.getString("stato_veicolo"));
+	            	m.setTipo_cambio(result.getString("tipo_cambio"));
+	            	
+	            	allMacchine.add(m);
+	            }
 	        } catch (SQLException | ClassNotFoundException e) {
 	            System.out.println(e.getMessage());
 	        }
-		return null;
+		return allMacchine;
 	}
 
 }
