@@ -122,7 +122,7 @@ public class AmministratoreImplement implements AmministratoreModel{
 	public Amministratore doRetrieveByRuolo(String ruolo) throws SQLException {
 		ResultSet result = null;
 		Amministratore m = new Amministratore();
-		String query = "SELECT FROM amministratore WHERE ruolo ='"+ruolo+"'";
+		String query = "SELECT * FROM amministratore WHERE ruolo ='"+ruolo+"'";
 	        
 	        try {
 	            con = Connessione.getInstance().getConnection();

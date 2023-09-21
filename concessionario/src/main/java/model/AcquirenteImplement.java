@@ -5,10 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import bean.Acquirente;
-
 import connessione.Connessione;
+
 
 public class AcquirenteImplement implements AcquirenteModel {
 
@@ -49,6 +48,7 @@ public class AcquirenteImplement implements AcquirenteModel {
 	            PreparedStatement pst = con.prepareStatement(query);
 	            result = pst.executeQuery();
 	            while(result.next()) {
+	            	m.setEmail(result.getString("email"));
 	            	m.setPassword(result.getString("password"));
 	            	m.setNome(result.getString("nome"));
 	            	m.setCognome(result.getString("cognome"));
@@ -79,6 +79,7 @@ public class AcquirenteImplement implements AcquirenteModel {
 	            result = pst.executeQuery();
 	            
 	            while(result.next()) {
+	            	m.setEmail(result.getString("email"));
 	            	m.setPassword(result.getString("password"));
 	            	m.setNome(result.getString("nome"));
 	            	m.setCognome(result.getString("cognome"));
