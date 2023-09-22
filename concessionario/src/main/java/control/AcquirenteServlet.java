@@ -2,6 +2,8 @@ package control;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -105,14 +107,20 @@ public class AcquirenteServlet extends HttpServlet {
 				String messaggio = request.getParameter("messaggio");
 				String email = (String) session.getAttribute("email");
 				//int auto = (int) session.getAttribute("id_auto");
-				System.out.println("tipo + data + messaggio " + tipo + data + messaggio);
+				
 				
 				String data = request.getParameter("date");
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 				//surround below line with try catch block as below code throws checked exception
-				Date dat = sdf.parse(data);
+				Date dat = null;
+				try {
+					dat = sdf.parse(data);
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				//do further processing with Date object
-				
+				System.out.println("tipo + data + messaggio " + tipo + data + messaggio);
 				
 				RichiestaImplement ricImpl = new RichiestaImplement();
 				Richiesta ric = new Richiesta();
