@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Concessionario</title>
     <link rel="stylesheet" href="static/css/style.css">
      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
@@ -30,46 +30,39 @@
     <!-- Inizio sezioni -->
     <section>
         <!-- Sezione carousel -->
-        <div class="carousel">
-            <div class="carousel-container">
-                <div class="carousel-slide">
-                    <img src="https://images8.alphacoders.com/114/1146097.jpg" alt="Immagine 1">
-                </div>
-                <div class="carousel-slide">
-                    <img src="https://images8.alphacoders.com/114/1146097.jpg" alt="Immagine 2">
-                </div>
-                <div class="carousel-slide">
-                    <img src="https://images8.alphacoders.com/114/1146097.jpg" alt="Immagine 3">
-                </div>
-                <div class="carousel-slide">
-                    <img src="https://images8.alphacoders.com/114/1146097.jpg" alt="Immagine 4">
-                </div>
-                <!-- Aggiungi altri 4 elementi simili per le tue altre immagini -->
-            </div>
-            <div class="carousel-buttons">
-                <button class="carousel-button prev-button" aria-label="Precedente">&#8592;</button>
-                <button class="carousel-button next-button" aria-label="Successiva">&#8594;</button>
-            </div>
-        </div> <!-- fine sezione carousel -->
-        <!-- primo titolo sezione 1 -->
-        <div class="container1">
+		<div class="crousel">
+			<div class="container" id='imgs'>
+				<img src="https://images4.alphacoders.com/258/258958.jpg">
+				<img src="https://images3.alphacoders.com/258/258959.jpg">
+				<img src="https://images.alphacoders.com/258/258981.jpg">
+				<img src="https://images4.alphacoders.com/258/258988.jpg">
+			</div>
+		</div>
+		<!-- fine sezione carousel -->
+		<!-- primo titolo sezione 1 -->
+		<div class="container1">
 
-            <img src="https://www.emmedimeccanica.com/wp-content/uploads/2021/04/iStock-1073743202.jpg" class="img">
+			<img
+				src="https://www.emmedimeccanica.com/wp-content/uploads/2021/04/iStock-1073743202.jpg"
+				class="img">
 
 
-            <p class="titolo1">GARANTIAMO QUALITA' E SICUREZZA <br><span>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
-                 Quia quos perferendis molestias labore nulla qui
-                possimus obcaecati, totam, voluptatum eius autem?  <br>
-                At molestias quis quidem soluta dolor fugit ex
-                numquam?</span></p>
-
-            
-        </div>
-        <!-- fine primo titolo -->
-        <!-- inizio sezione 2 -->
+			<p class="titolo1">
+				GARANTIAMO QUALITA' E SICUREZZA <br>
+				<span>Lorem ipsum dolor sit amet consectetur adipisicing
+					elit. <br> Quia quos perferendis molestias labore nulla qui
+					possimus obcaecati, totam, voluptatum eius autem? <br> At
+					molestias quis quidem soluta dolor fugit ex numquam?
+				</span>
+			</p>
 
 
-    </section> <!-- fine sezioni -->
+		</div>
+		<!-- fine primo titolo -->
+		<!-- inizio sezione 2 -->
+
+
+	</section> <!-- fine sezioni -->
 
 
     <!-- inizio footer -->
