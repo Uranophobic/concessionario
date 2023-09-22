@@ -59,39 +59,46 @@ public class LoginServlet extends HttpServlet {
 		Amministratore amm = new Amministratore();
 		HttpSession session = request.getSession(true);
 
-		if (!email.equals(null) && !password.equals(null)) {
-			try {
+		if (!email.isEmpty() && !password.isEmpty()) {
+		    try {
+		        
+		        amm = ammImpl.doRetrieveByKey(email);
+		        if (amm != null) {
+		            if (email.equals(amm.getEmail()) && password.equals(amm.getPassword())) {
+		                
+		                session.setAttribute("email", email);
+		                RequestDispatcher dispatcher = request.getRequestDispatcher("homepage.jsp");
+		                dispatcher.forward(request, response);
+		                return; 
+		            }
+		        }
 
-				// nel caso in cui sia un amministratore
-				if (ammImpl.doRetrieveByKey(email) == null) {
-					amm = ammImpl.doRetrieveByKey(email);
-					if (amm.getEmail().equals(email)) {
-						System.out.println("amm " + email);
-					}
-				}
-				
-				if (acqImpl.doRetrieveByKey(email) == null) {
-					acq = acqImpl.doRetrieveByKey(email);
-					if (acq.getEmail().equals(email)) {
-						System.out.println("acq " + email);
-					}
-				}
-				
-				
+		        
+		        acq = acqImpl.doRetrieveByKey(email);
+		        if (acq != null) {
+		            if (email.equals(acq.getEmail()) && password.equals(acq.getPassword())) {
+		             
+		                session.setAttribute("email", email);
+		                RequestDispatcher dispatcher = request.getRequestDispatcher("homepage.jsp");
+		                dispatcher.forward(request, response);
+		                return; // elicottero
+		            }
+		        }
 
-				session.setAttribute("email", email);
+		       
+		        request.setAttribute("errorMessage", "Email o password non validi");
+		        RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp"); 
+		        dispatcher.forward(request, response);
 
-				RequestDispatcher dispatcher = request.getRequestDispatcher("homepage.jsp");
-				dispatcher.forward(request, response);
-
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
+		    } catch (SQLException e) {
+		        
+		        e.printStackTrace();
+		    }
 		}
-
-		doGet(request, response);
 	}
-
 }
+
+	
+	
+
+
