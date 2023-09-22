@@ -57,12 +57,12 @@
 					<div class="overlay-panel overlay-left">
 						<h1>Bentornato!</h1>
 						<p>Crea il tuo account inserendo i tuoi dati personali</p>
-						<button class="ghost" id="signIn">Accedi</button>
+						<div class="ghost" id="signIn">Accedi</div>
 					</div>
 					<div class="overlay-panel overlay-right">
 						<h1>Bentornato!</h1>
 						<p>Accedi con i tuoi dati personali</p>
-						<button class="ghost" id="signUp">Registrati</button>
+						<div class="ghost" id="signUp">Registrati</div>
 					</div>
 				</div>
 			</div>
