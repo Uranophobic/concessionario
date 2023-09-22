@@ -57,27 +57,31 @@ public class LoginServlet extends HttpServlet {
 		AmministratoreImplement ammImpl = new AmministratoreImplement();
 		Acquirente acq = new Acquirente();
 		Amministratore amm = new Amministratore();
-		HttpSession session;
-
+		HttpSession session = request.getSession();
+	
 		if (!email.equals(null) && !password.equals(null)) {
 			try {
 				
-				// nel caso in cui sia un acquirente
+				// nel caso in cui sia un amministratore
 				if (ammImpl.doRetrieveByKey(email) != null) {
 					amm = ammImpl.doRetrieveByKey(email);
-					session = request.getSession(); //creo la sessione
-					session.setAttribute("AmministratoreSessione", amm); //sessione amministratore
-					//System.out.println("amm " + amm.toString());
-				}
-				
-				//nel caso in cui sia un amministratore
-				if (acqImpl.doRetrieveByKey(email) != null) {
+					if(amm.getEmail().equals(email)) {
+						
+						System.out.println("amm " + email);
+					}
+					
+				}else if (acqImpl.doRetrieveByKey(email) != null) {
 					acq = acqImpl.doRetrieveByKey(email);
-					session = request.getSession(); //creo la sessione
-					session.setAttribute("AcquirenteSessione", acq); //sessione acquirente
-					//System.out.println("acq " + acq.toString());
+
+					if(acq.getEmail().equals(email)) {
+						
+						System.out.println("acq " + email);
+					}
+					
 				}
 				
+				
+				session.setAttribute("email", email);
 				
 				RequestDispatcher dispatcher = request.getRequestDispatcher("homepage.jsp");
 				dispatcher.forward(request, response);

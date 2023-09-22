@@ -8,22 +8,23 @@
 <meta charset="ISO-8859-1">
 <title>Homepage</title>
 </head>
-<% Amministratore amm = (Amministratore) session.getAttribute("AmministratoreSessione");%>
-<% Acquirente acq = (Acquirente) session.getAttribute("AcquirenteSessione");%>
+ <% String ruolo = (String) session.getAttribute("email"); %>
+
 <body>
 
 <p> HOMEPAGE </p>
 
 
-<% if(!acq.getEmail().equals("")){ %>
-	<p> Benvenuto nel nostro concessionario	<%=acq.getEmail()%> </p>
 
-<%} else if(!amm.getEmail().equals("")){ %>
-	<p> Benvenuto nel nostro concessionario	<%=amm.getEmail()%> </p>
-	
-<%} else {%>
-<p> Non sei loggato </p>
-<%} %>
+   
+    <p> Benvenuto nel nostro concessionario <%= ruolo %> </p>
+    
+
+
+
+
+
+
 
 	
 	

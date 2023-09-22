@@ -14,12 +14,11 @@
 <header> </header>
 <body>
 
-
-
-
 	<form action="Login" method="post">
 
 		<div class="container" id="container">
+		
+		<!-- registrazione -->
 			<div class="form-container sign-up-container">
 				<div class="form1">
 					<h1>Create Account</h1>
@@ -34,6 +33,8 @@
 					<button>Registrati</button>
 				</div>
 			</div>
+			
+			<!-- login -->
 			<div class="form-container sign-in-container">
 				<div class="form1">
 					<h1>Accedi</h1>
@@ -49,6 +50,8 @@
 					<button>Accedi</button>
 				</div>
 			</div>
+			
+			<!-- pagina che slitta -->
 			<div class="overlay-container">
 				<div class="overlay">
 					<div class="overlay-panel overlay-left">
@@ -63,10 +66,8 @@
 					</div>
 				</div>
 			</div>
+			
 		</div>
-
-
-
 	</form>
 
 	<script src="static/js/login.js"></script>
