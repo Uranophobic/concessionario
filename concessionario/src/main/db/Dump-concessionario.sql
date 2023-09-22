@@ -43,7 +43,7 @@ CREATE TABLE `acquirente` (
 
 LOCK TABLES `acquirente` WRITE;
 /*!40000 ALTER TABLE `acquirente` DISABLE KEYS */;
-INSERT INTO `acquirente` VALUES ('alessia@gmail.com','ale123','Alessia','Crispo','27','Via Caserta','B','2015'),('marco@gmail.com','marco456','Marco','Rossi','28','Via Roma','B ','2014'),('roberta@gmail.com','rb789','Roberta','Verdi','18','Via delle rose','B','2023');
+INSERT INTO `acquirente` VALUES ('alessia@gmail.com','a','Alessia','Crispo','27','Via Caserta','B','2015'),('marco@gmail.com','marco456','Marco','Rossi','28','Via Roma','B ','2014'),('roberta@gmail.com','rb789','Roberta','Verdi','18','Via delle rose','B','2023');
 /*!40000 ALTER TABLE `acquirente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -222,7 +222,7 @@ CREATE TABLE `richiesta` (
   KEY `email_acq_idx` (`email_utente`),
   KEY `id macc_idx` (`id_auto`),
   CONSTRAINT `email_acq` FOREIGN KEY (`email_utente`) REFERENCES `acquirente` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -231,7 +231,7 @@ CREATE TABLE `richiesta` (
 
 LOCK TABLES `richiesta` WRITE;
 /*!40000 ALTER TABLE `richiesta` DISABLE KEYS */;
-INSERT INTO `richiesta` VALUES (1,'Acquisto','2023-09-20','prova','in attesa','alessia@gmail.com',1),(2,'Noleggio','2023-08-20','prova 2','accettato','marco@gmail.com',2);
+INSERT INTO `richiesta` VALUES (1,'Acquisto','2023-09-20','prova','in attesa','alessia@gmail.com',1),(2,'Noleggio','2023-08-20','prova 2','accettato','marco@gmail.com',2),(3,'Acquisto','2023-08-20','asasssa','accettato','alessia@gmail.com',3),(4,'Acquisto','2023-08-20','sdsd','accettato','alessia@gmail.com',4),(5,'Acquisto','2023-08-20','sddsds','accettato','alessia@gmail.com',5);
 /*!40000 ALTER TABLE `richiesta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -281,4 +281,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-22 11:56:42
+-- Dump completed on 2023-09-22 16:04:59
