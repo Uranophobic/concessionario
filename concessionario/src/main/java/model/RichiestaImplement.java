@@ -17,7 +17,8 @@ public class RichiestaImplement implements RichiestaModel {
 	@Override
 	public void doSave(Richiesta richiesta) throws SQLException {
 
-		String query = "INSERT INTO richiesta (id_richiesta, tipo_richiesta, data, messaggio, status, email_utente, id_auto) + values (?,?,?,?,?,?,?)";
+		String query = "INSERT INTO richiesta (id_richiesta, tipo_richiesta, data, messaggio, status, email_utente, id_auto) "
+				+ "+ values (?,?,?,?,?,?,?)";
 		try {
 			con = Connessione.getInstance().getConnection();
 			PreparedStatement p = con.prepareStatement(query);
@@ -75,7 +76,7 @@ public class RichiestaImplement implements RichiestaModel {
 	public Richiesta doRetrieveByKey(int id_richiesta) throws SQLException {
 		ResultSet result = null;
 		Richiesta r = new Richiesta();
-		String query = "SELECT FROM richiesta WHERE id_auto ='" + id_richiesta + "'";
+		String query = "SELECT * FROM richiesta WHERE id_auto ='" + id_richiesta + "'";
 		try {
 			con = Connessione.getInstance().getConnection();
 			PreparedStatement pst = con.prepareStatement(query);
@@ -123,6 +124,35 @@ public class RichiestaImplement implements RichiestaModel {
 			System.out.println(e.getMessage());
 		}
 		return allRichiesta;
+	}
+
+	@Override
+	public ArrayList<Richiesta> doRetrieveByEmail(String email) throws SQLException {
+		ResultSet result = null;
+		
+		ArrayList<Richiesta> allRichieste = new ArrayList<>();
+		String query = "SELECT * FROM richiesta WHERE email_utente ='" + email+ "'";
+		try {
+			con = Connessione.getInstance().getConnection();
+			PreparedStatement pst = con.prepareStatement(query);
+			result = pst.executeQuery();
+			while (result.next()) {
+				Richiesta r = new Richiesta();
+				r.setData(result.getDate("data"));
+				r.setEmail_utente(result.getString("email_utente"));
+				r.setId_auto(result.getInt("id_auto")); 
+				r.setMessaggio(result.getString("messaggio"));
+				r.setStatus(result.getString("status"));
+				r.setTipo_richiesta(result.getString("tipo_richiesta"));
+				r.setId_richiesta(result.getInt("id_richiesta"));
+				
+				allRichieste.add(r);
+			}
+		} catch (SQLException | ClassNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
+		return allRichieste;
+
 	}
 
 }

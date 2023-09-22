@@ -94,7 +94,7 @@ public class MacchinaImplement implements MacchinaModel {
 	public Macchina doRetrieveByKey(String id_auto) throws SQLException {
 		ResultSet result = null;
 		Macchina m = new Macchina();
-		String query = "SELECT FROM macchina WHERE id_auto ='"+id_auto+"'";
+		String query = "SELECT * FROM macchina WHERE id_auto ='"+id_auto+"'";
 	        
 	        try {
 	            con = Connessione.getInstance().getConnection();
@@ -126,7 +126,7 @@ public class MacchinaImplement implements MacchinaModel {
 	@Override
 	public ArrayList<Macchina> doRetrieveAll() throws SQLException {
 		ResultSet result = null;
-		Macchina m = new Macchina();
+		
 		ArrayList<Macchina> allMacchine =  new ArrayList<Macchina>();
 		String query = "SELECT * FROM macchina ";
 	        
@@ -136,6 +136,7 @@ public class MacchinaImplement implements MacchinaModel {
 	            result = pst.executeQuery();
 	            
 	            while(result.next()) {
+	            	Macchina m = new Macchina();
 	            	m.setAnno_produzione(result.getString("anno_prod"));
 	            	m.setCarburante(result.getString("carburante"));
 	            	m.setCategoria(result.getString("categoria"));

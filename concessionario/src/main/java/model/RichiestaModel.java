@@ -19,5 +19,7 @@ public void doSave(Richiesta richiesta) throws SQLException;
 	
 	public Richiesta doRetrieveByKey(int id_richiesta) throws SQLException;
 	
+	public ArrayList<Richiesta> doRetrieveByEmail(String email) throws SQLException;
+	
 	public ArrayList<Richiesta> doRetrieveAll() throws SQLException;
 }
