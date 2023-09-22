@@ -43,7 +43,7 @@ public class AcquirenteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-	
+
 	}
 
 	/**
@@ -59,23 +59,23 @@ public class AcquirenteServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 
 		if (session != null) {
-		
+
 			String email = (String) session.getAttribute("email");
-			///System.out.println("acquirente della sessione: " + email);
-			
+			System.out.println("acquirente della sessione: " + email);
+
 			AcquirenteImplement acqImpl = new AcquirenteImplement();
 			RichiestaImplement rImpl = new RichiestaImplement();
 
 			ArrayList<Richiesta> richieste_utente = new ArrayList<>();
 			try {
 				Acquirente acq = acqImpl.doRetrieveByKey(email);
-				
+
 
 				richieste_utente = rImpl.doRetrieveByEmail(email);
-				//System.out.println("le richieste dell'utente : " + richieste_utente.toString());
+				System.out.println("le richieste dell'utente : " + richieste_utente.toString());
 
 				session.setAttribute("richieste_utente", richieste_utente);
-
+                session.setAttribute("email", acq.getEmail());
 				RequestDispatcher dispatcher = request.getRequestDispatcher("profilo.jsp");
 				dispatcher.forward(request, response);
 
@@ -86,62 +86,62 @@ public class AcquirenteServlet extends HttpServlet {
 		} else {
 			System.out.println("sessione nulla");
 		}
-		
+
 		//LISTA AUTO DA PASSARE 
 		MacchinaImplement maccImpl = new MacchinaImplement();
 		ArrayList<Macchina> allMacchine = new ArrayList<>();
 		try {
-			 allMacchine = maccImpl.doRetrieveAll();
-			 session.setAttribute("allMacchine", allMacchine);
+			allMacchine = maccImpl.doRetrieveAll();
+			session.setAttribute("allMacchine", allMacchine);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
 
-	
+
+
+
 		//nuova richiesta 
-				String tipo =  request.getParameter("tipo");
-				
-				String messaggio = request.getParameter("messaggio");
-				String email = (String) session.getAttribute("email");
-				//int auto = (int) session.getAttribute("id_auto");
-				
-				
-				String data = request.getParameter("date");
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-				//surround below line with try catch block as below code throws checked exception
-				Date dat = null;
-				try {
-					dat = sdf.parse(data);
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				//do further processing with Date object
-				System.out.println("tipo + data + messaggio " + tipo + data + messaggio);
-				
-				RichiestaImplement ricImpl = new RichiestaImplement();
-				Richiesta ric = new Richiesta();
-				ric.setData(dat);
-				ric.setEmail_utente(email);
-				ric.setId_auto(1);
-				ric.setMessaggio(messaggio);
-				ric.setStatus("in attesa");
-				ric.setTipo_richiesta(tipo);
-				try {
-					ricImpl.doSave(ric);
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-				System.out.println("richiesta appena creaa: " + ric.toString());
-				
-				RequestDispatcher dispatcher = request.getRequestDispatcher("profilo.jsp");
-				dispatcher.forward(request, response);
-		
-		
+		String tipo =  request.getParameter("tipo");
+
+		String messaggio = request.getParameter("messaggio");
+		String email = (String) session.getAttribute("email");
+		//int auto = (int) session.getAttribute("id_auto");
+
+
+		String data = request.getParameter("date");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		//surround below line with try catch block as below code throws checked exception
+		Date dat = null;
+		try {
+			dat = sdf.parse(data);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//do further processing with Date object
+		System.out.println("tipo + data + messaggio " + tipo + data + messaggio);
+
+		RichiestaImplement ricImpl = new RichiestaImplement();
+		Richiesta ric = new Richiesta();
+		ric.setData(dat);
+		ric.setEmail_utente(email);
+		ric.setId_auto(1);
+		ric.setMessaggio(messaggio);
+		ric.setStatus("in attesa");
+		ric.setTipo_richiesta(tipo);
+		try {
+			ricImpl.doSave(ric);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		System.out.println("richiesta appena creata: " + ric.toString());
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("profilo.jsp");
+		dispatcher.forward(request, response);
+
+
 	}
 }

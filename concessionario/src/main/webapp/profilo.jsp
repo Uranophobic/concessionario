@@ -7,9 +7,10 @@
 <meta charset="ISO-8859-1">
 <title>Profilo utente</title>
 </head>
-<% ArrayList<Richiesta> r = (ArrayList<Richiesta>) session.getAttribute("richieste_utente");%>
+<% ArrayList<Richiesta> r =(ArrayList<Richiesta>) session.getAttribute("richieste_utente");%>
+<% String email = (String) session.getAttribute("email");%>
 <body>
-
+<p>Benvenuto <%=email %> </p>
 <p> Le tue richieste </p>
 
  
@@ -25,8 +26,8 @@
 		</tr>
 		
 		<% int i=0;
-			for(i=0; i< r.size(); i++){
-		%>
+			for(i=0; i< r.size(); i++){ %>
+		
 		
 		<tr>
 			<td> <%= r.get(i).getId_richiesta() %></td>
@@ -35,8 +36,9 @@
 			<td> <%= r.get(i).getMessaggio() %></td>
 			<td> <%= r.get(i).getStatus() %></td>
 		</tr>
-	<%}%>	
+		<%}%>
 	</table>
+	
 		
 		
 
