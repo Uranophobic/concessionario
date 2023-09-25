@@ -51,6 +51,7 @@ public class LoginServlet extends HttpServlet {
 		// ricaviamo email e password inseriti dall'utente nel login
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		String ruolo = "";
 
 		// mi carico i model
 		AcquirenteImplement acqImpl = new AcquirenteImplement();
@@ -65,8 +66,9 @@ public class LoginServlet extends HttpServlet {
 		        amm = ammImpl.doRetrieveByKey(email);
 		        if (amm != null) {
 		            if (email.equals(amm.getEmail()) && password.equals(amm.getPassword())) {
-		                
-		                session.setAttribute("email", email);
+		                ruolo="amministratore";
+		                session.setAttribute("ruolo", ruolo);
+		                session.setAttribute("email", amm.getEmail());
 		                RequestDispatcher dispatcher = request.getRequestDispatcher("homepage.jsp");
 		                dispatcher.forward(request, response);
 		                return; 
@@ -77,8 +79,9 @@ public class LoginServlet extends HttpServlet {
 		        acq = acqImpl.doRetrieveByKey(email);
 		        if (acq != null) {
 		            if (email.equals(acq.getEmail()) && password.equals(acq.getPassword())) {
-		             
-		                session.setAttribute("email", email);
+		            	ruolo="acquirente";
+		            	session.setAttribute("ruolo", ruolo);
+		                session.setAttribute("email", acq.getEmail());
 		                RequestDispatcher dispatcher = request.getRequestDispatcher("homepage.jsp");
 		                dispatcher.forward(request, response);
 		                return; // elicottero

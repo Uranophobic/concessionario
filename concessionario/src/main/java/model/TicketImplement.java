@@ -123,4 +123,36 @@ public class TicketImplement implements TicketModel {
 		return allTicket;
 	}
 
+	@Override
+	public ArrayList<Ticket> doRetrieveByEmail(String email) throws SQLException {
+		ResultSet result = null;
+		
+		ArrayList<Ticket> allTicket =  new ArrayList<Ticket>();
+		String query = "SELECT * FROM ticket WHERE email_utente ='"+email+"'";
+	        
+	        try {
+	            con = Connessione.getInstance().getConnection();
+	            PreparedStatement pst = con.prepareStatement(query);
+	            result = pst.executeQuery();
+	            
+	            while(result.next()) {
+	            	
+	            	Ticket m = new Ticket();
+	            	
+	            	m.setId_ticket(result.getInt("id_ticket"));
+	            	m.setTitolo(result.getString("titolo"));
+	            	m.setMessaggio(result.getString("messaggio"));
+	            	m.setRisposta(result.getString("risposta"));
+	            	m.setEmail_utente(result.getString("email_utente"));
+	            	
+	            	
+	            	allTicket.add(m);
+	            }
+	        } catch (SQLException | ClassNotFoundException e) {
+	            System.out.println(e.getMessage());
+	        }
+		return allTicket;
+		
+	}
+
 }

@@ -22,18 +22,26 @@
 </head>
 <%
 String email = (String) session.getAttribute("email");
+String ruolo = (String) session.getAttribute("ruolo");
 %>
+
+
 <body>
 	<!-- Navbar -->
 	<header>
+	
 		<nav class="menu menu-1">
 			<ul>
 				<li><a href="home.jsp">Home</a></li>
 				<li><a href="menu2.jsp">Menu</a></li>
 				<li><a href="contatti.jsp">Contatti</a></li>
 				<li><a href="about.jsp">Chi siamo</a></li>
-				<li>
+				<% if (ruolo.equals("acquirente")) {%><li>
 <form action="Acquirente" method="post"><button name="azioneAcq" value="visualizzaProfilo" type="submit" class="no-style"><a>profilo</a> </button></form></li>
+<%}%>
+			<% if (ruolo.equals("amministratore")) {%><li>
+<form action="Amministratore" method="get"><button name="azioneAmm" value="visualizzaProf" type="submit" class="no-style"><a>profilo</a> </button></form></li>
+<%}%>
 			</ul>
 		</nav>
 	</header>

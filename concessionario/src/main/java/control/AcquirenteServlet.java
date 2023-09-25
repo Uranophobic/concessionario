@@ -2,10 +2,7 @@ package control;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,9 +15,11 @@ import javax.servlet.http.HttpSession;
 import bean.Acquirente;
 import bean.Macchina;
 import bean.Richiesta;
+import bean.Ticket;
 import model.AcquirenteImplement;
 import model.MacchinaImplement;
 import model.RichiestaImplement;
+import model.TicketImplement;
 
 /**
  * Servlet implementation class AcquirenteServlet
@@ -60,7 +59,16 @@ public class AcquirenteServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("richiesta.jsp");
 			dispatcher.forward(request, response);
 		}
+		if (azioneAcq.equals("addTicket")) {
+			
+			// mi prendo l'acquirente dalla sessione
+			HttpSession session = request.getSession(false);
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("richiestaTicket.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
@@ -81,14 +89,19 @@ public class AcquirenteServlet extends HttpServlet {
 
 			AcquirenteImplement acqImpl = new AcquirenteImplement();
 			RichiestaImplement rImpl = new RichiestaImplement();
-
+			TicketImplement ticket = new TicketImplement();
+			
+			ArrayList<Ticket> ticket_aperti= new ArrayList<>();
 			ArrayList<Richiesta> richieste_utente = new ArrayList<>();
 			try {
 				Acquirente acq = acqImpl.doRetrieveByKey(email);
 
 				richieste_utente = rImpl.doRetrieveByEmail(email);
 				System.out.println("le richieste dell'utente : " + richieste_utente.toString());
-
+				//visualizzazione ticket 
+				ticket_aperti=ticket.doRetrieveByEmail(email);
+				session.setAttribute("ticket_aperti", ticket_aperti);
+				
 				session.setAttribute("richieste_utente", richieste_utente);
 				session.setAttribute("email", acq.getEmail());
 				RequestDispatcher dispatcher = request.getRequestDispatcher("profilo.jsp");
@@ -101,7 +114,7 @@ public class AcquirenteServlet extends HttpServlet {
 		}
 
 		if (azioneAcq.equals("addRichiesta")) {
-			// nuova richiesta
+			// nuovo ticket 
 			String tipo = request.getParameter("tipo");
 			String messaggio = request.getParameter("messaggio");
 			String data = request.getParameter("data");
@@ -142,11 +155,11 @@ public class AcquirenteServlet extends HttpServlet {
 				System.out.println("le richieste dell'utente : " + richieste_utente.toString());
 
 				session.setAttribute("richieste_utente", richieste_utente);
-				
-				
+
+
 				session.setAttribute("email", acq.getEmail());
 				response.sendRedirect("profilo.jsp");
-			
+
 
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -156,18 +169,64 @@ public class AcquirenteServlet extends HttpServlet {
 				RequestDispatcher errorDispatcher = request.getRequestDispatcher("error.jsp");
 				errorDispatcher.forward(request, response);
 			}
-			
-			
+
+
 
 		}
 
-		if (azioneAcq.equals("visualizzaProfilo")) {
+		if (azioneAcq.equals("addTicket")) {
+				// nuova ticket
+				String titolo = request.getParameter("titolo");
+				String messaggio = request.getParameter("messaggio");
+				//String risposta = request.getParameter("risposta");
 
-		}
+				System.out.println("tipo + data + messaggio" + titolo + messaggio);
 
-		if (azioneAcq.equals("visualizzaProfilo")) {
+				TicketImplement tickImpl = new TicketImplement();
+				Ticket tick = new Ticket();
 
+				tick.setEmail_utente(email);
+				tick.setRisposta("");
+				tick.setMessaggio(messaggio);
+				tick.setTitolo(titolo);
+
+				try {
+					tickImpl.doSave(tick);
+					System.out.println("richiesta appena creata: " + tick.toString());
+
+					/*
+					 * RequestDispatcher dispatcher = request.getRequestDispatcher("profilo.jsp");
+					 * dispatcher.forward(request, response);
+					 */
+					AcquirenteImplement acqImpl = new AcquirenteImplement();
+					TicketImplement tImpl = new TicketImplement();
+
+					ArrayList<Ticket> ticket_aperti = new ArrayList<>();
+					Acquirente acq = acqImpl.doRetrieveByKey(email);
+
+					ticket_aperti = tImpl.doRetrieveByEmail(acq.getEmail());
+					
+
+					session.setAttribute("ticket_aperti", ticket_aperti);
+
+
+					session.setAttribute("email", acq.getEmail());
+					response.sendRedirect("profilo.jsp");
+
+
+				} catch (SQLException e) {
+					e.printStackTrace();
+
+					request.setAttribute("errorMessage",
+							"Si è verificato un errore durante il salvataggio della richiesta.");
+					RequestDispatcher errorDispatcher = request.getRequestDispatcher("error.jsp");
+					errorDispatcher.forward(request, response);
+				}
+
+
+
+			}
 		}
 
 	}
-}
+

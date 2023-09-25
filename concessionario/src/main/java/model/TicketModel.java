@@ -18,5 +18,7 @@ public void doSave(Ticket ticket) throws SQLException;
 	public Ticket doRetrieveByKey(String id_ticket) throws SQLException;
 	
 	public ArrayList<Ticket> doRetrieveAll() throws SQLException;
+	
+	public ArrayList<Ticket> doRetrieveByEmail(String email) throws SQLException;
 
 }
