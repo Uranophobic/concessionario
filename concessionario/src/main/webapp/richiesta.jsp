@@ -16,14 +16,14 @@
 	<label> Messaggio </label> <input type="text" name="messaggio" id="messaggio">
 	<label> Email  </label> <input type="text" name="email" id="email">
 	<label> Seleziona l'auto: </label>
-	<select name="auto" > 
+	<select name="id_auto" > 
 		<% for(int i=0; i<m.size(); i++){ %>
 			<option name="id_auto" value="<%=m.get(i).getId_auto()%>"> <%= m.get(i).getModello() %> </option>
 		<%}%>
 	</select>
 	
 	
-<a href="profilo.jsp"><button type="submit">  Invia </button></a>
+		<form action="Acquirente" method="post"><a ><button name="azioneAcq" value="addRichiesta"> invia </button></a></form>
 					
 </form>
 </body>

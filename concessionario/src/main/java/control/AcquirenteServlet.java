@@ -44,6 +44,22 @@ public class AcquirenteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		String azioneAcq = request.getParameter("azioneAcq");
+		if (azioneAcq.equals("addRichiesta")) {
+			// LISTA AUTO DA PASSARE MacchinaImplement maccImpl = new MacchinaImplement();
+			ArrayList<Macchina> allMacchine = new ArrayList<>();
+			MacchinaImplement maccImpl = new MacchinaImplement();
+			// mi prendo l'acquirente dalla sessione
+			HttpSession session = request.getSession(false);
+			try {
+				allMacchine = maccImpl.doRetrieveAll();
+				session.setAttribute("allMacchine", allMacchine);
+			} catch (SQLException e) { // TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			RequestDispatcher dispatcher = request.getRequestDispatcher("richiesta.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 
 	/**
@@ -53,15 +69,15 @@ public class AcquirenteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// prendere tutte le richieste di un acq
-
 		// mi prendo l'acquirente dalla sessione
 		HttpSession session = request.getSession(false);
+		String email = (String) session.getAttribute("email");
+		String azioneAcq = request.getParameter("azioneAcq");
 
-		if (session != null) {
+		System.out.println("acquirente della sessione: " + email);
+		// se la sessione non è nulla mia faccio tutte le operazioni
 
-			String email = (String) session.getAttribute("email");
-			System.out.println("acquirente della sessione: " + email);
+		if (azioneAcq.equals("visualizzaProfilo")) {
 
 			AcquirenteImplement acqImpl = new AcquirenteImplement();
 			RichiestaImplement rImpl = new RichiestaImplement();
@@ -70,12 +86,11 @@ public class AcquirenteServlet extends HttpServlet {
 			try {
 				Acquirente acq = acqImpl.doRetrieveByKey(email);
 
-
 				richieste_utente = rImpl.doRetrieveByEmail(email);
 				System.out.println("le richieste dell'utente : " + richieste_utente.toString());
 
 				session.setAttribute("richieste_utente", richieste_utente);
-                session.setAttribute("email", acq.getEmail());
+				session.setAttribute("email", acq.getEmail());
 				RequestDispatcher dispatcher = request.getRequestDispatcher("profilo.jsp");
 				dispatcher.forward(request, response);
 
@@ -83,67 +98,76 @@ public class AcquirenteServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		} else {
-			System.out.println("sessione nulla");
 		}
 
-		//LISTA AUTO DA PASSARE 
-		MacchinaImplement maccImpl = new MacchinaImplement();
-		ArrayList<Macchina> allMacchine = new ArrayList<>();
-		try {
-			allMacchine = maccImpl.doRetrieveAll();
-			session.setAttribute("allMacchine", allMacchine);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (azioneAcq.equals("addRichiesta")) {
+			// nuova richiesta
+			String tipo = request.getParameter("tipo");
+			String messaggio = request.getParameter("messaggio");
+			String data = request.getParameter("data");
+
+			int auto = 0;
+
+			if (request.getParameter("id_auto") != null) {
+				auto = Integer.parseInt(request.getParameter("id_auto").toString());
+			}
+
+			System.out.println("tipo + data + messaggio + ID AUTO " + tipo + data + messaggio + auto);
+
+			RichiestaImplement ricImpl = new RichiestaImplement();
+			Richiesta ric = new Richiesta();
+
+			ric.setEmail_utente(email);
+			ric.setData(data);
+			ric.setId_auto(auto);
+			ric.setMessaggio(messaggio);
+			ric.setStatus("in attesa");
+			ric.setTipo_richiesta(tipo);
+
+			try {
+				ricImpl.doSave(ric);
+				System.out.println("richiesta appena creata: " + ric.toString());
+
+				/*
+				 * RequestDispatcher dispatcher = request.getRequestDispatcher("profilo.jsp");
+				 * dispatcher.forward(request, response);
+				 */
+				AcquirenteImplement acqImpl = new AcquirenteImplement();
+				RichiestaImplement rImpl = new RichiestaImplement();
+
+				ArrayList<Richiesta> richieste_utente = new ArrayList<>();
+				Acquirente acq = acqImpl.doRetrieveByKey(email);
+
+				richieste_utente = rImpl.doRetrieveByEmail(acq.getEmail());
+				System.out.println("le richieste dell'utente : " + richieste_utente.toString());
+
+				session.setAttribute("richieste_utente", richieste_utente);
+				
+				
+				session.setAttribute("email", acq.getEmail());
+				response.sendRedirect("profilo.jsp");
+			
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+
+				request.setAttribute("errorMessage",
+						"Si è verificato un errore durante il salvataggio della richiesta.");
+				RequestDispatcher errorDispatcher = request.getRequestDispatcher("error.jsp");
+				errorDispatcher.forward(request, response);
+			}
+			
+			
+
 		}
 
+		if (azioneAcq.equals("visualizzaProfilo")) {
 
-
-
-		//nuova richiesta 
-		String tipo = request.getParameter("tipo");
-		String messaggio = request.getParameter("messaggio");
-		String email = (String) session.getAttribute("email");
-		String data = request.getParameter("data");
-
-		int auto = 0; 
-
-		if (session.getAttribute("id_auto") != null) {
-		    auto = Integer.parseInt(session.getAttribute("id_auto").toString());
 		}
 
-		System.out.println("tipo + data + messaggio " + tipo + data + messaggio);
+		if (azioneAcq.equals("visualizzaProfilo")) {
 
-		RichiestaImplement ricImpl = new RichiestaImplement();
-		Richiesta ric = new Richiesta();
-
-		ric.setEmail_utente(email);
-		ric.setData(data);
-		ric.setId_auto(auto);
-		ric.setMessaggio(messaggio);
-		ric.setStatus("in attesa");
-		ric.setTipo_richiesta(tipo);
-
-		try {
-		    ricImpl.doSave(ric);
-		    System.out.println("richiesta appena creata: " + ric.toString());
-
-		    
-		    RequestDispatcher dispatcher = request.getRequestDispatcher("profilo.jsp");
-		    dispatcher.forward(request, response);
-		}catch (SQLException e) {
-		        e.printStackTrace();
-		        
-		        request.setAttribute("errorMessage", "Si è verificato un errore durante il salvataggio della richiesta.");
-		        RequestDispatcher errorDispatcher = request.getRequestDispatcher("error.jsp");
-		        errorDispatcher.forward(request, response);
-		    }
-
-		
-
-		
-
+		}
 
 	}
 }

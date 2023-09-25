@@ -10,6 +10,15 @@
 <link rel="stylesheet" href="static/css/style.css">
 <link rel="stylesheet" type="text/css"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+	<style>
+
+		.no-style {
+	border: none;
+	background: transparent;
+
+		
+	}
+	</style>
 </head>
 <%
 String email = (String) session.getAttribute("email");
@@ -23,7 +32,8 @@ String email = (String) session.getAttribute("email");
 				<li><a href="menu2.jsp">Menu</a></li>
 				<li><a href="contatti.jsp">Contatti</a></li>
 				<li><a href="about.jsp">Chi siamo</a></li>
-				<li><form method="post" action="Acquirente"><a href="profilo.jsp">Profilo</a></form></li>
+				<li>
+<form action="Acquirente" method="post"><button name="azioneAcq" value="visualizzaProfilo" type="submit" class="no-style"><a>profilo</a> </button></form></li>
 			</ul>
 		</nav>
 	</header>

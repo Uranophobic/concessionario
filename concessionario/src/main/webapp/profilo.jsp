@@ -45,6 +45,13 @@
 		<%}else { 
  		System.out.println("Vuoto");
 		}%>
-		<a href="richiesta.jsp"><button> RICHIESTA </button></a>
+		<form action="Acquirente" method="get"><a ><button name="azioneAcq" value="addRichiesta"> RICHIESTA </button></a></form>
+
+<script >
+	setInterval(function(){
+		location.reload();
+	}, 5000);
+</script>
+
 </body>
 </html>
