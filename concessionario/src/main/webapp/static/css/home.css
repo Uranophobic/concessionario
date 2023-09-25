@@ -1,0 +1,20 @@
+@charset "ISO-8859-1";
+.crousel {
+	width: 100%;
+	max-height: 100%;
+	overflow: hidden;
+	box-shadow: 0 0 10px 5px #0000002f;
+}
+
+.container {
+	display: flex;
+	transform: translateX(0);
+		margin-top: -7%;
+}
+
+.container img {	
+	object-fit: cover;
+	height: 100%;
+	width: 100%;
+}
+

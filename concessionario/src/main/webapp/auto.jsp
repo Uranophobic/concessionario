@@ -6,18 +6,19 @@
 <html>
 <head>
 <style>
-body{
-overflow:hidden;
+html{
+overflow-x: hidden;
 }
 </style>
 <meta charset="ISO-8859-1">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Concessionario</title>
-<link rel="stylesheet" href="static/css/home.css">
 <link rel="stylesheet" href="static/css/header.css">
+<link rel="stylesheet" href="static/css/auto.css">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+<script src="https://kit.fontawesome.com/33ac70226a.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -41,22 +42,77 @@ overflow:hidden;
 			</div>
 		</nav>
 	</header>
-	<!-- Fine navbar -->
-
-
-	<!-- Inizio sezioni -->
-	<section>
-		<!-- Sezione carousel -->
-		<div class="crousel">
-			<div class="container" id='imgs'>
-				<img src="https://images4.alphacoders.com/258/258958.jpg"> 
-				<img src="https://images3.alphacoders.com/258/258959.jpg"> 
-				<img src="https://images.alphacoders.com/258/258981.jpg"> 
-				<img src="https://images4.alphacoders.com/258/258988.jpg">
-			</div>
+	<section class="section1">
+		<img src="static/images/background-audi.jpg">
+		<div class="info-macchina">
+			<p><% %>Modello</p>
+			<p><%  %>Prezzo</p>
+			<p><%  %>KW</p>
 		</div>
 	</section>
-	<!-- fine sezioni -->
+	<section class="section2">
+		<div class="info-paragrafi">
+			<p>Specifiche macchina</p>
+			<p>Ulteriori informazioni</p>
+		</div>
+		<div class="tabelle">
+			<table class="tabella-info-macchina">
+				<tr>
+					<th>Modello</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>Anno</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>Cilindrata</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>Carburante</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>Colore</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>Stato veicolo</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>Prezzo</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>Categoria</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>Posti</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>Tipo cambio</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>kW</th>
+					<td></td>
+				</tr>
+			</table>
+			<table class="descrizione">
+				<tr>
+					<th>Descrizione</th>
+				</tr>
+				<tr>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+	</section>
+	<!-- Fine navbar -->
 	<script src="static/js/js.js"></script>
 </body>
 

@@ -1,0 +1,62 @@
+
+.info-macchina{
+	display: flex;
+	flex-direction:row;
+	justify-content:space-evenly;
+    align-items: center;
+    color: white;
+    font-size: 26px;
+}
+
+.section1{
+	height: 100%;
+	width: 100%;
+}
+
+.section1 img{
+	margin-top: -3%;
+	max-width: 100%;
+}
+
+.section1 p{
+	margin-top: -25%;
+}
+
+.info-paragrafi{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	font-weight:bold;
+	padding: 10px;
+}
+
+/* Tabella info auto */
+.tabelle{
+	display: flex;
+	flex-direction:row;
+	justify-content:space-around;
+    align-items: flex-start;
+}
+
+.tabella-info-macchina, .descrizione{
+	color: black;
+	text-align: center;
+	border-spacing: 0px !important;
+	width: 30%;
+}
+
+.tabella-info-macchina th, .descrizione th {
+	background-color: #cccccc;
+	border-top: 1px solid black;
+	font-weight:normal !important;
+	padding: 5px;
+}
+
+.tabella-info-macchina td, .descrizione td {
+	background-color: white;
+	padding: 5px;
+	width: 50%;
+	border-top: 1px solid black;
+}
+
+

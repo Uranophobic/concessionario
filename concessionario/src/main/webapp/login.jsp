@@ -8,8 +8,7 @@
 
 <title>Benvenuto!</title>
 <link rel="stylesheet" href="static/css/login.css">
-<link rel='stylesheet'
-	href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'>
 </head>
  <% String ruolo = (String) session.getAttribute("email"); %>
 <header> </header>
@@ -24,12 +23,13 @@
 				<div class="form1">
 					<h1>Create Account</h1>
 					<div class="social-container">
-						<a href="#" class="social"><i class="fab fa-facebook-f"></i></a> <a
-							href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+						<a href="#" class="social"><i class="fab fa-facebook-f"></i></a> 
+						<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
 						<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 					</div>
-					<span>or use your email for registration</span> <input type="text"
-						placeholder="Nome" /> <input type="email" placeholder="Email" />
+					<span>or use your email for registration</span> 
+					<input type="text" placeholder="Nome" /> 
+					<input type="email" placeholder="Email" />
 					<input type="password" placeholder="Password" />
 					<button>Registrati</button>
 				</div>
@@ -44,10 +44,10 @@
 							href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
 						<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 					</div>
-					<span>o usa il tuo account</span> <input type="email"
-						placeholder="Email" name="email" id="email"/> <input type="password"
-						placeholder="Password" name="password" id="password"/> <a href="#">Hai dimenticato la
-						password?</a>
+					<span>o usa il tuo account</span> 
+					<input type="email" placeholder="Email" name="email" id="email"/> 
+					<input type="password" placeholder="Password" name="password" id="password"/> 
+					<a href="#"> Hai dimenticato la password?</a>
 					<button>Accedi</button>
 				</div>
 			</div>
