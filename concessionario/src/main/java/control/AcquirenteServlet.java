@@ -102,45 +102,47 @@ public class AcquirenteServlet extends HttpServlet {
 
 
 		//nuova richiesta 
-		String tipo =  request.getParameter("tipo");
-
+		String tipo = request.getParameter("tipo");
 		String messaggio = request.getParameter("messaggio");
 		String email = (String) session.getAttribute("email");
-		//int auto = (int) session.getAttribute("id_auto");
+		String data = request.getParameter("data");
 
+		int auto = 0; 
 
-		String data = request.getParameter("date");
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		//surround below line with try catch block as below code throws checked exception
-		Date dat = null;
-		try {
-			dat = sdf.parse(data);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (session.getAttribute("id_auto") != null) {
+		    auto = Integer.parseInt(session.getAttribute("id_auto").toString());
 		}
-		//do further processing with Date object
+
 		System.out.println("tipo + data + messaggio " + tipo + data + messaggio);
 
 		RichiestaImplement ricImpl = new RichiestaImplement();
 		Richiesta ric = new Richiesta();
-		ric.setData(dat);
+
 		ric.setEmail_utente(email);
-		ric.setId_auto(1);
+		ric.setData(data);
+		ric.setId_auto(auto);
 		ric.setMessaggio(messaggio);
 		ric.setStatus("in attesa");
 		ric.setTipo_richiesta(tipo);
+
 		try {
-			ricImpl.doSave(ric);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		    ricImpl.doSave(ric);
+		    System.out.println("richiesta appena creata: " + ric.toString());
 
-		System.out.println("richiesta appena creata: " + ric.toString());
+		    
+		    RequestDispatcher dispatcher = request.getRequestDispatcher("profilo.jsp");
+		    dispatcher.forward(request, response);
+		}catch (SQLException e) {
+		        e.printStackTrace();
+		        
+		        request.setAttribute("errorMessage", "Si è verificato un errore durante il salvataggio della richiesta.");
+		        RequestDispatcher errorDispatcher = request.getRequestDispatcher("error.jsp");
+		        errorDispatcher.forward(request, response);
+		    }
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("profilo.jsp");
-		dispatcher.forward(request, response);
+		
+
+		
 
 
 	}

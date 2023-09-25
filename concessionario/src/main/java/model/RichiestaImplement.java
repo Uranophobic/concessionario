@@ -16,25 +16,22 @@ public class RichiestaImplement implements RichiestaModel {
 
 	@Override
 	public void doSave(Richiesta richiesta) throws SQLException {
-
-		String query = "INSERT INTO richiesta (id_richiesta, tipo_richiesta, data, messaggio, status, email_utente, id_auto) "
-				+ "+ values (?,?,?,?,?,?,?)";
-		try {
-			con = Connessione.getInstance().getConnection();
-			PreparedStatement p = con.prepareStatement(query);
-			p.setInt(1, richiesta.getId_richiesta());
-			p.setString(2, richiesta.getTipo_richiesta());
-			p.setDate(3, (Date) richiesta.getData());
-			p.setString(4, richiesta.getMessaggio());
-			p.setString(5, richiesta.getStatus());
-			p.setString(6, richiesta.getEmail_utente());
-			p.setInt(7, richiesta.getId_auto());
-			p.executeUpdate();
-
-		} catch (SQLException | ClassNotFoundException e) {
-			System.out.println(e.getMessage());
-		}
-
+	    String query = "INSERT INTO richiesta (id_richiesta, tipo_richiesta, data, messaggio, status, email_utente, id_auto) "
+	                 + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+	    try {
+	        con = Connessione.getInstance().getConnection();
+	        PreparedStatement p = con.prepareStatement(query);
+	        p.setInt(1, richiesta.getId_richiesta());
+	        p.setString(2, richiesta.getTipo_richiesta());
+	        p.setString(3, richiesta.getData());
+	        p.setString(4, richiesta.getMessaggio());
+	        p.setString(5, richiesta.getStatus());
+	        p.setString(6, richiesta.getEmail_utente());
+	        p.setInt(7, richiesta.getId_auto());
+	        p.executeUpdate();
+	    } catch (SQLException | ClassNotFoundException e) {
+	        System.out.println(e.getMessage());
+	    }
 	}
 
 	@Override
@@ -45,7 +42,7 @@ public class RichiestaImplement implements RichiestaModel {
 			con = Connessione.getInstance().getConnection();
 			PreparedStatement p = con.prepareStatement(query);
 			p.setString(1, richiesta.getTipo_richiesta());
-			p.setDate(2, (Date) richiesta.getData());
+			p.setString(2,richiesta.getData());
 			p.setString(3, richiesta.getMessaggio());
 			p.setString(4, richiesta.getStatus());
 			p.setString(5, richiesta.getEmail_utente());
@@ -82,7 +79,7 @@ public class RichiestaImplement implements RichiestaModel {
 			PreparedStatement pst = con.prepareStatement(query);
 			result = pst.executeQuery();
 			while (result.next()) {
-				r.setData(result.getDate("data"));
+				r.setData(result.getString("data"));
 				r.setEmail_utente(result.getString("email_utente"));
 				r.setId_auto(result.getInt("id_auto")); 
 				r.setMessaggio(result.getString("messaggio"));
@@ -109,7 +106,7 @@ public class RichiestaImplement implements RichiestaModel {
 			PreparedStatement pst = con.prepareStatement(query);
 			result = pst.executeQuery();
 			while (result.next()) {
-				r.setData(result.getDate("data"));
+				r.setData(result.getString("data"));
 				r.setEmail_utente(result.getString("email_utente"));
 				r.setId_auto(result.getInt("id_auto")); 
 				r.setMessaggio(result.getString("messaggio"));
@@ -138,7 +135,7 @@ public class RichiestaImplement implements RichiestaModel {
 			result = pst.executeQuery();
 			while (result.next()) {
 				Richiesta r = new Richiesta();
-				r.setData(result.getDate("data"));
+				r.setData(result.getString("data"));
 				r.setEmail_utente(result.getString("email_utente"));
 				r.setId_auto(result.getInt("id_auto")); 
 				r.setMessaggio(result.getString("messaggio"));

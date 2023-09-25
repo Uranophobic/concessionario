@@ -6,7 +6,7 @@ public class Richiesta {
 
 	private int id_richiesta;
 	private String tipo_richiesta;
-	private Date data;
+	private String data;
 	private String messaggio;
 	private String status;
 	private String email_utente;
@@ -18,7 +18,7 @@ public class Richiesta {
 	}
 
 
-	public Richiesta(int id_richiesta, String tipo_richiesta, Date data, String messaggio, String status,
+	public Richiesta(int id_richiesta, String tipo_richiesta, String data, String messaggio, String status,
 			String email_utente, int id_auto) {
 		super();
 		this.id_richiesta = id_richiesta;
@@ -51,12 +51,12 @@ public class Richiesta {
 	}
 
 
-	public Date getData() {
+	public String getData() {
 		return data;
 	}
 
 
-	public void setData(Date data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 

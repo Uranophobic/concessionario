@@ -20,7 +20,7 @@
 		<tr>
 			<th> id_richiesta </th>
 			<th> tipo_richiesta</th>
-			<th> data </th>
+			
 			<th> messaggio </th>
 			<th> status </th>
 		</tr>
@@ -32,7 +32,7 @@
 		<tr>
 			<td> <%= r.get(i).getId_richiesta() %></td>
 			<td> <%=r.get(i).getTipo_richiesta() %></td>
-			<td> <%= r.get(i).getData() %> </td>
+			
 			<td> <%= r.get(i).getMessaggio() %></td>
 			<td> <%= r.get(i).getStatus() %></td>
 		</tr>

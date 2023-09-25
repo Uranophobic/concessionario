@@ -9,10 +9,10 @@
 </head>
 <% ArrayList<Macchina> m = (ArrayList<Macchina>) session.getAttribute("allMacchine"); %>
 <body>
-<form action="/Acquirente" method="post">
+<form action="Acquirente" method="post">
 	
 	<label> Tipo richiesta: </label> <input type="text" name="tipo" id="tipo">
-	<label> Data </label> <input type="date" name="data" id="data">
+	<label> Data </label> <input type="text" name="data" id="data">
 	<label> Messaggio </label> <input type="text" name="messaggio" id="messaggio">
 	<label> Email  </label> <input type="text" name="email" id="email">
 	<label> Seleziona l'auto: </label>
