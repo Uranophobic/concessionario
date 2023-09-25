@@ -137,6 +137,7 @@ String ruolo =(String) session.getAttribute("ruolo");
 			<th>Tipo cambio</th>
 			<th>Kw</th>
 			<th>Descrizione</th>
+			<th>Operazioni</th>
 		</tr>
 
 		<%
@@ -157,13 +158,25 @@ String ruolo =(String) session.getAttribute("ruolo");
 			<td><%=m.get(i).getCategoria()%></td>
 			<td><%=m.get(i).getPosti()%></td>
 			<td><%=m.get(i).getTipo_cambio()%></td>
-				<td><%=m.get(i).getkW()%></td>
+			<td><%=m.get(i).getkW()%></td>
 			<td><%=m.get(i).getDescrizione()%></td>
+			<td>
+			<a href="Amministratore?azioneAmm=upAuto&id_auto=<%=m.get(i).getId_auto()%>">
+			<button name="azioneAmm" value="upAuto">Aggiorna auto</button>
+			</a>
+			<a href="Amministratore?azioneAmm=delAuto&id_auto=<%=m.get(i).getId_auto()%>">
+	            <button name="azioneAmm" value="delAuto">Elimina auto</button>
+	            </a>
+	            </td>
 		</tr>
 		<%
 		}
 		%>
 	</table>
+	<form action="Amministratore" method="get">
+	<button name="azioneAmm" value="addAuto">Aggiungi auto</button>
+	</form>
+	
 	<%}%>
 	<%}%>
 
