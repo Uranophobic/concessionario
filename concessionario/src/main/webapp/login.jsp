@@ -14,7 +14,7 @@
 <header> </header>
 <body>
 
-	<form action="Login" method="post">
+
 
 		<div class="container" id="container">
 		
@@ -28,11 +28,19 @@
 						<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 					</div>
 					<span>or use your email for registration</span> 
-					<input type="text" placeholder="Nome" /> 
-					<input type="email" placeholder="Email" />
-					<input type="password" placeholder="Password" />
-					<button>Registrati</button>
-				</div>
+					<form action="Login" method="post">
+					<input type="text" placeholder="Nome" id="nome" name="nome"/> 
+					<input type="text" placeholder="Cognome" id="cognome" name="cognome"/> 
+					<input type="email" placeholder="Email" id="email" name="email" />
+					<input type="password" placeholder="Password" id="password" name="password"/>
+					<input type="text" placeholder="Età" id="eta" name="eta" />
+					<input type="text" placeholder="Indirizzo" id="indirizzo" name="indirizzo"/>
+					<input type="text" placeholder="Patente" id="patente" name="patente"/>
+					<input type="text" placeholder="Anno patente" id="anno_patente" name="anno_patente"/>
+						
+					<button name="azioneLogin" value="registrati" >Registrati</button> <!--  pulsante di registrazione -->
+					</form>
+			</div>
 			</div>
 			
 			<!-- login -->
@@ -45,10 +53,13 @@
 						<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 					</div>
 					<span>o usa il tuo account</span> 
+					<form action="Login" method="post">
 					<input type="email" placeholder="Email" name="email" id="email"/> 
 					<input type="password" placeholder="Password" name="password" id="password"/> 
 					<a href="#"> Hai dimenticato la password?</a>
-					<button>Accedi</button>
+						
+					<button name="azioneLogin" value="login" >ACCEDI</button> <!--  pulsante di ACCEDI -->
+					</form>
 				</div>
 			</div>
 			
