@@ -44,11 +44,14 @@ public class AmministratoreServlet extends HttpServlet {
 		String azioneAmm = request.getParameter("azioneAmm");
 
 		if (azioneAmm.equals("visualizzaProf")) {
-			// LISTA AUTO DA PASSARE MacchinaImplement maccImpl = new MacchinaImplement();
+			// LISTA AUTO DA PASSARE 
 			ArrayList<Macchina> allMacchine = new ArrayList<>();
 			MacchinaImplement maccImpl = new MacchinaImplement();
+			
 			// mi prendo l'amministratore dalla sessione
 			HttpSession session = request.getSession(false);
+			
+			// LISTA richieste DA PASSARE
 			ArrayList<Richiesta> allRichieste = new ArrayList<>();
 			RichiestaImplement rImpl = new RichiestaImplement();
 
@@ -58,7 +61,7 @@ public class AmministratoreServlet extends HttpServlet {
 				session.setAttribute("allMacchine", allMacchine);
 
 				allRichieste = rImpl.doRetrieveAll();
-				session.setAttribute("allRichieste", rImpl);
+				session.setAttribute("allRichieste", allRichieste);
 
 				RequestDispatcher dispatcher = request.getRequestDispatcher("profilo.jsp");
 				dispatcher.forward(request, response);

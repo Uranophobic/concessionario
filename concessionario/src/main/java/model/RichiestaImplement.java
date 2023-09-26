@@ -98,7 +98,7 @@ public class RichiestaImplement implements RichiestaModel {
 	@Override
 	public ArrayList<Richiesta> doRetrieveAll() throws SQLException {
 		ResultSet result = null;
-		Richiesta r = new Richiesta();
+		
 		ArrayList<Richiesta> allRichiesta = new ArrayList<>();
 		String query = "SELECT * FROM richiesta";
 		try {
@@ -106,6 +106,7 @@ public class RichiestaImplement implements RichiestaModel {
 			PreparedStatement pst = con.prepareStatement(query);
 			result = pst.executeQuery();
 			while (result.next()) {
+				Richiesta r = new Richiesta();
 				r.setData(result.getString("data"));
 				r.setEmail_utente(result.getString("email_utente"));
 				r.setId_auto(result.getInt("id_auto")); 

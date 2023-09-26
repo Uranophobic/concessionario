@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page import="java.util.ArrayList, bean.Richiesta, bean.Ticket, bean.Macchina, bean.Richiesta"%>
+<%@ page import="java.util.ArrayList, bean.Richiesta, bean.Ticket, bean.Macchina"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -147,8 +147,6 @@ String ruolo =(String) session.getAttribute("ruolo");
 		
 
 		<tr>
-		<%-- <td> <p name="idAuto" id="idAuto"><%=m.get(i).getId_auto() %></p> </td> --%>
-		
 			<td><%=m.get(i).getModello()%></td>
 			<td><%=m.get(i).getMarca()%></td>
 			<td><%=m.get(i).getAnno_produzione()%></td>
@@ -174,9 +172,9 @@ String ruolo =(String) session.getAttribute("ruolo");
 	        </td>
 	        
 		</tr>
-		<%}%> <!--  chiusura del for delle macchine -->
+		<%}%>
 			
-	</table><%}%><!--  chiusura del  delle macchine -->
+	</table><%}%>
 	<form action="Amministratore" method="get">
 	<button name="azioneAmm" value="addAuto">Aggiungi auto</button>
 	</form>
@@ -210,11 +208,12 @@ String ruolo =(String) session.getAttribute("ruolo");
 	
 	<%}else{
 	System.out.println("richieste amministratore vuoto");}%>
+
 	</div>
 	
 	
 
-	<%}%> <!--  chiusura dell'if  dell'amministratore-->
+	<%}%>
 
 	
 	
