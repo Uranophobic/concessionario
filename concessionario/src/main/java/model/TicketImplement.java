@@ -40,7 +40,7 @@ public class TicketImplement implements TicketModel {
 
 	@Override
 	public void doUpdate(Ticket ticket) throws SQLException {
-		String query = "UPDATE ticket SET titolo=?, messaggio=?, risposta=?, emeail_utente=? WHERE id_ticket=?";
+		String query = "UPDATE ticket SET titolo=?, messaggio=?, risposta=?, email_utente=? WHERE id_ticket=?";
 		try {
 			con = Connessione.getInstance().getConnection();
 			PreparedStatement p = con.prepareStatement(query);
