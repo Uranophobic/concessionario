@@ -153,4 +153,31 @@ public class RichiestaImplement implements RichiestaModel {
 
 	}
 
+	@Override
+	public ArrayList<Richiesta> doRetrieveByStatus(String status) throws SQLException {
+		ResultSet result = null;
+		ArrayList<Richiesta> allR = new ArrayList<>();
+		String query = "SELECT * FROM richiesta WHERE status='" + status + "'";
+		try {
+			con = Connessione.getInstance().getConnection();
+			PreparedStatement pst = con.prepareStatement(query);
+			result = pst.executeQuery();
+			while (result.next()) {
+				Richiesta r = new Richiesta();
+				r.setData(result.getString("data"));
+				r.setEmail_utente(result.getString("email_utente"));
+				r.setId_auto(result.getInt("id_auto")); 
+				r.setMessaggio(result.getString("messaggio"));
+				r.setStatus(result.getString("status"));
+				r.setTipo_richiesta(result.getString("tipo_richiesta"));
+				r.setId_richiesta(result.getInt("id_richiesta"));
+				allR.add(r);
+			}
+		} catch (SQLException | ClassNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
+		return allR;
+		
+	}
+
 }

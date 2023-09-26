@@ -15,6 +15,8 @@ ArrayList<Richiesta> r = (ArrayList<Richiesta>) session.getAttribute("richieste_
 ArrayList<Ticket> t = (ArrayList<Ticket>) session.getAttribute("ticket_aperti");
 ArrayList<Macchina> m = (ArrayList<Macchina>) session.getAttribute("allMacchine");
 ArrayList<Richiesta> allR = (ArrayList<Richiesta>) session.getAttribute("allRichieste");
+
+ArrayList<Richiesta> rAttese = (ArrayList<Richiesta>) session.getAttribute("richiesteInAttesa");
 %>
 
 <%
@@ -181,7 +183,7 @@ String ruolo =(String) session.getAttribute("ruolo");
 	
 	
 	<div> 
-		<%if(allR.size()>0){%>
+		<%if(rAttese.size()>0){%>
 		<table> 
 			<tr>
 				<th> Id Richiesta </th>
@@ -191,17 +193,21 @@ String ruolo =(String) session.getAttribute("ruolo");
 				<th> Status </th>
 				<th> Email utente </th>
 				<th> Id Auto </th>
+				<th> Aggiorna Richiesta </th>
 			</tr>
 			
-			<% for(int i=0; i<allR.size(); i++){ %>
+			<% for(int i=0; i<rAttese.size(); i++){ %>
 			<tr>
-				<td><%=allR.get(i).getId_richiesta() %> </td>
-				<td><%=allR.get(i).getTipo_richiesta() %> </td>
-		 		<td><%=allR.get(i).getData() %> </td>
-				<td><%=allR.get(i).getMessaggio() %> </td>
-				<td><%=allR.get(i).getStatus() %> </td>
-				<td><%=allR.get(i).getEmail_utente() %> </td>
-				<td><%=allR.get(i).getId_auto() %> </td>
+				<td><%=rAttese.get(i).getId_richiesta() %> </td>
+				<td><%=rAttese.get(i).getTipo_richiesta() %> </td>
+		 		<td><%=rAttese.get(i).getData() %> </td>
+				<td><%=rAttese.get(i).getMessaggio() %> </td>
+				<td><%=rAttese.get(i).getStatus() %> </td>
+				<td><%=rAttese.get(i).getEmail_utente() %> </td>
+				<td><%=rAttese.get(i).getId_auto() %> </td>
+				<td> <a href="Amministratore?azioneAmm=aggiornaRichiesta&id_richiesta=<%=rAttese.get(i).getId_richiesta()%>">
+	            <button name="azioneAmm" value="aggiornaRichiesta">Aggiorna Richiesta</button>
+	         </a></td>
 			</tr>
 			<%}%>
 		</table>

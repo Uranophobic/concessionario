@@ -44,17 +44,18 @@ public class AmministratoreServlet extends HttpServlet {
 		String azioneAmm = request.getParameter("azioneAmm");
 
 		if (azioneAmm.equals("visualizzaProf")) {
-			// LISTA AUTO DA PASSARE 
+			// LISTA AUTO DA PASSARE
 			ArrayList<Macchina> allMacchine = new ArrayList<>();
 			MacchinaImplement maccImpl = new MacchinaImplement();
-			
+
 			// mi prendo l'amministratore dalla sessione
 			HttpSession session = request.getSession(false);
-			
+
 			// LISTA richieste DA PASSARE
 			ArrayList<Richiesta> allRichieste = new ArrayList<>();
 			RichiestaImplement rImpl = new RichiestaImplement();
 
+			ArrayList<Richiesta> richiesteInAttesa = new ArrayList<>();
 			try {
 
 				allMacchine = maccImpl.doRetrieveAll();
@@ -62,6 +63,9 @@ public class AmministratoreServlet extends HttpServlet {
 
 				allRichieste = rImpl.doRetrieveAll();
 				session.setAttribute("allRichieste", allRichieste);
+
+				richiesteInAttesa = rImpl.doRetrieveByStatus("in attesa");
+				session.setAttribute("richiesteInAttesa", richiesteInAttesa);
 
 				RequestDispatcher dispatcher = request.getRequestDispatcher("profilo.jsp");
 				dispatcher.forward(request, response);
@@ -124,6 +128,27 @@ public class AmministratoreServlet extends HttpServlet {
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("modificaAuto.jsp");
 			dispatcher.forward(request, response);
+		}
+
+		if (azioneAmm.equals("aggiornaRichiesta")) {
+			HttpSession session = request.getSession(false);
+			String id_richiesta = request.getParameter("id_richiesta");
+			System.out.println("id della richiesta da aggiornare " + id_richiesta);
+			int id = Integer.parseInt(id_richiesta);
+			RichiestaImplement rImpl = new RichiestaImplement();
+			Richiesta r;
+			try {
+				r = rImpl.doRetrieveByKey(id);
+				session.setAttribute("richiestaDaAggiornare", r);
+				System.out.println("richiesa presa dal db" + r.toString());
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher("aggiornaRichiesta.jsp");
+				dispatcher.forward(request, response);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
 	}
 

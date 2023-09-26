@@ -22,4 +22,6 @@ public void doSave(Richiesta richiesta) throws SQLException;
 	public ArrayList<Richiesta> doRetrieveByEmail(String email) throws SQLException;
 	
 	public ArrayList<Richiesta> doRetrieveAll() throws SQLException;
+	
+	public ArrayList<Richiesta> doRetrieveByStatus (String status)throws SQLException;
 }
