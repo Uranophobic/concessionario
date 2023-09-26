@@ -256,17 +256,5 @@ String ruolo =(String) session.getAttribute("ruolo");
     System.out.println("lista dei ticket vuota");}%>
 	<%}%>
 
-	
-	
-	
-	
-
-
-
-
-
-
-
-
 </body>
 </html>
