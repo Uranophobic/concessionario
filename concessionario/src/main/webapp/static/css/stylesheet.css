@@ -1,0 +1,10 @@
+@charset "ISO-8859-1";
+
+
+/*** profilo ****/
+
+.benvenutoTit {
+	font-size: 25px;
+	font-weight: bold;
+	text-align: center;
+}

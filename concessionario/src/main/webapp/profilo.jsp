@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Profilo utente</title>
+<title>Area Personale</title>
+<link rel="stylesheet" href="static/css/stylesheet.css">
 </head>
 <%
 ArrayList<Richiesta> r = (ArrayList<Richiesta>) session.getAttribute("richieste_utente");
@@ -25,16 +26,15 @@ String ruolo =(String) session.getAttribute("ruolo");
 %>
 <body>
 
+
+<%@ include file="header.jsp"%>
+
 <% if(ruolo.equals("acquirente")) { %>
 
-	<p>
-		Benvenuto acquirente
-		<%=email%>
-	</p>
+	<p class="benvenutoTit">	Benvenuto <%=email%> </p>
 	
-		<%
-	if (r != null) {
-	%>
+		
+	<%if (r.size() != 0) {%>
 	<p>Per il tuo profilo risultano le seguenti richieste</p>
 	<table>
 		<tr>
@@ -61,17 +61,22 @@ String ruolo =(String) session.getAttribute("ruolo");
 		}
 		%>
 	</table>
-
-	<%
-	} else {
-	System.out.println("VuotoRichiesta");
-	}
-	%>
-
-	<form action="Acquirente" method="get">
+		<form action="Acquirente" method="get">
 		<a><button name="azioneAcq" value="addRichiesta">
 				RICHIESTA</button></a>
 	</form>
+	<%}else{%>
+		<p> Sul tuo profilo non risultano ancora richieste effettuate! <br>
+		Per effetturare una richiesta clicca qui in basso </p>
+		<br>
+		<form action="Acquirente" method="get">
+		<a><button name="azioneAcq" value="addRichiesta">
+				RICHIESTA</button></a>
+	</form>
+	<%}%>
+	
+
+	
 
 	<%
 	if (t != null) {
