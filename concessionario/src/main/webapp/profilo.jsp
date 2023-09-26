@@ -147,6 +147,7 @@ String ruolo =(String) session.getAttribute("ruolo");
 			<th>Tipo cambio</th>
 			<th>Kw</th>
 			<th>Descrizione</th>
+			<th>IMG</th>
 			<th>Operazioni</th>
 		</tr>
 
@@ -168,6 +169,7 @@ String ruolo =(String) session.getAttribute("ruolo");
 			<td><%=m.get(i).getTipo_cambio()%></td>
 			<td><%=m.get(i).getkW()%></td>
 			<td><%=m.get(i).getDescrizione()%></td>
+			<td><%=m.get(i).getImg()%></td>
 			
 			<td>
 			<a href="Amministratore?azioneAmm=upAuto&id_auto=<%=m.get(i).getId_auto()%>">

@@ -46,6 +46,8 @@
 <input type="text" name="kW" id="kW" value=<%=mac.getkW()%>>
 <label> Descrizione </label> 
 <input type="text" name="descrizione"id="descrizione" value=<%=mac.getDescrizione()%>> 
+<label> IMG </label> 
+<input type="text" name="img"id="img" value=<%=mac.getImg()%>> 
 
 
 <a><button name="azioneAmm" value="upAuto">Aggiorna</button></a>

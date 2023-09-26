@@ -17,7 +17,7 @@ public class Macchina {
 	private String tipo_cambio;
 	private int kW;
 	private String descrizione;
-	
+	private String img;
 	
 	
 	public Macchina() {
@@ -28,7 +28,7 @@ public class Macchina {
 
 	public Macchina(int id_auto, String modello, String marca, String anno_produzione, int cilindrata,
 			String carburante, String colore, String stato_veiocolo, double prezzo, int kilometraggio, String categoria,
-			int posti, String tipo_cambio, int kW, String descrizione) {
+			int posti, String tipo_cambio, int kW, String descrizione, String img) {
 		super();
 		this.id_auto = id_auto;
 		this.modello = modello;
@@ -45,6 +45,19 @@ public class Macchina {
 		this.tipo_cambio = tipo_cambio;
 		this.kW = kW;
 		this.descrizione = descrizione;
+		this.img=img;
+	}
+
+
+
+	public String getImg() {
+		return img;
+	}
+
+
+
+	public void setImg(String img) {
+		this.img = img;
 	}
 
 
@@ -233,9 +246,9 @@ public class Macchina {
 	public String toString() {
 		return "Macchina [id_auto=" + id_auto + ", modello=" + modello + ", marca=" + marca + ", anno_produzione="
 				+ anno_produzione + ", cilindrata=" + cilindrata + ", carburante=" + carburante + ", colore=" + colore
-				+ ", stato_veiocolo=" + stato_veicolo + ", prezzo=" + prezzo + ", kilometraggio=" + kilometraggio
+				+ ", stato_veicolo=" + stato_veicolo + ", prezzo=" + prezzo + ", kilometraggio=" + kilometraggio
 				+ ", categoria=" + categoria + ", posti=" + posti + ", tipo_cambio=" + tipo_cambio + ", kW=" + kW
-				+ ", descrizione=" + descrizione + "]";
+				+ ", descrizione=" + descrizione + ", img=" + img + "]";
 	}
 	
 	

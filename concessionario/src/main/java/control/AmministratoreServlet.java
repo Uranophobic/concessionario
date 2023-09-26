@@ -201,6 +201,7 @@ public class AmministratoreServlet extends HttpServlet {
 			String tipo_cambio = request.getParameter("tipo_cambio");
 			String kW = request.getParameter("kW"); // è un int
 			String descrizione = request.getParameter("descrizione");
+			String img = request.getParameter("img");
 
 			Macchina mac = new Macchina();
 			MacchinaImplement macImpl = new MacchinaImplement();
@@ -219,6 +220,7 @@ public class AmministratoreServlet extends HttpServlet {
 			mac.setTipo_cambio(tipo_cambio);
 			mac.setkW(Integer.parseInt(kW));
 			mac.setDescrizione(descrizione);
+			mac.setImg(img);
 
 			try {
 				macImpl.doSave(mac);
@@ -258,6 +260,7 @@ public class AmministratoreServlet extends HttpServlet {
 				String tipo_cambio = request.getParameter("tipo_cambio");
 				String kW = request.getParameter("kW");
 				String descrizione = request.getParameter("descrizione");
+				String img = request.getParameter("img");
 
 				m.setModello(modello);
 				m.setMarca(marca);
@@ -273,6 +276,7 @@ public class AmministratoreServlet extends HttpServlet {
 				m.setTipo_cambio(tipo_cambio);
 				m.setkW(Integer.parseInt(kW));
 				m.setDescrizione(descrizione);
+				m.setImg(img);
 				// m.setId_auto(m.getId_auto());
 
 				mImpl.doUpdate(m);
