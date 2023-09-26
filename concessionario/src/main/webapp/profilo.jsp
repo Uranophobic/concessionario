@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page import="java.util.ArrayList, bean.Richiesta, bean.Ticket, bean.Macchina"%>
+<%@ page import="java.util.ArrayList, bean.Richiesta, bean.Ticket, bean.Macchina, bean.Richiesta"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,10 +10,13 @@
 <%
 ArrayList<Richiesta> r = (ArrayList<Richiesta>) session.getAttribute("richieste_utente");
 %>
+
 <%
 ArrayList<Ticket> t = (ArrayList<Ticket>) session.getAttribute("ticket_aperti");
 ArrayList<Macchina> m = (ArrayList<Macchina>) session.getAttribute("allMacchine");
+ArrayList<Richiesta> allR = (ArrayList<Richiesta>) session.getAttribute("allRichieste");
 %>
+
 <%
 String email = (String) session.getAttribute("email");
 String ruolo =(String) session.getAttribute("ruolo");
@@ -140,13 +143,11 @@ String ruolo =(String) session.getAttribute("ruolo");
 			<th>Operazioni</th>
 		</tr>
 
-		<%
-		
-		for(int i=0; i<m.size(); i++){%>
+		<%for(int i=0; i<m.size(); i++){%>
 		
 
 		<tr>
-		<td> <p name="idAuto" id="idAuto"><%=m.get(i).getId_auto() %></p> </td>
+		<%-- <td> <p name="idAuto" id="idAuto"><%=m.get(i).getId_auto() %></p> </td> --%>
 		
 			<td><%=m.get(i).getModello()%></td>
 			<td><%=m.get(i).getMarca()%></td>
@@ -162,8 +163,8 @@ String ruolo =(String) session.getAttribute("ruolo");
 			<td><%=m.get(i).getTipo_cambio()%></td>
 			<td><%=m.get(i).getkW()%></td>
 			<td><%=m.get(i).getDescrizione()%></td>
+			
 			<td>
-		
 			<a href="Amministratore?azioneAmm=upAuto&id_auto=<%=m.get(i).getId_auto()%>">
 	            <button name="azioneAmm" value="upAuto">Aggiorna auto</button>
 	         </a>
@@ -171,17 +172,49 @@ String ruolo =(String) session.getAttribute("ruolo");
 	            <button name="azioneAmm" value="delAuto">Elimina auto</button>
 	         </a>
 	        </td>
+	        
 		</tr>
-		<%
-		}
-		%>
-	</table>
+		<%}%> <!--  chiusura del for delle macchine -->
+			
+	</table><%}%><!--  chiusura del  delle macchine -->
 	<form action="Amministratore" method="get">
 	<button name="azioneAmm" value="addAuto">Aggiungi auto</button>
 	</form>
 	
-	<%}%>
-	<%}%>
+	
+	<div> 
+		<%if(allR.size()>0){%>
+		<table> 
+			<tr>
+				<th> Id Richiesta </th>
+				<th> Tipo Richiesta </th>
+				<th> Data </th>
+				<th> Messaggio </th>
+				<th> Status </th>
+				<th> Email utente </th>
+				<th> Id Auto </th>
+			</tr>
+			
+			<% for(int i=0; i<allR.size(); i++){ %>
+			<tr>
+				<td><%=allR.get(i).getId_richiesta() %> </td>
+				<td><%=allR.get(i).getTipo_richiesta() %> </td>
+		 		<td><%=allR.get(i).getData() %> </td>
+				<td><%=allR.get(i).getMessaggio() %> </td>
+				<td><%=allR.get(i).getStatus() %> </td>
+				<td><%=allR.get(i).getEmail_utente() %> </td>
+				<td><%=allR.get(i).getId_auto() %> </td>
+			</tr>
+			<%}%>
+		</table>
+	
+	<%}else{
+	System.out.println("richieste amministratore vuoto");}%>
+	</div>
+	
+	
+
+	<%}%> <!--  chiusura dell'if  dell'amministratore-->
 
 	
 	
