@@ -27,7 +27,6 @@
 						<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
 						<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 					</div>
-					<span>or use your email for registration</span> 
 					<form action="Login" method="post">
 					<input type="text" placeholder="Nome" id="nome" name="nome"/> 
 					<input type="text" placeholder="Cognome" id="cognome" name="cognome"/> 
@@ -38,7 +37,7 @@
 					<input type="text" placeholder="Patente" id="patente" name="patente"/>
 					<input type="text" placeholder="Anno patente" id="anno_patente" name="anno_patente"/>
 						
-					<button name="azioneLogin" value="registrati" >Registrati</button> <!--  pulsante di registrazione -->
+					<button name="azioneLogin" value="registrati" class="buttonLogin" >Registrati</button> <!--  pulsante di registrazione -->
 					</form>
 			</div>
 			</div>
@@ -46,19 +45,18 @@
 			<!-- login -->
 			<div class="form-container sign-in-container">
 				<div class="form1">
-					<h1>Accedi</h1>
+					<p class="titAccedi">Accedi</p>
 					<div class="social-container">
 						<a href="#" class="social"><i class="fab fa-facebook-f"></i></a> <a
 							href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
 						<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 					</div>
-					<span>o usa il tuo account</span> 
 					<form action="Login" method="post">
 					<input type="email" placeholder="Email" name="email" id="email"/> 
 					<input type="password" placeholder="Password" name="password" id="password"/> 
 					<a href="#"> Hai dimenticato la password?</a>
-						
-					<button name="azioneLogin" value="login" >ACCEDI</button> <!--  pulsante di ACCEDI -->
+						<br>
+					<button name="azioneLogin" value="login" class="buttonLogin" >ACCEDI</button> <!--  pulsante di ACCEDI -->
 					</form>
 				</div>
 			</div>
@@ -67,13 +65,15 @@
 			<div class="overlay-container">
 				<div class="overlay">
 					<div class="overlay-panel overlay-left">
-						<h1>Bentornato!</h1>
+						<h1>Bentornato</h1>
 						<p>Crea il tuo account inserendo i tuoi dati personali</p>
+						<p> oppure </p>
 						<div class="ghost" id="signIn">Accedi</div>
 					</div>
 					<div class="overlay-panel overlay-right">
-						<h1>Bentornato!</h1>
+						<h1>Benvenuto</h1>
 						<p>Accedi con i tuoi dati personali</p>
+						<p> oppure </p>
 						<div class="ghost" id="signUp">Registrati</div>
 					</div>
 				</div>
