@@ -48,9 +48,12 @@ public class MacchinaImplement implements MacchinaModel {
 	}
 
 	@Override
-	public void doUpdate(Macchina macchina) throws SQLException {
-		String query="UPDATE FROM Macchina SET modello = ?, marca = ?, anno_prod = ?, cilindrata = ?, carburante = ?, colore = ?, stato_veicolo = ?, prezzo = ?, kilometraggio = ?"
-				+ ", categoria = ?, posti = ?, tipo_cambio = ?, kW = ?, descrizione = ? WHERE id_auto = ? ";
+	public void doUpdate(Macchina macchina) throws SQLException {		
+		//String query = " UPDATE INTO macchina(modello,marca,anno_prod,cilindrata,carburante,colore,stato_veicolo,prezzo,kilometraggio,categoria,posti,tipo_cambio,kW,descrizione)"
+			//	+ "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?) WHERE id_auto ='"+ macchina.getId_auto()+"'";
+		
+		String query = "UPDATE macchina SET modello=?, marca=?, anno_prod=?, cilindrata=?, carburante=?, colore=?, stato_veicolo=?, prezzo=?, kilometraggio=?, categoria=?, posti=?, tipo_cambio=?, kW=?, descrizione=? WHERE id_auto=?";
+		
 		try {
 			con = Connessione.getInstance().getConnection();
 			PreparedStatement p = con.prepareStatement(query);
@@ -69,6 +72,7 @@ public class MacchinaImplement implements MacchinaModel {
 			p.setString(12, macchina.getTipo_cambio());
 			p.setInt(13, macchina.getkW());
 			p.setString(14, macchina.getDescrizione());
+			
 			p.setInt(15, macchina.getId_auto());
 			
 			
@@ -94,7 +98,7 @@ public class MacchinaImplement implements MacchinaModel {
 	}
 
 	@Override
-	public Macchina doRetrieveByKey(String id_auto) throws SQLException {
+	public Macchina doRetrieveByKey(int id_auto) throws SQLException {
 		ResultSet result = null;
 		Macchina m = new Macchina();
 		String query = "SELECT * FROM macchina WHERE id_auto ='"+id_auto+"'";

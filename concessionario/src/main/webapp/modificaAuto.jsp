@@ -8,10 +8,12 @@
 <title>Modifca auto</title>
 
 </head>
-<%Macchina mac= (Macchina)session.getAttribute("macchina"); %>
+<%Macchina mac= (Macchina)session.getAttribute("autoDaModificare"); %>
 <body>
 
 <form action="Amministratore" method="post">
+<label> ID </label> 
+<input type="text" name="idAuto" id="idAuto" value=<%=mac.getId_auto()%> readonly>
 <label> Modello </label> 
 <input type="text" name="modello" id="modello" value=<%=mac.getModello()%>>
 <label> Marca </label> 

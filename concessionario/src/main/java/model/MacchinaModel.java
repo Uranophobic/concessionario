@@ -14,7 +14,7 @@ public interface MacchinaModel {
 	
 	public void doDelete(Macchina macchina) throws SQLException;
 	
-	public Macchina doRetrieveByKey(String id_auto) throws SQLException;
+	public Macchina doRetrieveByKey(int id_auto) throws SQLException;
 	
 	public ArrayList<Macchina> doRetrieveAll() throws SQLException;
 }
