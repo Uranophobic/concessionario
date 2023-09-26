@@ -15,10 +15,12 @@ public void doSave(Ticket ticket) throws SQLException;
 	
 	public void doDelete(Ticket ticket) throws SQLException;
 	
-	public Ticket doRetrieveByKey(String id_ticket) throws SQLException;
+	public Ticket doRetrieveByKey(int id_ticket) throws SQLException;
 	
 	public ArrayList<Ticket> doRetrieveAll() throws SQLException;
 	
 	public ArrayList<Ticket> doRetrieveByEmail(String email) throws SQLException;
+	
+	public ArrayList<Ticket> doRetrieveByRisposta(String risposta) throws SQLException;
 
 }

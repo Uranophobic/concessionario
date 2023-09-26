@@ -15,7 +15,7 @@ ArrayList<Richiesta> r = (ArrayList<Richiesta>) session.getAttribute("richieste_
 ArrayList<Ticket> t = (ArrayList<Ticket>) session.getAttribute("ticket_aperti");
 ArrayList<Macchina> m = (ArrayList<Macchina>) session.getAttribute("allMacchine");
 ArrayList<Richiesta> allR = (ArrayList<Richiesta>) session.getAttribute("allRichieste");
-
+ArrayList<Ticket> allTicket = (ArrayList<Ticket>) session.getAttribute("allTicket");
 ArrayList<Richiesta> rAttese = (ArrayList<Richiesta>) session.getAttribute("richiesteInAttesa");
 %>
 
@@ -217,8 +217,34 @@ String ruolo =(String) session.getAttribute("ruolo");
 
 	</div>
 	
+	<p> elenco dei ticket</p>
 	
+	<% if(allTicket.size()>0){%>
+	
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Titolo</th>
+			<th>Messaggio</th>
+			<th>Email utente</th>
+			<th>Rispondi</th>
+			
+		</tr>
 
+		<%for(int i=0; i<allTicket.size(); i++){%>
+		
+
+		<tr>
+			<td><%=allTicket.get(i).getId_ticket()%></td>
+			<td><%=allTicket.get(i).getTitolo()%></td>
+			<td><%=allTicket.get(i).getMessaggio()%></td>
+			<td><%=allTicket.get(i).getEmail_utente()%></td>
+			<td><a href="Amministratore?azioneAmm=aggiornaTicket&id_ticket=<%=allTicket.get(i).getId_ticket()%>"><button name="azioneAmm" value="aggiornaTicket" >Rispondi</button></a></td>
+		</tr>
+	
+	
+	<%}%>
+    <%}%>
 	<%}%>
 
 	

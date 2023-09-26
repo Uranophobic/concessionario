@@ -15,9 +15,11 @@ import javax.servlet.http.HttpSession;
 import bean.Amministratore;
 import bean.Macchina;
 import bean.Richiesta;
+import bean.Ticket;
 import model.AmministratoreImplement;
 import model.MacchinaImplement;
 import model.RichiestaImplement;
+import model.TicketImplement;
 
 /**
  * Servlet implementation class AmministratoreServlet
@@ -47,15 +49,15 @@ public class AmministratoreServlet extends HttpServlet {
 			// LISTA AUTO DA PASSARE
 			ArrayList<Macchina> allMacchine = new ArrayList<>();
 			MacchinaImplement maccImpl = new MacchinaImplement();
-
-			// mi prendo l'amministratore dalla sessione
-			HttpSession session = request.getSession(false);
-
+			//Lista ticket da passare
+			ArrayList<Ticket>allTicket=new ArrayList<>();
+			TicketImplement tImpl = new TicketImplement();
 			// LISTA richieste DA PASSARE
 			ArrayList<Richiesta> allRichieste = new ArrayList<>();
 			RichiestaImplement rImpl = new RichiestaImplement();
-
 			ArrayList<Richiesta> richiesteInAttesa = new ArrayList<>();
+			// mi prendo l'amministratore dalla sessione
+			HttpSession session = request.getSession(false);
 			try {
 
 				allMacchine = maccImpl.doRetrieveAll();
@@ -66,6 +68,9 @@ public class AmministratoreServlet extends HttpServlet {
 
 				richiesteInAttesa = rImpl.doRetrieveByStatus("in attesa");
 				session.setAttribute("richiesteInAttesa", richiesteInAttesa);
+
+				allTicket=tImpl.doRetrieveByRisposta("");
+				session.setAttribute("allTicket", allTicket);
 
 				RequestDispatcher dispatcher = request.getRequestDispatcher("profilo.jsp");
 				dispatcher.forward(request, response);
@@ -141,7 +146,7 @@ public class AmministratoreServlet extends HttpServlet {
 				r = rImpl.doRetrieveByKey(id);
 				session.setAttribute("richiestaDaAggiornare", r);
 				System.out.println("richiesa presa dal db" + r.toString());
-				
+
 				RequestDispatcher dispatcher = request.getRequestDispatcher("aggiornaRichiesta.jsp");
 				dispatcher.forward(request, response);
 			} catch (SQLException e) {
@@ -149,6 +154,26 @@ public class AmministratoreServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 
+		}
+
+		if(azioneAmm.equals("aggiornaTicket")) {
+			HttpSession session = request.getSession(false);
+			String id_ticket=request.getParameter("id_ticket");
+			System.out.println("id passato dalla jsp " + id_ticket );
+			int id= Integer.parseInt(id_ticket);
+			TicketImplement tImpl = new TicketImplement();
+			Ticket t;
+			try {
+				t=tImpl.doRetrieveByKey(id);
+				session.setAttribute("ticketDaAggiornare", t);
+				System.out.println("ticket preso dal db" + t.toString());
+				RequestDispatcher dispatcher = request.getRequestDispatcher("aggiornaTicket.jsp");
+				dispatcher.forward(request, response);
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -262,49 +287,62 @@ public class AmministratoreServlet extends HttpServlet {
 			}
 		}
 
-		if (azioneAmm.equals("accettaRichiesta")) {
+		if (azioneAmm.equals("aggiornaRichiesta")) {
 			HttpSession session = request.getSession(false);
 			String email = (String) session.getAttribute("email");
+			String status=(String) request.getParameter("statoAggiornato");
+			Richiesta r = new Richiesta();
+			RichiestaImplement rImpl = new RichiestaImplement();
+
+			r=(Richiesta) session.getAttribute("richiestaDaAggiornare");
 
 			System.out.println("amministratore della sessione" + email);
 
 			AmministratoreImplement ammImpl = new AmministratoreImplement();
 			Amministratore amm = new Amministratore();
 
-			ArrayList<Richiesta> allRichieste = new ArrayList<>();
+			ArrayList<Richiesta> richiesteInAttesa = new ArrayList<>();
+
+			r.setStatus(status);
+
 
 			try {
 				amm = ammImpl.doRetrieveByKey(email);
-
-				if (amm.getRuolo().equals("admin")) {
-					// sono il capo supremo
-
-					if (allRichieste.size() > 0) {
-						for (int i = 0; i < allRichieste.size(); i++) {
-							if (allRichieste.get(i).getStatus().equals("in attesa")) {
-								// verifichiamo se ci sono richieste in attesa
-
-							}
-						}
-					}
-
-				}
-
-				if (amm.getRuolo().equals("amministratore delegato")) {
-					// dipendente
-
-				} else {
-					System.out.println("non sei nessuno");
-				}
+				rImpl.doUpdate(r);
+				System.out.println("richiesta dopo up" + r.toString());
+				richiesteInAttesa=rImpl.doRetrieveByStatus("in attesa");
+				session.setAttribute("richiesteInAttesa", richiesteInAttesa);
+				response.sendRedirect("profilo.jsp");
 
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+
 		}
 
-		if (azioneAmm.equals("rispondiTicket")) {
+		if(azioneAmm.equals("aggiornaTicket")) {
+			HttpSession session = request.getSession(false);
+			String risposta = request.getParameter("risposta");
+			Ticket t = new Ticket();
+			TicketImplement tImpl = new TicketImplement();
 
+			t=(Ticket) session.getAttribute("ticketDaAggiornare");
+			ArrayList<Ticket> allTicket = new ArrayList<>();
+			t.setRisposta(risposta);
+			AmministratoreImplement ammImpl = new AmministratoreImplement();
+			Amministratore amm = new Amministratore();
+			try {
+			
+				tImpl.doUpdate(t);
+				System.out.println("ticket dopo up" + t.toString());
+				allTicket=tImpl.doRetrieveByRisposta("");
+				session.setAttribute("allTicket", allTicket);
+				response.sendRedirect("profilo.jsp");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 	}
