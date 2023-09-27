@@ -18,6 +18,7 @@ public class Macchina {
 	private int kW;
 	private String descrizione;
 	private String img;
+	private String min;
 	
 	
 	public Macchina() {
@@ -28,7 +29,7 @@ public class Macchina {
 
 	public Macchina(int id_auto, String modello, String marca, String anno_produzione, int cilindrata,
 			String carburante, String colore, String stato_veiocolo, double prezzo, int kilometraggio, String categoria,
-			int posti, String tipo_cambio, int kW, String descrizione, String img) {
+			int posti, String tipo_cambio, int kW, String descrizione, String img, String min) {
 		super();
 		this.id_auto = id_auto;
 		this.modello = modello;
@@ -46,6 +47,19 @@ public class Macchina {
 		this.kW = kW;
 		this.descrizione = descrizione;
 		this.img=img;
+		this.img=min;
+	}
+
+
+
+	public String getMin() {
+		return min;
+	}
+
+
+
+	public void setMin(String min) {
+		this.min = min;
 	}
 
 
@@ -248,7 +262,7 @@ public class Macchina {
 				+ anno_produzione + ", cilindrata=" + cilindrata + ", carburante=" + carburante + ", colore=" + colore
 				+ ", stato_veicolo=" + stato_veicolo + ", prezzo=" + prezzo + ", kilometraggio=" + kilometraggio
 				+ ", categoria=" + categoria + ", posti=" + posti + ", tipo_cambio=" + tipo_cambio + ", kW=" + kW
-				+ ", descrizione=" + descrizione + ", img=" + img + "]";
+				+ ", descrizione=" + descrizione + ", img=" + img + ", min=" + min + "]";
 	}
 	
 	

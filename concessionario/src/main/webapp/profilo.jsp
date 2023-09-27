@@ -171,6 +171,7 @@ Amministratore amm = (Amministratore) session.getAttribute("amm");
 			<th>Kw</th>
 			<th>Descrizione</th>
 			<th>IMG</th>
+			<th>MIN</th>
 			<th>Operazioni</th>
 		</tr>
 
@@ -193,6 +194,7 @@ Amministratore amm = (Amministratore) session.getAttribute("amm");
 			<td><%=m.get(i).getkW()%></td>
 			<td><%=m.get(i).getDescrizione()%></td>
 			<td><%=m.get(i).getImg()%></td>
+			<td><%=m.get(i).getMin()%></td>
 			
 			<td>
 			<a href="Amministratore?azioneAmm=upAuto&id_auto=<%=m.get(i).getId_auto()%>">

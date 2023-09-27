@@ -19,8 +19,8 @@ public class MacchinaImplement implements MacchinaModel {
 	public void doSave(Macchina macchina) throws SQLException {
 		
 		
-		String query = " INSERT INTO macchina(modello,marca,anno_prod,cilindrata,carburante,colore,stato_veicolo,prezzo,kilometraggio,categoria,posti,tipo_cambio,kW,descrizione,img)"
-				+ "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String query = " INSERT INTO macchina(modello,marca,anno_prod,cilindrata,carburante,colore,stato_veicolo,prezzo,kilometraggio,categoria,posti,tipo_cambio,kW,descrizione,img,min)"
+				+ "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			con = Connessione.getInstance().getConnection();
 			PreparedStatement p = con.prepareStatement(query);
@@ -39,6 +39,7 @@ public class MacchinaImplement implements MacchinaModel {
 			p.setInt(13, macchina.getkW());
 			p.setString(14, macchina.getDescrizione());
 			p.setString(15, macchina.getImg());
+			p.setString(16, macchina.getMin());
 			
 			p.executeUpdate();
 		} catch (SQLException | ClassNotFoundException e) {
@@ -53,7 +54,7 @@ public class MacchinaImplement implements MacchinaModel {
 		//String query = " UPDATE INTO macchina(modello,marca,anno_prod,cilindrata,carburante,colore,stato_veicolo,prezzo,kilometraggio,categoria,posti,tipo_cambio,kW,descrizione)"
 			//	+ "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?) WHERE id_auto ='"+ macchina.getId_auto()+"'";
 		
-		String query = "UPDATE macchina SET modello=?, marca=?, anno_prod=?, cilindrata=?, carburante=?, colore=?, stato_veicolo=?, prezzo=?, kilometraggio=?, categoria=?, posti=?, tipo_cambio=?, kW=?, descrizione=?, img=? WHERE id_auto=?";
+		String query = "UPDATE macchina SET modello=?, marca=?, anno_prod=?, cilindrata=?, carburante=?, colore=?, stato_veicolo=?, prezzo=?, kilometraggio=?, categoria=?, posti=?, tipo_cambio=?, kW=?, descrizione=?, img=?, min=? WHERE id_auto=?";
 		
 		try {
 			con = Connessione.getInstance().getConnection();
@@ -74,7 +75,9 @@ public class MacchinaImplement implements MacchinaModel {
 			p.setInt(13, macchina.getkW());
 			p.setString(14, macchina.getDescrizione());
 			p.setString(15, macchina.getImg());
-			p.setInt(16, macchina.getId_auto());
+			p.setString(16, macchina.getMin());
+			p.setInt(17, macchina.getId_auto());
+			
 			
 			
 			p.executeUpdate();
@@ -125,6 +128,7 @@ public class MacchinaImplement implements MacchinaModel {
 	            	m.setStato_veicolo(result.getString("stato_veicolo"));
 	            	m.setTipo_cambio(result.getString("tipo_cambio"));
 	            	m.setImg(result.getString("img"));
+	            	m.setImg(result.getString("min"));
 	            	
 	            }
 	        } catch (SQLException | ClassNotFoundException e) {
@@ -163,6 +167,7 @@ public class MacchinaImplement implements MacchinaModel {
 	            	m.setStato_veicolo(result.getString("stato_veicolo"));
 	            	m.setTipo_cambio(result.getString("tipo_cambio"));
 	            	m.setImg(result.getString("img"));
+	            	m.setImg(result.getString("min"));
 	            	
 	            	allMacchine.add(m);
 	            }
