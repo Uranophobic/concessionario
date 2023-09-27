@@ -12,7 +12,12 @@
 	<header>
 		<nav class="menu menu-1">
 			<div class="logo">
-				<img src="https://logos-download.com/wp-content/uploads/2016/03/Jeep_logo.png"> 
+				<div class="fronte">
+					<img src="static/images/logoblack.png">
+				</div>
+				<div class="retro">
+					<img src="static/images/logowhite.png" class="img">
+				</div>
 			</div>
 			<div class="lista">
 				<ul>

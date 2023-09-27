@@ -14,46 +14,69 @@ body {
 
 
 header {
-/*	position: fixed !important;*/
 	z-index: 10;
 	width: 100%;
+	position: fixed;
 }
 
 .menu {
-    padding: 0px;
+	padding: 0px;
 	display: flex;
-	flex-direction:row;
+	flex-direction: row;
 	justify-content: space-between;
-    align-items: center;
-    transition: 0.5s;
+	align-items: center;
+	transition: 0.5s;
+	color: black;
 }
 
-.logo{
-	height: auto;
+.logo {
+	height: 50px;
 	width: 5%;
-	margin: 10px 0px 0px 10px;
+	margin: 0px 0px 0px 10px;
+	transform-style: preserve-3d;
 }
 
-.logo img{
+.menu:hover .logo {
+	transform: rotateX(-180deg);
+}
+
+.fronte,
+.retro {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.retro {
+	transform: rotateX(180deg);
+}
+
+.logo img {
 	height: 100%;
 	width: 100%;
 }
 
-.icone{
+.icone {
 	display: flex;
-	flex-direction:row;
+	flex-direction: row;
 	justify-content: center;
-    align-items: center;
-    padding:0px 0px 5px 0px !important;
+	align-items: center;
+	padding: 0px 0px 5px 0px !important;
 }
 
-.icone a{
-	padding: 10px 10px 0px 10px!important;
+.icone a {
+	padding: 10px 10px 0px 10px !important;
 }
 
-.menu:hover{
+.menu:hover {
 	background-color: black;
 	transition: 0.5s;
+}
+
+.menu:hover a{
+	color: white;
 }
 
 .menu ul {
@@ -71,7 +94,7 @@ header {
 .menu a {
 	font-size: 18px;
 	text-decoration: none;
-	color: white;
+	color: black;
 	display: block;
 	position: relative;
 	padding: 4px 0;

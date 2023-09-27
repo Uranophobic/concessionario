@@ -2,6 +2,7 @@ package control;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,9 +14,11 @@ import javax.servlet.http.HttpSession;
 
 import bean.Acquirente;
 import bean.Amministratore;
+import bean.Macchina;
 import model.AcquirenteImplement;
 import model.AcquirenteModel;
 import model.AmministratoreImplement;
+import model.MacchinaImplement;
 
 /**
  * Servlet implementation class Login
@@ -68,10 +71,15 @@ public class LoginServlet extends HttpServlet {
 			Acquirente acq = new Acquirente();
 			Amministratore amm = new Amministratore();
 			HttpSession session = request.getSession(true);
-
+			
+			Macchina m = new Macchina();
+			MacchinaImplement mImpl = new MacchinaImplement();
+			ArrayList<Macchina> allMacchine = new ArrayList<>();
+			
 			if (!email.isEmpty() && !password.isEmpty()) {
 				try {
-
+					allMacchine = mImpl.doRetrieveAll();
+					session.setAttribute("allMacchine", allMacchine);
 					amm = ammImpl.doRetrieveByKey(email);
 					if (amm != null) {
 						if (email.equals(amm.getEmail()) && password.equals(amm.getPassword())) {
@@ -79,7 +87,7 @@ public class LoginServlet extends HttpServlet {
 							session.setAttribute("ruolo", ruolo);
 							session.setAttribute("email", amm.getEmail());
 							session.setAttribute("amm", amm);
-							RequestDispatcher dispatcher = request.getRequestDispatcher("homepage.jsp");
+							RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");
 							dispatcher.forward(request, response);
 							return;
 						}
@@ -92,7 +100,7 @@ public class LoginServlet extends HttpServlet {
 							session.setAttribute("ruolo", ruolo);
 							session.setAttribute("email", acq.getEmail());
 							session.setAttribute("acq", acq);
-							RequestDispatcher dispatcher = request.getRequestDispatcher("homepage.jsp");
+							RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");
 							dispatcher.forward(request, response);
 							return; // elicottero
 						}

@@ -5,11 +5,6 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<style>
-			html{
-			overflow-x: hidden;
-			}	
-		</style>
 		<meta charset="ISO-8859-1">
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,25 +18,7 @@
 
 	<body>
 		<!-- Navbar -->
-		<header>
-			<nav class="menu menu-1">
-				<div class="logo">
-					<img src="https://logos-download.com/wp-content/uploads/2016/03/Jeep_logo.png"> 
-				</div>
-				<div class="lista">
-					<ul>
-						<li><a href="home.jsp">Home</a></li>
-						<li><a href="catalogo.jsp">Menu</a></li>
-						<li><a href="contatti.jsp">Contatti</a></li>
-						<li><a href="about.jsp">Chi siamo</a></li>
-					</ul>
-				</div>
-				<div class="icone">
-					<a href="login.jsp"><lord-icon src="https://cdn.lordicon.com/bhfjfgqz.json" trigger="hover" colors="primary:white" style="width:35px;height:35px;"> </lord-icon></a>
-					<a href="#"><lord-icon src="https://cdn.lordicon.com/enzmygww.json" trigger="hover" colors="primary:white" style="width:35px;height:35px"> </lord-icon></a>
-				</div>
-			</nav>
-		</header>
+		<%@ include file="header.jsp"%>
 		<!-- Fine navbar -->
 		
 		<section class="section1">
