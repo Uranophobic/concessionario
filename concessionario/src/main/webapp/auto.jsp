@@ -34,7 +34,7 @@
 			<div class="principali-info-macchina">
 				<p><%= mVisual.getModello()%>Modello</p>
 				<p><%= mVisual.getPrezzo()  %>Prezzo</p>
-				<p><% mVisual.getkW()%>KW</p>
+				<p><%= mVisual.getkW()%>KW</p>
 			</div>
 			<div class="bottone">
 				<button>Richiedi</button>
@@ -53,7 +53,7 @@
 					</div>
 					<div class="info-macchina">
 						<p>Cambio</p>
-						<h1><%= mVisual.getTipo_cambio%></h1>
+						<h1><%= mVisual.getTipo_cambio()%></h1>
 					</div>
 				</div>
 			</div>
