@@ -2,7 +2,7 @@ CREATE DATABASE  IF NOT EXISTS `concessionario` /*!40100 DEFAULT CHARACTER SET u
 USE `concessionario`;
 -- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
--- Host: localhost    Database: concessionario
+-- Host: 127.0.0.1    Database: concessionario
 -- ------------------------------------------------------
 -- Server version	8.0.34
 
@@ -189,8 +189,9 @@ CREATE TABLE `macchina` (
   `tipo_cambio` varchar(45) NOT NULL,
   `kW` int NOT NULL,
   `descrizione` varchar(200) DEFAULT NULL,
+  `img` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_auto`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -199,7 +200,7 @@ CREATE TABLE `macchina` (
 
 LOCK TABLES `macchina` WRITE;
 /*!40000 ALTER TABLE `macchina` DISABLE KEYS */;
-INSERT INTO `macchina` VALUES (1,'Mazda RX4','mazda','2018',1200,'diesel','nero','km0',10,99,'berlina',4,'manuale',60,''),(2,'Mazda RX4 Wag','mazda','2020',1500,'benzina','bianco','km0',22.2,85,'berlina',4,'automatico',71,''),(3,'Hornet 4 Drive','hornet','2008',2500,'benzina','grigio','km0',19.44,20,'berlina',4,'automatico',121,''),(4,'Hornet Sportabout','hornet','2005',1500,'benzina','nero','km0',17.02,35,'berlina',4,'automatico',71,''),(5,'Duster 360','dacia','2007',2000,'benzina','nero','km0',16.24,75,'suv',4,'automatico',85,''),(6,'Merc 240D','mercedes','2002',1200,'diesel','bianco','nuovo',20,0,'coupe',2,'manuale',60,''),(7,'Merc 230','mercedes','2000',2000,'diesel','bianco','nuovo',22.9,0,'coupe',2,'manuale',85,''),(8,'Merc 280','mercedes','2005',1500,'diesel','bianco','nuovo',18.3,0,'coupe',4,'manuale',71,''),(9,'Merc 280C','mercedes','2004',1200,'diesel','bianco','nuovo',18.9,0,'coupe',4,'manuale',60,''),(10,'Merc 450SE','mercedes','2012',1500,'diesel','bianco','nuovo',17.4,0,'suv',2,'manuale',71,''),(11,'Merc 450SL','mercedes','2013',1200,'benzina','bianco','nuovo',17.6,0,'sportiva',4,'manuale',60,''),(12,'Merc 450SLC','mercedes','2018',2000,'benzina','bianco','nuovo',18,0,'sportiva',4,'manuale',85,''),(13,'Fiat panda','fiat','2016',1200,'benzina','nero','usato',15,5,'berlina',4,'manuale',60,''),(14,'Toyota Corolla','toyota','2005',2000,'benzina','grigio','usato',19.9,10,'berlina',1,'automatico',85,''),(15,'Toyota Corona','toyota','2006',1200,'benzina','grigio','usato',20.2,15,'berlina',1,'automatico',60,''),(16,'Dodge Challenger','dodge','2015',1500,'benzina','grigio','usato',25,35,'suv',2,'automatico',71,''),(17,'Porsche 914-2','porsche','2006',2500,'benzina','nero','km0',135,10,'sportiva',2,'automatico',121,''),(18,'Lotus Europa','lotus','2012',2500,'benzina','grigio','usato',75,10,'sportiva',2,'manuale',121,''),(19,'Ferrari Dino','ferrari','2005',2500,'diesel','rossa','usato',230,20,'sportiva',6,'manuale',121,''),(20,'Maserati Bora','maserati','2006',2500,'diesel','nero','nuovo',130,30,'sportiva',8,'manuale',121,''),(21,'Volvo 142E','volvo','2012',1200,'benzina','bianco','nuovo',18.6,0,'coupe',2,'manuale',60,'');
+INSERT INTO `macchina` VALUES (1,'Mazda Cx-5','mazda','2018',1200,'diesel','nero','km0',10,99,'berlina',4,'manuale',60,'','mazdacx5.jpg'),(2,'Audi a3 Sportback','mazda','2020',1500,'benzina','bianco','km0',22.2,85,'berlina',4,'automatico',71,'','audia3sportback.jpg'),(3,'Audi 4 ','hornet','2008',2500,'benzina','grigio','km0',19.44,20,'berlina',4,'automatico',121,'','audia4.jpg'),(4,'Hunday i20','hornet','2005',1500,'benzina','nero','km0',17.02,35,'berlina',4,'automatico',71,'','hundayi20.jpg'),(5,'Duster ','dacia','2007',2000,'benzina','nero','km0',16.24,75,'suv',4,'automatico',85,'','daciaduster.jpg'),(6,'Mercedes C berlina','mercedes','2002',1200,'diesel','bianco','nuovo',20,0,'berlina',2,'manuale',60,'','mercedescberlina.jpg'),(7,'Merc eqe','mercedes','2000',2000,'diesel','bianco','nuovo',22.9,0,'suv',2,'manuale',85,'','mercedeseqe.jpg'),(8,'Mercedes Classe A sedan','mercedes','2005',1500,'diesel','bianco','nuovo',18.3,0,'berlina',4,'manuale',71,'','mercedesclasseasedan.jpg'),(9,'Mercedes Classe S','mercedes','2004',1200,'diesel','bianco','nuovo',18.9,0,'coupe',4,'manuale',60,'','mercedesclasses.jpg'),(10,'Mercedes CLA','mercedes','2012',1500,'diesel','bianco','nuovo',17.4,0,'scoupe',2,'manuale',71,'','mercedescla.jpg'),(11,'Mercedes Classe A','mercedes','2013',1200,'benzina','bianco','nuovo',17.6,0,'sportiva',4,'manuale',60,'','mercedesclassea.jpg'),(12,'Mercedes GLA','mercedes','2018',2000,'benzina','bianco','nuovo',18,0,'sportiva',4,'manuale',85,'','mercedesgla.jpg'),(13,'T-Roc','Volkswagen','2016',1200,'benzina','nero','usato',15,5,'berlina',4,'manuale',60,'','troc.jpg'),(14,'Toyota Aygo','toyota','2005',2000,'benzina','grigio','usato',19.9,10,'berlina',1,'automatico',85,'','toyotaaygo.jpg'),(15,'Toyota Yaris','toyota','2006',1200,'benzina','grigio','usato',20.2,15,'berlina',1,'automatico',60,'','toyotayaris.jpg'),(16,'Range Rover','evoque','2021',1500,'diesel','grigio','usato',25,35,'suv',2,'automatico',71,'','evoque.png'),(17,'Porsche carrera','porsche','2015',2500,'benzina','nero','km0',135,10,'sportiva',2,'manuale',121,'','carrera.jpg'),(18,'Lotus Emira','lotus','2020',2500,'benzina','grigio','usato',75,10,'sportiva',2,'manuale',121,'','lotusemira.jpg'),(19,'Ferrari roma','ferrari','2005',2500,'diesel','rossa','usato',230,20,'sportiva',6,'manuale',121,'','ferrariroma.jpg'),(20,'Maserati Gran Turismo','maserati','2018',2500,'benzina','nero','nuovo',130,30,'sportiva',8,'manuale',121,'','maserati.jpg'),(21,'Volvo V40','volvo','2018',2000,'diesel','bianco','nuovo',18.6,0,'coupe',2,'manuale',60,'','volvov40.jpg'),(24,'Tesla Model S','Tesla','2017',1200,'elettrica','nero','Nuovo',80,0,'berlina',5,'automatico',78,'prova','teslams.jpg'),(25,'Tesla Model 3','Tesla','2017',1200,'elettrica','nero','Nuovo',75,0,'berlina',5,'automatico',78,'prova','teslam3.jpg'),(26,'Tesla Model x','Tesla','2017',1200,'elettrica','nero','Nuovo',80,0,'berlina',5,'automatico',78,'prova','teslamx.jpg'),(27,'Tesla Model Y','Tesla','2017',1500,'elettrica','bianca','nuovo',90,0,'berlina',5,'automatico',78,NULL,'teslamy.jpg'),(28,'500 e','Fiat','2020',1100,'elettrica','bianca','nuovo',35,0,'berlina',4,'automatico',60,NULL,'fiat500e.jpg');
 /*!40000 ALTER TABLE `macchina` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -213,7 +214,7 @@ DROP TABLE IF EXISTS `richiesta`;
 CREATE TABLE `richiesta` (
   `id_richiesta` int NOT NULL AUTO_INCREMENT,
   `tipo_richiesta` varchar(45) NOT NULL COMMENT 'noleggio / acquisto',
-  `data` date NOT NULL,
+  `data` varchar(45) NOT NULL,
   `messaggio` varchar(45) NOT NULL,
   `status` enum('rifiutato','in attesa','accettato') NOT NULL,
   `email_utente` varchar(45) NOT NULL,
@@ -222,7 +223,7 @@ CREATE TABLE `richiesta` (
   KEY `email_acq_idx` (`email_utente`),
   KEY `id macc_idx` (`id_auto`),
   CONSTRAINT `email_acq` FOREIGN KEY (`email_utente`) REFERENCES `acquirente` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -231,7 +232,7 @@ CREATE TABLE `richiesta` (
 
 LOCK TABLES `richiesta` WRITE;
 /*!40000 ALTER TABLE `richiesta` DISABLE KEYS */;
-INSERT INTO `richiesta` VALUES (1,'Acquisto','2023-09-20','prova','in attesa','alessia@gmail.com',1),(2,'Noleggio','2023-08-20','prova 2','accettato','marco@gmail.com',2),(3,'Acquisto','2023-08-20','asasssa','accettato','alessia@gmail.com',3),(4,'Acquisto','2023-08-20','sdsd','accettato','alessia@gmail.com',4),(5,'Acquisto','2023-08-20','sddsds','accettato','alessia@gmail.com',5);
+INSERT INTO `richiesta` VALUES (1,'Acquisto','2023-09-20','prova','accettato','alessia@gmail.com',1),(2,'Noleggio','2023-08-20','prova 2','accettato','marco@gmail.com',2),(3,'Acquisto','2023-08-20','asasssa','accettato','alessia@gmail.com',3),(4,'Acquisto','2023-08-20','sdsd','accettato','alessia@gmail.com',4),(5,'Acquisto','2023-08-20','sddsds','accettato','alessia@gmail.com',5),(11,'noleggio','1234','giacomo','in attesa','alessia@gmail.com',5),(16,'noleggio','1234','elicottero','in attesa','alessia@gmail.com',7),(17,'noleggio','1234','elicottero','in attesa','alessia@gmail.com',2),(18,'noleggio','1234','moto','rifiutato','alessia@gmail.com',18);
 /*!40000 ALTER TABLE `richiesta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -246,12 +247,12 @@ CREATE TABLE `ticket` (
   `id_ticket` int NOT NULL AUTO_INCREMENT,
   `titolo` varchar(45) NOT NULL,
   `messaggio` varchar(45) NOT NULL,
-  `risposta` varchar(45) NOT NULL,
+  `risposta` varchar(45) DEFAULT NULL,
   `email_utente` varchar(45) NOT NULL,
   PRIMARY KEY (`id_ticket`),
   KEY `email_utente_idx` (`email_utente`),
   CONSTRAINT `email_utente` FOREIGN KEY (`email_utente`) REFERENCES `acquirente` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -260,7 +261,7 @@ CREATE TABLE `ticket` (
 
 LOCK TABLES `ticket` WRITE;
 /*!40000 ALTER TABLE `ticket` DISABLE KEYS */;
-INSERT INTO `ticket` VALUES (1,'Aiuto Email','Posso avere un email a cui contattarvi?','No :(','alessia@gmail.com'),(2,'Elicottero','E\' possibile essere raggiunto da un elicotter','Siamo in fase di valutazione','roberta@gmail.com');
+INSERT INTO `ticket` VALUES (1,'Aiuto Email','Posso avere un email a cui contattarvi?','No :(','alessia@gmail.com'),(2,'Elicottero','E\' possibile essere raggiunto da un elicotter','Siamo in fase di valutazione','roberta@gmail.com'),(3,'prova numero 2','elicottero','prova di risposta','alessia@gmail.com'),(4,'prova numero 2','elicottero bello','','alessia@gmail.com'),(5,'prova','viva san gennaro','','alessia@gmail.com');
 /*!40000 ALTER TABLE `ticket` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -281,4 +282,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-22 16:04:59
+-- Dump completed on 2023-09-27 10:25:57
