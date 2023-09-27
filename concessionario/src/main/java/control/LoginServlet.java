@@ -78,6 +78,7 @@ public class LoginServlet extends HttpServlet {
 							ruolo = "amministratore";
 							session.setAttribute("ruolo", ruolo);
 							session.setAttribute("email", amm.getEmail());
+							session.setAttribute("amm", amm);
 							RequestDispatcher dispatcher = request.getRequestDispatcher("homepage.jsp");
 							dispatcher.forward(request, response);
 							return;
@@ -90,6 +91,7 @@ public class LoginServlet extends HttpServlet {
 							ruolo = "acquirente";
 							session.setAttribute("ruolo", ruolo);
 							session.setAttribute("email", acq.getEmail());
+							session.setAttribute("acq", acq);
 							RequestDispatcher dispatcher = request.getRequestDispatcher("homepage.jsp");
 							dispatcher.forward(request, response);
 							return; // elicottero

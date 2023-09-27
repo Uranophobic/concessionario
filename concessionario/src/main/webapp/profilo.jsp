@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page import="java.util.ArrayList, bean.Richiesta, bean.Ticket, bean.Macchina"%>
+<%@ page import="java.util.ArrayList, bean.Richiesta, bean.Ticket, bean.Macchina, bean.Acquirente, bean.Amministratore"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,10 +10,10 @@
 </head>
 <%
 ArrayList<Richiesta> r = (ArrayList<Richiesta>) session.getAttribute("richieste_utente");
+ArrayList<Ticket> t = (ArrayList<Ticket>) session.getAttribute("ticket_aperti");
 %>
 
 <%
-ArrayList<Ticket> t = (ArrayList<Ticket>) session.getAttribute("ticket_aperti");
 ArrayList<Macchina> m = (ArrayList<Macchina>) session.getAttribute("allMacchine");
 ArrayList<Richiesta> allR = (ArrayList<Richiesta>) session.getAttribute("allRichieste");
 ArrayList<Ticket> allTicket = (ArrayList<Ticket>) session.getAttribute("allTicket");
@@ -23,6 +23,9 @@ ArrayList<Richiesta> rAttese = (ArrayList<Richiesta>) session.getAttribute("rich
 <%
 String email = (String) session.getAttribute("email");
 String ruolo =(String) session.getAttribute("ruolo");
+
+Acquirente acq = (Acquirente) session.getAttribute("acq");
+Amministratore amm = (Amministratore) session.getAttribute("amm");
 %>
 <body>
 
@@ -31,93 +34,113 @@ String ruolo =(String) session.getAttribute("ruolo");
 
 <% if(ruolo.equals("acquirente")) { %>
 
-	<p class="benvenutoTit">	Benvenuto <%=email%> </p>
+<!-- 	<p class="benvenutoTit"></p> -->
+
+<!--  tabella di dati personali -->	
+<div class="container">
+  <h2>Benvenuto <%= acq.getNome() %> <%= acq.getCognome() %></h2>
+  <ul class="responsive-table">
+    <li class="table-row">
+      <div class="col col-1" data-label="Email"><span><%= acq.getEmail() %></span></div>
+      <div class="col col-2" data-label="Password"><span><input type="password" value ="<%= acq.getPassword() %>"></span></div>
+      <div class="col col-3" data-label="Indirizzo di residenza"><span><%= acq.getIndirizzoResidenza() %></span></div>
+      <div class="col col-4" data-label="Patente e anno di conseguimento"><span>Tipo <%= acq.getPatente() %>, conseguita nell'anno  <%= acq.getAnnoPatente() %></span></div>
+    </li>
+  </ul>
+ </div>
 	
-		
-	<%if (r.size() != 0) {%>
-	<p>Per il tuo profilo risultano le seguenti richieste</p>
-	<table>
-		<tr>
-			<th>id_richiesta</th>
-			<th>tipo_richiesta</th>
-
-			<th>messaggio</th>
-			<th>status</th>
-		</tr>
-
-		<%
+	
+	
+<!--  tabella per la visualizzazione delle richieste effettuate -->
+	
+	<div class="container">
+ 	 <p class="sub-title">Per il tuo profilo risultano le seguenti richieste</p>
+ 	 
+ 	 
+  	<ul class="responsive-table-big">
+    <li class="table-header">
+     <!--  <div class="col-big col-1">Id della richiesta</div> -->
+      <div class="col-big col-2">Tipo di richiesta</div>
+      <div class="col-big col-3">Messaggio della richiesta</div>
+      <div class="col-big col-4">Status della richiesta</div>
+    </li>
+   <%if (r.size() != 0) {
 		int i = 0;
 		for (i = 0; i < r.size(); i++) {
 		%>
 
-		<tr>
-			<td><%=r.get(i).getId_richiesta()%></td>
-			<td><%=r.get(i).getTipo_richiesta()%></td>
-
-			<td><%=r.get(i).getMessaggio()%></td>
-			<td><%=r.get(i).getStatus()%></td>
-		</tr>
-		<%
-		}
-		%>
-	</table>
+    <li class="table-row">
+<%--       <div class="col-big col-1" data-label="Job Id"><span><%=r.get(i).getId_richiesta()%></span></div>--%>      
+		<div class="col-big col-2" data-label="Tipo di richiesta"><span><%=r.get(i).getTipo_richiesta()%></span></div>
+      <div class="col-big col-3" data-label="Messaggio della richiesta"><span><%=r.get(i).getMessaggio()%></span></div>
+      <div class="col-big col-4" data-label="Status della richiesta"><span><%=r.get(i).getStatus()%></span></div>
+    </li>
+   <%}%>
+  <li> <p class="domanda"> Desideri effettuare un'altra richiesta?</p>
 		<form action="Acquirente" method="get">
-		<a><button name="azioneAcq" value="addRichiesta">
-				RICHIESTA</button></a>
-	</form>
+		<a> <button class="btn btn__secondary" name="azioneAcq" value="addRichiesta"><p>Effettua una richiesta</p></button></a>
+				
+	</form></li>
 	<%}else{%>
-		<p> Sul tuo profilo non risultano ancora richieste effettuate! <br>
-		Per effetturare una richiesta clicca qui in basso </p>
+		<li><p> Sul tuo profilo non risultano ancora richieste effettuate! Per effetturare una richiesta clicca qui. </p>
 		<br>
 		<form action="Acquirente" method="get">
-		<a><button name="azioneAcq" value="addRichiesta">
-				RICHIESTA</button></a>
-	</form>
+		<a> <button class="btn btn__secondary" name="azioneAcq" value="addRichiesta"><p>Effettua una richiesta</p></button></a>
+				
+	</form></li>
 	<%}%>
+  </ul>
+  
+</div>
+		
 	
-
 	
-
-	<%
-	if (t != null) {
-	%>
-	<p>Per il tuo profilo risultano le seguenti richieste</p>
-	<table>
-		<tr>
-			<th>id_ticket</th>
-			<th>Titolo</th>
-			<th>Messaggio</th>
-			<th>Risposta</th>
-			<th>email_utente</th>
-		</tr>
-
-		<%
-		int i = 0;
-		for (i = 0; i < t.size(); i++) {
-		%>
-
-		<tr>
-			<td><%=t.get(i).getId_ticket()%></td>
-			<td><%=t.get(i).getTitolo()%></td>
-			<td><%=t.get(i).getMessaggio()%></td>
-			<td><%=t.get(i).getRisposta()%></td>
-			<td><%=t.get(i).getEmail_utente()%></td>
-		</tr>
-		<%
-		}
-		%>
-	</table>
-
-	<%
-	} else {
-	System.out.println("VuotoTicket");
-	}
-	%>
+		
 	
-	<form action="Acquirente" method="get">
-		<a><button name="azioneAcq" value="addTicket">
-				RICHIESTA</button></a>
-	</form>
+	
+	
+	
+<!--  Tabella dei ticket -->
+	
+<div class="container">
+  <p class="sub-title"> Qui sotto troverai l'elenco dei ticket da te aperti </p>
+  <ul class="responsive-table-big">
+    <li class="table-header">
+      <!-- <div class="col-big col-1"> Id-Ticket </div> -->
+      <div class="col-big col-2"> Oggetto dell'assistenza </div>
+      <div class="col-big col-3"> Messaggio dell'assistenza </div>
+      <div class="col-big col-4"> Risposta dell'assistenza </div>
+    </li>
+    
+    <%if (t.size() !=0) {
+    	int i = 0;
+		for (i = 0; i < t.size(); i++) {%>
+    
+    <li class="table-row">
+      <%-- <div class="col-big col-1" data-label="Id-Ticket"><span><%=t.get(i).getId_ticket()%></span></div> --%>
+      <div class="col-big col-2" data-label="Oggetto dell'assistenza"><span><%=t.get(i).getTitolo()%></span></div>
+      <div class="col-big col-3" data-label="Messaggio dell'assistenza"><span><%=t.get(i).getMessaggio()%></span></div>
+      <div class="col-big col-4" data-label="Risposta dell'assistenza"><span><%=t.get(i).getRisposta()%></span></div>
+    </li>
+   <%}%>
+   <li>
+	<p> Se hai bisogno di assistenza puoi inviare un ticketi di assistenza al nostro costumer service. </p>
+		<form action="Acquirente" method="get">
+		<a><button class="btn btn__secondary" name="azioneAcq" value="addTicket">
+				<p>Apri un ticket</p></button></a>
+		</form> </li>
+
+
+		
+
+	<%} else {%>
+	<li>
+	<p> Sul tuo profilo non risultano ancora ticket aperti! Per aprire un ticket clicca qui. </p>
+		<form action="Acquirente" method="get">
+		<a><button class="btn btn__secondary" name="azioneAcq" value="addTicket">
+				<p>Apri un ticket</p></button></a>
+	</form></li>  </ul>
+	<%}%></div>
 	<%}%>
 	
 	
