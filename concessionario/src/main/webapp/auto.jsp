@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="bean.Acquirente"%>
-<%@ page import="bean.Amministratore"%>
+<%@ page import="bean.Amministratore, bean.Acquirente, bean.Macchina, java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -15,8 +15,16 @@
 		<script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
 		<script src="https://kit.fontawesome.com/33ac70226a.js" crossorigin="anonymous"></script>
 	</head>
-
+	<% 
+	 Macchina mVisual = (Macchina) session.getAttribute("macchinaVisual");
+     ArrayList<Macchina> m = (ArrayList<Macchina>) session.getAttribute("allMacchine");
+     String email = (String) session.getAttribute("email");
+     String ruolo =(String) session.getAttribute("ruolo");
+     Acquirente acq = (Acquirente) session.getAttribute("acq");
+     Amministratore amm = (Amministratore) session.getAttribute("amm");
+     %>
 	<body>
+	<% if(mVisual != null) { %>
 		<!-- Navbar -->
 		<%@ include file="header.jsp"%>
 		<!-- Fine navbar -->
@@ -24,9 +32,9 @@
 		<section class="section1">
 			<img src="static/images/background-audi.jpg">
 			<div class="principali-info-macchina">
-				<p><%  %>Modello</p>
-				<p><%  %>Prezzo</p>
-				<p><%  %>KW</p>
+				<p><%= mVisual.getModello()%>Modello</p>
+				<p><%= mVisual.getPrezzo()  %>Prezzo</p>
+				<p><% mVisual.getkW()%>KW</p>
 			</div>
 			<div class="bottone">
 				<button>Richiedi</button>
@@ -37,15 +45,15 @@
 				<div class="info-macchina-righe">
 					<div class="info-macchina">
 						<p>Cilindrata</p>
-						<h1>100</h1>
+						<h1><%= mVisual.getCilindrata()%></h1>
 					</div>
 					<div class="info-macchina">
 						<p>Carburante</p>
-						<h1>Diesel</h1>
+						<h1><%= mVisual.getCarburante()%></h1>
 					</div>
 					<div class="info-macchina">
 						<p>Cambio</p>
-						<h1>Automatico</h1>
+						<h1><%= mVisual.getTipo_cambio%></h1>
 					</div>
 				</div>
 			</div>
@@ -60,11 +68,8 @@
 			  		
 			  		<div class="mySlides1 descrizione-macchina">
 						<h1>Descrizione</h1>
-						<p><%  %>
-							L'aerodinamica può essere regolata attivamente a 
-							seconda delle situazioni di guida, attraverso l'impostazione
-							per il diffusore posteriore e per le prese d'aria di raffreddamento, 
-							poste nella parte anteriore.
+						<p><%= mVisual.getDescrizione()%>
+							
 						</p>
 					</div>
 					<div class="mySlides1 descrizione-macchina">
@@ -121,5 +126,6 @@
 				y[slideIndex - 1].style.display = "flex";
 			}
 		</script>
+		<%}%>
 	</body>
 </html>
