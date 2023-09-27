@@ -9,6 +9,7 @@
 </head>
 <% ArrayList<Macchina> m = (ArrayList<Macchina>) session.getAttribute("allMacchine"); %>
 <body>
+<%@ include file="header.jsp"%>
 <form action="Acquirente" method="post">
 	
 	<label> Tipo richiesta: </label> <input type="text" name="tipo" id="tipo">

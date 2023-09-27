@@ -47,7 +47,7 @@ public class Macchina {
 		this.kW = kW;
 		this.descrizione = descrizione;
 		this.img=img;
-		this.img=min;
+		this.min=min;
 	}
 
 

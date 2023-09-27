@@ -6,9 +6,7 @@
 <html>
 <head>
 <style>
-body{
-overflow:hidden;
-}
+
 </style>
 <meta charset="ISO-8859-1">
 <meta charset="UTF-8">
@@ -38,6 +36,7 @@ overflow:hidden;
 	</section>
 	<!-- fine sezioni -->
 	<script src="static/js/js.js"></script>
+	<%@ include file="footer.jsp"%>
 </body>
 
 </html>

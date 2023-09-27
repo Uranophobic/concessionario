@@ -30,15 +30,19 @@
 		<!-- Fine navbar -->
 		
 		<section class="section1">
-			<img src="static/images/background-audi.jpg">
-			<div class="principali-info-macchina">
-				<p><%= mVisual.getModello()%>Modello</p>
-				<p><%= mVisual.getPrezzo()  %>Prezzo</p>
-				<p><%= mVisual.getkW()%>KW</p>
-			</div>
-			<div class="bottone">
-				<button>Richiedi</button>
-			</div>
+			<img src="static/imgAuto/<%= mVisual.getImg() %>">
+			<div class="div-richiesta">
+				<div class="principali-info-macchina">
+					<p><%= mVisual.getModello()%></p>
+					<p><%= mVisual.getPrezzo()  %> Euro</p>
+					<p><%= mVisual.getkW()%> KW</p>
+				</div>
+				<div class="bottone">
+					<a href="Acquirente?azioneAcq=richiesta&id_auto=<%=mVisual.getId_auto()%>">
+						<button>Richiedi</button>
+					</a>
+				</div>
+			</div>	
 		</section>
 		<section class="section2">
 			<div class="info-macchina-container">
@@ -127,5 +131,6 @@
 			}
 		</script>
 		<%}%>
+		<%@ include file="footer.jsp"%>
 	</body>
 </html>

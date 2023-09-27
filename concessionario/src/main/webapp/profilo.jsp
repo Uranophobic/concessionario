@@ -375,6 +375,6 @@ Amministratore amm = (Amministratore) session.getAttribute("amm");
     <%}else{
     System.out.println("lista dei ticket vuota");}%>
 	<%}%>
-
+	<%@ include file="footer.jsp"%>
 </body>
 </html>

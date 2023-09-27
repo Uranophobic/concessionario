@@ -9,6 +9,7 @@
 </head>
 
 <body>
+	<%@ include file="header.jsp"%>
 	<form action="Acquirente" method="post">
 
 		<label> Titolo </label> <input type="text" name="titolo" id="tipo">

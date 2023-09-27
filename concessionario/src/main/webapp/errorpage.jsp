@@ -14,5 +14,6 @@
 
 <body>
     <div class="container-fluid">
-        <img src="..images/error-page.png" class="img-fluid">
+        <img src="static/images/error-page.png" class="img-fluid">
+       </div>
 </body>
