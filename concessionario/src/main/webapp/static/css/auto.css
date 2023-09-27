@@ -1,62 +1,207 @@
+/* Section 1 */
 
-.info-macchina{
+.principali-info-macchina {
 	display: flex;
-	flex-direction:row;
-	justify-content:space-evenly;
-    align-items: center;
-    color: white;
-    font-size: 26px;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+	color: white;
+	font-size: 26px;
+	margin-top: -17%;
 }
 
-.section1{
+.principali-info-macchina p {
+	width: 30%;
+	text-align: center;
+}
+
+.section1 {
 	height: 100%;
 	width: 100%;
 }
 
-.section1 img{
-	margin-top: -3%;
-	max-width: 100%;
+.section1 img {
+	margin-top: -4%;
+	width: 100%;
+	height: 100%;
+	max-height: 1058px;
 }
 
-.section1 p{
-	margin-top: -25%;
-}
-
-.info-paragrafi{
+.info-paragrafi {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
-	font-weight:bold;
+	font-weight: bold;
 	padding: 10px;
 }
 
-/* Tabella info auto */
-.tabelle{
-	display: flex;
-	flex-direction:row;
-	justify-content:space-around;
-    align-items: flex-start;
+.bottone button {
+	border: none;
+	border: 2px solid white;
+	background-color: white;
+	color: black;
+	padding: 15px 25px 15px 25px;
+	font-size: 26px;
+	width: 30%;
+	transition: 0.5s;
 }
 
-.tabella-info-macchina, .descrizione{
-	color: black;
+.bottone button:hover {
+	border: 2px solid white;
+	background-color: transparent;
+	color: White;
+	transition: 0.5s;
+}
+
+.bottone {
+	margin-top: 3%;
+	margin-bottom: 8%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+/* Section 2 */
+
+.info-macchina-container {
+	margin: 0;
+}
+
+.section2 {
+	background-color: black;
+	height: 100%;
+	width: 100%;
+}
+
+.info-macchina-righe {
+	padding: 5% 0px 5% 0px;
+	display: flex;
+}
+
+.container-info-macchina {
+	display: flex;
+	align-items: center;
+}
+
+.info-macchina {
+	padding: 5% 5%;
+	color: white;
 	text-align: center;
-	border-spacing: 0px !important;
 	width: 30%;
 }
 
-.tabella-info-macchina th, .descrizione th {
-	background-color: #cccccc;
-	border-top: 1px solid black;
-	font-weight:normal !important;
-	padding: 5px;
+.info-macchina:not(:last-child) {
+	border-right: 1px solid white;
+	margin: 0px 30px;
 }
 
-.tabella-info-macchina td, .descrizione td {
-	background-color: white;
-	padding: 5px;
+.info-macchina h1 {
+	font-size: 3.4rem;
+	line-height: 3.8rem;
+}
+
+.info-macchina p {
+	font-size: 1.3rem;
+	line-height: 5.4rem;
+}
+
+/* Section 3 */
+
+.section3 {
+	background-color: black;
+	height: 100%;
+	width: 100%;
+}
+
+.mySlides {
+	display: flex;
+	align-items: center;
+}
+
+
+.div-video-macchina-destra {
+	display: flex;
+	align-items: center;
+	height: 80vh;
 	width: 50%;
-	border-top: 1px solid black;
+}
+
+.div-video-macchina-sinistra {
+	align-items: center;
+    margin: 10% 0px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;	
+}
+
+.mySlides1.descrizione-macchina {
+	padding: 0px 2%;
+	flex-direction: column;
+	width: 50%;
+}
+
+.video {
+	max-width: 100%;
+	max-height: 100%;
+	overflow: hidden;
+}
+
+.video video {
+	object-fit: cover;
+	width: 100%;
+}
+
+.video img {
+	object-fit: cover;
+	width: 100%;
 }
 
 
+.mySlides1.descrizione-macchina h1 {
+	font-size: 35px;
+	color: white;
+	font-weight: 400;
+	font-style: normal;
+	letter-spacing: -0.015em;
+}
+
+.mySlides1.descrizione-macchina p {
+	font-size: 15px;
+	color: white;
+	font-weight: 400;
+	font-style: normal;
+}
+
+
+#prev {
+	background-color: transparent;
+	color: white;
+	cursor: pointer;
+	padding: 16px;
+	font-weight: bold;
+	font-size: 1rem;
+	transition: 0.6s ease;
+	user-select: none;
+}
+
+
+#next {
+	background-color: transparent;
+	color: white;
+	cursor: pointer;
+	padding: 16px;
+	font-weight: bold;
+	font-size: 1rem;
+	transition: 0.6s ease;
+	user-select: none;
+}
+
+.next-prev {
+	display: flex;
+	width: 50%;
+	justify-content: space-around;
+}
+
+.blocco {
+	display: flex !important;
+}
