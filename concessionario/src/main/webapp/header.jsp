@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="static/css/header.css">
 </head>
 <%
-String email = (String) session.getAttribute("email");
+
 String ruolo = (String) session.getAttribute("ruolo");
 %>
 <body>
@@ -34,10 +34,10 @@ String ruolo = (String) session.getAttribute("ruolo");
 			</div>
 			<div class="icone">
 				<% if (ruolo.equals("acquirente")) {%>
-					<form action="Acquirente" method="post"><button name="azioneAcq" value="visualizzaProfilo" type="submit" class="no-style"><lord-icon src="https://cdn.lordicon.com/bhfjfgqz.json" trigger="hover" colors="primary:white" style="width:35px;height:35px;"> </lord-icon></button></form></li>
+					<form action="Acquirente" method="post"><button class="no-style" name="azioneAcq" value="visualizzaProfilo" type="submit" class="no-style"><lord-icon src="https://cdn.lordicon.com/bhfjfgqz.json" trigger="hover" colors="primary:white" style="width:35px;height:35px;"> </lord-icon></button></form></li>
 				<%}%>
 				<% if (ruolo.equals("amministratore")) {%>
-					<form action="Amministratore" method="get"><button name="azioneAmm" value="visualizzaProf" type="submit" class="no-style"><lord-icon src="https://cdn.lordicon.com/bhfjfgqz.json" trigger="hover" colors="primary:white" style="width:35px;height:35px;"> </lord-icon></button></form></li>
+					<form action="Amministratore" method="get"><button class="no-style" name="azioneAmm" value="visualizzaProf" type="submit" ><lord-icon src="https://cdn.lordicon.com/bhfjfgqz.json" trigger="hover" colors="primary:white" style="width:35px;height:35px;"> </lord-icon></button></form></li>
 				<%}%>
 				<a href="#"><lord-icon src="https://cdn.lordicon.com/enzmygww.json" trigger="hover" colors="primary:white" style="width:35px;height:35px"> </lord-icon></a>
 			</div>

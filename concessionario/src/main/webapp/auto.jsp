@@ -19,14 +19,15 @@
 	 Macchina mVisual = (Macchina) session.getAttribute("macchinaVisual");
      ArrayList<Macchina> m = (ArrayList<Macchina>) session.getAttribute("allMacchine");
      String email = (String) session.getAttribute("email");
-     String ruolo =(String) session.getAttribute("ruolo");
+     //String ruolo =(String) session.getAttribute("ruolo");
      Acquirente acq = (Acquirente) session.getAttribute("acq");
      Amministratore amm = (Amministratore) session.getAttribute("amm");
      %>
-	<body>
+	<body>		
+	<%@ include file="header.jsp"%>
 	<% if(mVisual != null) { %>
 		<!-- Navbar -->
-		<%@ include file="header.jsp"%>
+
 		<!-- Fine navbar -->
 		
 		<section class="section1">

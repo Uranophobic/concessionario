@@ -127,3 +127,8 @@ header {
 .menu a:hover::before {
 	transform: scale3d(1, 1, 1);
 }
+
+.no-style{
+	border:none;
+	background: transparent;
+}

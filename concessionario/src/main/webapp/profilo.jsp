@@ -22,7 +22,7 @@ ArrayList<Richiesta> rAttese = (ArrayList<Richiesta>) session.getAttribute("rich
 
 <%
 String email = (String) session.getAttribute("email");
-String ruolo =(String) session.getAttribute("ruolo");
+//String ruolo =(String) session.getAttribute("ruolo");
 
 Acquirente acq = (Acquirente) session.getAttribute("acq");
 Amministratore amm = (Amministratore) session.getAttribute("amm");
@@ -30,7 +30,7 @@ Amministratore amm = (Amministratore) session.getAttribute("amm");
 <body>
 
 
-<%@ include file="header.jsp"%>
+	<%@ include file="header.jsp"%>
 
 <% if(ruolo.equals("acquirente")) { %>
 
