@@ -1,54 +1,85 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Aggiungi auto</title>
-</head>
-<body>
-<h1>Ciao amministratore, quì potrai aggiungere una nuva auto al catalogo</h1>
-<p>Per proseguire compila il form sottostante.</p>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+    <!DOCTYPE html>
+    <html>
 
-<form action="Amministratore" method="post">
-<label> Modello </label> 
-<input type="text" name="modello" id="modello">
-<label> Marca </label> 
-<input type="text" name="marca"id="marca"> 
-<label> Anno di Porduzione </label> 
-<input type="text" name="annoProd" id="annoProd">
+    <head>
+        <meta charset="ISO-8859-1">
+        <title>Aggiungi auto</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+        <link rel="stylesheet" href="static/css/form.css">
+    </head>
 
-<label> Cilindrata </label> 
-<input type="text" name="cilindrata" id="cilindrata">
-<label> Carburante </label> 
-<input type="text" name="carburante"id="carburante"> 
-<label> Colore </label> 
-<input type="text" name="colore" id="colore">
+    <body>
+        <div style="display: flex; flex-direction: column; justify-content: center;">
+            <div class="container" style="margin-left: 1%;">
+                <form class="form" action="Amministratore" method="post">
+                    <div class="left">
+                        <div class="header"></div>
+                        <h2>Ciao amministratore, quï¿½ potrai aggiungere una nuva auto al catalogo</h1>
+                            <p style="margin-bottom: 2%;">Per proseguire compila il form sottostante.</p>
+                    </div>
+                    <div class="gridAdd">
 
-<label> Stato del veicolo </label> 
-<input type="text" name="stato_veicolo" id="stato_veicolo">
-<label> Prezzo </label> 
-<input type="text" name="prezzo"id="prezzo"> 
-<label> Kilometraggio </label> 
-<input type="text" name="kilometraggio" id="kilometraggio">
+                        <input type="text" class="form-field animation a3" name="modello" id="modello"
+                            placeholder="Modello">
 
-<label> Categoria </label> 
-<input type="text" name="categoria" id="categoria">
-<label> Posti a sedere </label> 
-<input type="text" name="posti"id="posti"> 
-<label> Tipo cambio </label> 
-<input type="text" name="tipo_cambio" id="tipo_cambio">
+                        <input type="text" class="form-field animation a3" name="marca" id="marca" placeholder="Marca">
 
-<label> KW </label> 
-<input type="text" name="kW" id="kW">
-<label> Descrizione </label> 
-<input type="text" name="descrizione"id="descrizione"> 
+                        <input type="text" class="form-field animation a3" name="annoProd" id="annoProd"
+                            placeholder="Anno di produzione">
 
 
-<a><button name="azioneAmm" value="addAuto">Invia</button></a>
+                        <input type="text" class="form-field animation a3" name="cilindrata" id="cilindrata"
+                            placeholder="Cilindrata">
+
+                        <input type="text" class="form-field animation a3" name="carburante" id="carburante"
+                            placeholder="Carburante">
+
+                        <input type="text" class="form-field animation a3" name="colore" id="colore"
+                            placeholder="Colore">
 
 
-</form>
+                        <input type="text" class="form-field animation a3" name="stato_veicolo" id="stato_veicolo"
+                            placeholder="Stato del veicolo">
 
-</body>
-</html>
+                        <input type="text" class="form-field animation a3" name="prezzo" id="prezzo"
+                            placeholder="Prezzo">
+
+                        <input type="text" class="form-field animation a3" name="kilometraggio" id="kilometraggio"
+                            placeholder="Kilometraggio">
+
+
+                        <input type="text" class="form-field animation a3" name="categoria" id="categoria"
+                            placeholder="Categoria">
+
+                        <input type="text" class="form-field animation a3" name="posti" id="posti"
+                            placeholder="Posti a sedere">
+
+                        <input type="text" class="form-field animation a3" name="tipo_cambio" id="tipo_cambio"
+                            placeholder="Tipo cambio">
+
+
+                        <input type="text" class="form-field animation a3" name="kW" id="kW" placeholder="KW">
+
+                        <input type="text" class="form-field animation a3" name="descrizione" id="descrizione"
+                            placeholder="Descrizione">
+
+                        <input type="text" class="form-field animation a3" name="img" id="img"
+                            placeholder="Immagine auto">
+
+                        <input type="text" class="form-field animation a3" name="min" id="min"
+                            placeholder="Miniatura auto">
+                    </div>
+                    <a style="margin-top: 2%;"><button class="btn btn__secondary" name="azioneAmm"
+                            value="addAuto">Invia</button></a>
+
+                </form>
+                <div class="right">
+                    <img
+                        src="https://wlt-p-001.sitecorecontenthub.cloud/api/public/content/3b76260044f041a99868238b37560c2b?v=eff840c6">
+                </div>
+            </div>
+        </div>
+    </body>
+
+    </html>
