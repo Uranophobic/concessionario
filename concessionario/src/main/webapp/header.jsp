@@ -1,4 +1,4 @@
-	<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -27,21 +27,22 @@ String ruolo = (String) session.getAttribute("ruolo");
 			<div class="lista">
 				<ul>
 					<li><a href="home.jsp">Home</a></li>
-					<li><a href="catalogo.jsp">Menu</a></li>
+					<li><form action="Catalogo" method="get"><a class="prop"><button class="no-style" name="azioneCatalogo" value="apriCatalogo">Catalogo</button></a></form></li>
 					<li><a href="contatti.jsp">Contatti</a></li>
 					<li><a href="about.jsp">Chi siamo</a></li>
 				</ul>
 			</div>
 			<div class="icone">
-				<% if (ruolo.equals("acquirente")) {%>
+				<% if (ruolo==null) {%>
+					<a href="login.jsp"><lord-icon src="https://cdn.lordicon.com/bhfjfgqz.json" trigger="hover" colors="primary:white" style="width:35px;height:35px;"> </lord-icon></a>
+				<%}%> 
+				<% if (ruolo!=null && ruolo.equals("acquirente")) {%>
 					<form action="Acquirente" method="post"><button class="no-style" name="azioneAcq" value="visualizzaProfilo" type="submit" class="no-style"><lord-icon src="https://cdn.lordicon.com/bhfjfgqz.json" trigger="hover" colors="primary:white" style="width:35px;height:35px;"> </lord-icon></button></form>
 				<%}%>
-				<% if (ruolo.equals("amministratore")) {%>
+				<% if (ruolo!=null && ruolo.equals("amministratore")) {%>
 					<form action="Amministratore" method="get"><button class="no-style" name="azioneAmm" value="visualizzaProf" type="submit" ><lord-icon src="https://cdn.lordicon.com/bhfjfgqz.json" trigger="hover" colors="primary:white" style="width:35px;height:35px;"> </lord-icon></button></form>
 				<%}%>
-				<% if (ruolo == null) {%>
-					<a href="login.jsp"><lord-icon src="https://cdn.lordicon.com/bhfjfgqz.json" trigger="hover" colors="primary:white" style="width:35px;height:35px;"> </lord-icon></a>
-				<%}%>
+				
 				<a href="#"><lord-icon src="https://cdn.lordicon.com/enzmygww.json" trigger="hover" colors="primary:white" style="width:35px;height:35px"> </lord-icon></a>
 			</div>
 		</nav>
