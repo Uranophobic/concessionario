@@ -13,9 +13,13 @@ section{
 	justify-content: center;
 }
 
+.img-section{
+	width: 200px;
+	height: 200px;
+}
+
 .logo-macchina{
-	max-width: 250px;
-	max-height: 250px;
+	display: contents;
 }
 
 .card-macchina{
