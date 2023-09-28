@@ -1,0 +1,42 @@
+@charset "ISO-8859-1";
+/* 
+html {
+    height: 100%;
+} */
+
+/* body {
+    background: #FFF;
+    color: #111;
+    text-align: center;
+    height: 100%;
+} */
+
+.banner {
+    background: url(https://images.squarespace-cdn.com/content/v1/6076cae1f4276f5d5098a335/1630430396780-D79QOERSE7Z0J2U1A0Z8/VIEW_01-2.jpg) no-repeat fixed 100% 100%;
+    background-size: cover;
+    color: #fff;
+    height: 100%;
+    width: 100%;
+}
+
+.bannertext {
+    width: 24em;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    border: .5em solid #fff;
+    margin-left: -12em;
+    padding: 2em 0;
+    color: black
+}
+
+.content {
+    max-width: 28em;
+    text-align: justify;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+.content p {
+    margin: 0 0 2em;
+}
