@@ -138,10 +138,14 @@ public class AmministratoreServlet extends HttpServlet {
 		if (azioneAmm.equals("aggiornaRichiesta")) {
 			HttpSession session = request.getSession(false);
 			String id_richiesta = request.getParameter("id_richiesta");
-			System.out.println("id della richiesta da aggiornare " + id_richiesta);
+					
 			int id = Integer.parseInt(id_richiesta);
+			System.out.println("id della richiesta da aggiornare " + id_richiesta);
+			System.out.println("id dopo parse" + id);
+			
 			RichiestaImplement rImpl = new RichiestaImplement();
-			Richiesta r;
+			Richiesta r = new Richiesta();
+			
 			try {
 				r = rImpl.doRetrieveByKey(id);
 				session.setAttribute("richiestaDaAggiornare", r);
