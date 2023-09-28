@@ -39,6 +39,7 @@ Amministratore amm = (Amministratore) session.getAttribute("amm");
 
 <!--  tabella di dati personali -->	
 <div class="container">
+<br>
   <h2>Benvenuto sul tuo profilo <%= acq.getNome() %> <%= acq.getCognome() %></h2>
   <ul class="responsive-table">
     <li class="table-row">
@@ -63,7 +64,7 @@ Amministratore amm = (Amministratore) session.getAttribute("amm");
      <!--  <div class="col-big col-1">Id della richiesta</div> -->
       <div class="col-big col-2">Tipo di richiesta</div>
       <div class="col-big col-3">Messaggio della richiesta</div>
-      <div class="col-big col-4">Status della richiesta</div>
+      <div class="col-big col-3">Status della richiesta</div>
     </li>
    <%if (r.size() != 0) {
 		int i = 0;
@@ -74,7 +75,7 @@ Amministratore amm = (Amministratore) session.getAttribute("amm");
 <%--       <div class="col-big col-1" data-label="Job Id"><span><%=r.get(i).getId_richiesta()%></span></div>--%>      
 		<div class="col-big col-2" data-label="Tipo di richiesta"><span><%=r.get(i).getTipo_richiesta()%></span></div>
       <div class="col-big col-3" data-label="Messaggio della richiesta"><span><%=r.get(i).getMessaggio()%></span></div>
-      <div class="col-big col-4" data-label="Status della richiesta"><span><%=r.get(i).getStatus()%></span></div>
+      <div class="col-big col-3" data-label="Status della richiesta"><span><%=r.get(i).getStatus()%></span></div>
     </li>
    <%}%>
   <li> <p class="domanda"> Desideri effettuare un'altra richiesta?</p>
@@ -110,7 +111,7 @@ Amministratore amm = (Amministratore) session.getAttribute("amm");
       <!-- <div class="col-big col-1"> Id-Ticket </div> -->
       <div class="col-big col-2"> Oggetto dell'assistenza </div>
       <div class="col-big col-3"> Messaggio dell'assistenza </div>
-      <div class="col-big col-4"> Risposta dell'assistenza </div>
+      <div class="col-big col-3"> Risposta dell'assistenza </div>
     </li>
     
     <%if (t.size() !=0) {
@@ -121,7 +122,7 @@ Amministratore amm = (Amministratore) session.getAttribute("amm");
       <%-- <div class="col-big col-1" data-label="Id-Ticket"><span><%=t.get(i).getId_ticket()%></span></div> --%>
       <div class="col-big col-2" data-label="Oggetto dell'assistenza"><span><%=t.get(i).getTitolo()%></span></div>
       <div class="col-big col-3" data-label="Messaggio dell'assistenza"><span><%=t.get(i).getMessaggio()%></span></div>
-      <div class="col-big col-4" data-label="Risposta dell'assistenza"><span><%=t.get(i).getRisposta()%></span></div>
+      <div class="col-big col-3" data-label="Risposta dell'assistenza"><span><%=t.get(i).getRisposta()%></span></div>
     </li>
    <%}%>
    <li>
@@ -148,7 +149,8 @@ Amministratore amm = (Amministratore) session.getAttribute("amm");
 	
 <!--  profilo amministratore -->
 	<% if(ruolo.equals("amministratore")) { %>
-
+<br>
+<br>
 	  <h2>Benvenuto sul tuo profilo caro <%= amm.getNome() %> <%= amm.getCognome() %></h2>
 	
 	
@@ -334,48 +336,8 @@ Amministratore amm = (Amministratore) session.getAttribute("amm");
 		</li>  </ul>
 	<%}%></div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-	
-	<p> elenco dei ticket</p>
-	
-	<% if(allTicket.size()>0){%>
-	
-	<table>
-		<tr>
-			<th>ID</th>
-			<th>Titolo</th>
-			<th>Messaggio</th>
-			<th>Email utente</th>
-			<th>Rispondi</th>
-			
-		</tr>
-
-		<%for(int i=0; i<allTicket.size(); i++){%>
-		
-
-		<tr>
-			
-		</tr>
-	
-	
-	<%}%>
-	</table>
     <%}else{
     System.out.println("lista dei ticket vuota");}%>
-	<%}%>
 	<%@ include file="footer.jsp"%>
 </body>
 </html>
