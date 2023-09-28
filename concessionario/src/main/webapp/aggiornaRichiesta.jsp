@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-	<%@ page import="bean.Richiesta" %>
+	<%@ page import="bean.Richiesta, bean.Macchina, java.util.ArrayList" %>
 		<!DOCTYPE html>
 		<html>
 
@@ -10,14 +10,16 @@
 			<link rel="stylesheet" href="static/css/form.css">
 
 		</head>
-		<% Richiesta r=(Richiesta) session.getAttribute("richiestaDaAggiornare");%>
+		<% Richiesta r=(Richiesta) session.getAttribute("richiestaDaAggiornare");
+		ArrayList<Macchina> m = (ArrayList<Macchina>) session.getAttribute("allMacchine");
+		%>
 
 			<body>
 				<div class="container">
 					<form class="form" action="Amministratore" method="post">
 						<div class="left">
 							<div class="header">
-								<h2 class="animation a1">Caro amministratore, quì puoi gestire la richiesta da
+								<h2 class="animation a1">Caro amministratore, quï¿½ puoi gestire la richiesta da
 									parte dell'utente
 									<%=r.getEmail_utente() %>
 								</h2>
@@ -26,6 +28,10 @@
 								<h4 class="animation a2"> ID </h4>
 								<input type="text" class="form-field animation a3" name="id_richiesta" id="id_richiesta"
 									value=<%=r.getId_richiesta()%>
+								readonly>
+								<h4 class="animation a2"> ID Auto </h4>
+								<input type="text" class="form-field animation a3" name="id_auto" id="id_auto"
+									value=<%=r.getId_auto()%>
 								readonly>
 								<h4 class="animation a2">Tipo richiesta </h4>
 								<input type="text" class="form-field animation a3" name="tipo_richiesta"
@@ -56,7 +62,15 @@
 						</div>
 
 					</form>
-					<div class="right"></div>
+					<% for (int i=0; i< m.size();i++) {
+						if(m.get(i).getId_auto()== r.getId_auto()) { %>
+						
+					<div class="right">
+					<img src="static/imgAuto/<%= m.get(i).getImg() %>">
+					</div>
+						<%}	
+				}
+					%>
 				</div>
 
 
@@ -66,26 +80,3 @@
 
 
 
-		<!-- </head>
-<body>
-<!-- 
-<div class="container">
-	<div class="left">
-	  <div class="header">
-		<h2 class="animation a1">Welcome Back</h2>
-		<h4 class="animation a2">Log in to your account using email and password</h4>
-	  </div>
-	  <div class="form">
-		<input type="email" class="form-field animation a3" placeholder="Email Address">
-		<input type="password" class="form-field animation a4" placeholder="Password">
-		<p class="animation a5"><a href="#">Forgot Password</a></p>
-		<button class="animation a6">LOGIN</button>
-	  </div>
-	</div>
-	<div class="right"></div>
-  </div>
-  
-	
-  </body>
-  </html>
-   -->
