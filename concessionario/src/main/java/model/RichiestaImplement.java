@@ -73,7 +73,7 @@ public class RichiestaImplement implements RichiestaModel {
 	public Richiesta doRetrieveByKey(int id_richiesta) throws SQLException {
 		ResultSet result = null;
 		Richiesta r = new Richiesta();
-		String query = "SELECT * FROM richiesta WHERE id_auto ='" + id_richiesta + "'";
+		String query = "SELECT * FROM richiesta WHERE id_richiesta ='" + id_richiesta + "'";
 		try {
 			con = Connessione.getInstance().getConnection();
 			PreparedStatement pst = con.prepareStatement(query);

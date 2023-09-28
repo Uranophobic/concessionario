@@ -138,14 +138,21 @@ public class AmministratoreServlet extends HttpServlet {
 		if (azioneAmm.equals("aggiornaRichiesta")) {
 			HttpSession session = request.getSession(false);
 			String id_richiesta = request.getParameter("id_richiesta");
-			System.out.println("id della richiesta da aggiornare " + id_richiesta);
+					
 			int id = Integer.parseInt(id_richiesta);
+			System.out.println("id della richiesta da aggiornare " + id_richiesta);
+			System.out.println("id dopo parse" + id);
+			MacchinaImplement macImpl = new MacchinaImplement();
+			ArrayList<Macchina> allMacchine = new ArrayList<>();
 			RichiestaImplement rImpl = new RichiestaImplement();
-			Richiesta r;
+			Richiesta r = new Richiesta();
+			
 			try {
+				allMacchine= macImpl.doRetrieveAll();
 				r = rImpl.doRetrieveByKey(id);
 				session.setAttribute("richiestaDaAggiornare", r);
 				System.out.println("richiesa presa dal db" + r.toString());
+				session.setAttribute("allMacchine", allMacchine);
 
 				RequestDispatcher dispatcher = request.getRequestDispatcher("aggiornaRichiesta.jsp");
 				dispatcher.forward(request, response);
