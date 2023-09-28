@@ -310,4 +310,6 @@ font-weight: bold;
 	width: 25%;
 	margin: auto;
 	padding: 10px;
+	display: flex;
+    justify-content: center;
 }
