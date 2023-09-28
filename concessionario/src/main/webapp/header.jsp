@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="static/css/header.css">
 </head>
 <%
-
+String email = (String)session.getAttribute("email");
 String ruolo = (String) session.getAttribute("ruolo");
 %>
 <body>
