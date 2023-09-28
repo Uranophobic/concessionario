@@ -75,38 +75,6 @@ INSERT INTO `amministratore` VALUES ('admin@gmail.com','admin','admin','admin','
 UNLOCK TABLES;
 
 --
--- Table structure for table `feedback`
---
-
-DROP TABLE IF EXISTS `feedback`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `feedback` (
-  `id_feedback` int NOT NULL AUTO_INCREMENT,
-  `testo` varchar(45) NOT NULL,
-  `data` date NOT NULL,
-  `id_auto` int NOT NULL,
-  `email_utente` varchar(45) NOT NULL,
-  `valutazione` enum('1','2','3','4','5') NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id_feedback`),
-  KEY `email_acq_idx` (`email_utente`),
-  KEY `id macchina_idx` (`id_auto`),
-  CONSTRAINT `email_ut` FOREIGN KEY (`email_utente`) REFERENCES `acquirente` (`email`),
-  CONSTRAINT `id macchina` FOREIGN KEY (`id_auto`) REFERENCES `macchina` (`id_auto`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `feedback`
---
-
-LOCK TABLES `feedback` WRITE;
-/*!40000 ALTER TABLE `feedback` DISABLE KEYS */;
-INSERT INTO `feedback` VALUES (1,'Mi sono trovato molto bene ad acquistare con ','2023-09-20',2,'marco@gmail.com','5');
-/*!40000 ALTER TABLE `feedback` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `gestione_richiesta`
 --
 
@@ -190,6 +158,7 @@ CREATE TABLE `macchina` (
   `kW` int NOT NULL,
   `descrizione` varchar(200) DEFAULT NULL,
   `img` varchar(45) DEFAULT NULL,
+  `min` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_auto`)
 ) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -200,7 +169,7 @@ CREATE TABLE `macchina` (
 
 LOCK TABLES `macchina` WRITE;
 /*!40000 ALTER TABLE `macchina` DISABLE KEYS */;
-INSERT INTO `macchina` VALUES (1,'Mazda Cx-5','mazda','2018',1200,'diesel','nero','km0',10,99,'berlina',4,'manuale',60,'','mazdacx5.jpg'),(2,'Audi a3 Sportback','mazda','2020',1500,'benzina','bianco','km0',22.2,85,'berlina',4,'automatico',71,'','audia3sportback.jpg'),(3,'Audi 4 ','hornet','2008',2500,'benzina','grigio','km0',19.44,20,'berlina',4,'automatico',121,'','audia4.jpg'),(4,'Hunday i20','hornet','2005',1500,'benzina','nero','km0',17.02,35,'berlina',4,'automatico',71,'','hundayi20.jpg'),(5,'Duster ','dacia','2007',2000,'benzina','nero','km0',16.24,75,'suv',4,'automatico',85,'','daciaduster.jpg'),(6,'Mercedes C berlina','mercedes','2002',1200,'diesel','bianco','nuovo',20,0,'berlina',2,'manuale',60,'','mercedescberlina.jpg'),(7,'Merc eqe','mercedes','2000',2000,'diesel','bianco','nuovo',22.9,0,'suv',2,'manuale',85,'','mercedeseqe.jpg'),(8,'Mercedes Classe A sedan','mercedes','2005',1500,'diesel','bianco','nuovo',18.3,0,'berlina',4,'manuale',71,'','mercedesclasseasedan.jpg'),(9,'Mercedes Classe S','mercedes','2004',1200,'diesel','bianco','nuovo',18.9,0,'coupe',4,'manuale',60,'','mercedesclasses.jpg'),(10,'Mercedes CLA','mercedes','2012',1500,'diesel','bianco','nuovo',17.4,0,'scoupe',2,'manuale',71,'','mercedescla.jpg'),(11,'Mercedes Classe A','mercedes','2013',1200,'benzina','bianco','nuovo',17.6,0,'sportiva',4,'manuale',60,'','mercedesclassea.jpg'),(12,'Mercedes GLA','mercedes','2018',2000,'benzina','bianco','nuovo',18,0,'sportiva',4,'manuale',85,'','mercedesgla.jpg'),(13,'T-Roc','Volkswagen','2016',1200,'benzina','nero','usato',15,5,'berlina',4,'manuale',60,'','troc.jpg'),(14,'Toyota Aygo','toyota','2005',2000,'benzina','grigio','usato',19.9,10,'berlina',1,'automatico',85,'','toyotaaygo.jpg'),(15,'Toyota Yaris','toyota','2006',1200,'benzina','grigio','usato',20.2,15,'berlina',1,'automatico',60,'','toyotayaris.jpg'),(16,'Range Rover','evoque','2021',1500,'diesel','grigio','usato',25,35,'suv',2,'automatico',71,'','evoque.png'),(17,'Porsche carrera','porsche','2015',2500,'benzina','nero','km0',135,10,'sportiva',2,'manuale',121,'','carrera.jpg'),(18,'Lotus Emira','lotus','2020',2500,'benzina','grigio','usato',75,10,'sportiva',2,'manuale',121,'','lotusemira.jpg'),(19,'Ferrari roma','ferrari','2005',2500,'diesel','rossa','usato',230,20,'sportiva',6,'manuale',121,'','ferrariroma.jpg'),(20,'Maserati Gran Turismo','maserati','2018',2500,'benzina','nero','nuovo',130,30,'sportiva',8,'manuale',121,'','maserati.jpg'),(21,'Volvo V40','volvo','2018',2000,'diesel','bianco','nuovo',18.6,0,'coupe',2,'manuale',60,'','volvov40.jpg'),(24,'Tesla Model S','Tesla','2017',1200,'elettrica','nero','Nuovo',80,0,'berlina',5,'automatico',78,'prova','teslams.jpg'),(25,'Tesla Model 3','Tesla','2017',1200,'elettrica','nero','Nuovo',75,0,'berlina',5,'automatico',78,'prova','teslam3.jpg'),(26,'Tesla Model x','Tesla','2017',1200,'elettrica','nero','Nuovo',80,0,'berlina',5,'automatico',78,'prova','teslamx.jpg'),(27,'Tesla Model Y','Tesla','2017',1500,'elettrica','bianca','nuovo',90,0,'berlina',5,'automatico',78,NULL,'teslamy.jpg'),(28,'500 e','Fiat','2020',1100,'elettrica','bianca','nuovo',35,0,'berlina',4,'automatico',60,NULL,'fiat500e.jpg');
+INSERT INTO `macchina` VALUES (1,'Mazda','Mazda','2018',1200,'Diesel','Nero','km0',10000,0,'Berlina',4,'Manuale',60,'','mazdacx5.jpg','minmazdacx5.png'),(2,'Audi a3 Sportback','Audi','2020',1500,'Benzina','Bianco','km0',22200,0,'Berlina',4,'Automatico',71,'','audia3sportback.jpg','minaudia3.png'),(3,'Audi a4 ','Audi','2008',2500,'Benzina','Grigio','km0',19440,0,'Berlina',4,'Automatico',121,'','audia4.jpg','minaudia4.png'),(4,'Hyundai20','Hyundai','2005',1500,'Benzina','Nero','km0',17020,2,'Berlina',4,'Automatico',71,'','hyundai20.jpg','minhiunday20.png'),(5,'Duster ','Dacia','2007',2000,'Benzina','Nero','km0',16240,0,'SUV',4,'Automatico',85,'','daciaduster.jpg','mindaciaduster.png'),(7,'Merc eqe','Mercedes','2000',2000,'Diesel','Bianco','Nuovo',22900,0,'SUV',2,'Manuale',85,'','mercedeseqe.jpg','minmerceqe.png'),(9,'Mercedes Classe S','Mercedes','2004',1200,'Diesel','Bianco','Nuovo',18900,0,'Coupe',4,'Manuale',60,'','mercedesclasses.jpg','minmercclasses.png'),(11,'Mercedes Classe A','Mercedes','2013',1200,'Benzina','Bianco','Nuovo',17600,0,'Sportiva',4,'Manuale',60,'','mercedesclassea.jpg','minmercclassea.png'),(12,'Mercedes GLA','Mercedes','2018',2000,'Benzina','Bianco','Nuovo',18000,0,'Sportiva',4,'Manuale',85,'','mercedesgla.jpg','minmercgla.png'),(13,'T-Roc','Volkswagen','2016',1200,'Benzina','Nero','Usato',15000,50000,'Berlina',4,'Manuale',60,'','troc.jpg','mint-roc.png'),(14,'Toyota Aygo','Toyota','2005',2000,'Benzina','Grigio','Usato',19900,100000,'Berlina',1,'Automatico',85,'','toyotaaygo.jpg','mintoqotaaygo.png'),(15,'Toyota Yaris','Toyota','2006',1200,'Benzina','Grigio','Usato',20200,150000,'Berlina',1,'Automatico',60,'','toyotayaris.jpg','mintoyotayaris.png'),(16,'Range Rover evoque','Land Rover','2021',1500,'Diesel','Grigio','Usato',25000,350000,'SUV',2,'Automatico',71,'','evoque.jpg','minevoque.png'),(17,'Porsche carrera','Porsche','2015',2500,'Benzina','Nero','km0',13500,0,'Sportiva',2,'Manuale',121,'','carrera.jpg','mincarrera.png'),(18,'Lotus Emira','Lotus','2020',2500,'Benzina','Grigio','Usato',75000,100000,'Sportiva',2,'Manuale',121,'','lotusemira.jpg','minemira.png'),(19,'Ferrari roma','Ferrari','2005',2500,'Diesel','Rosso','Usato',23000,200000,'Sportiva',6,'Manuale',121,'','ferrariroma.jpg','minferrariroma.png'),(20,'Maserati Gran Turismo','Maserati','2018',2500,'Benzina','Nero','Nuovo',13000,300000,'Sportiva',8,'Manuale',121,'','maserati.jpg','minmaserati.png'),(21,'Volvo V40','Volvo','2018',2000,'Diesel','Bianco','Nuovo',18600,0,'Coupe',2,'Manuale',60,'','volvov40.jpg','minvolvov40.png'),(24,'Tesla Model S','Tesla','2017',1200,'Elettrica','Nero','Nuovo',80000,0,'Berlina',5,'Automatico',78,'','teslams.jpg','minmodels.png'),(25,'Tesla Model 3','Tesla','2017',1200,'Elettrica','Nero','Nuovo',75000,0,'Berlina',5,'Automatico',78,'','teslam3.jpg','minmodel3.png'),(26,'Tesla Model x','Tesla','2017',1200,'Elettrica','Nero','Nuovo',80000,0,'Berlina',5,'Automatico',78,'','teslamx.jpg','minmodelx.png'),(27,'Tesla Model Y','Tesla','2017',1500,'Elettrica','Bianco','Nuovo',90000,0,'Berlina',5,'Automatico',78,NULL,'teslamy.jpg','minmodely.png'),(28,'Elicottero Apache','Fiat','2020',1100,'Elettrica','Bianco','Nuovo',35000,0,'Berlina',4,'Automatico',60,NULL,'fiat500e.jpg','min500e.png');
 /*!40000 ALTER TABLE `macchina` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -282,4 +251,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-27 10:25:57
+-- Dump completed on 2023-09-28 17:20:36
