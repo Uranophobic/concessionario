@@ -6,6 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Profilo</title>
 <link rel="stylesheet" href="static/css/header.css">
+<script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
 </head>
 <%
 String email = (String)session.getAttribute("email");
@@ -13,7 +14,6 @@ String ruolo = (String) session.getAttribute("ruolo");
 %>
 <body>
 <!-- Navbar -->
-	<div class="opacity"></div>
 	<header>
 		<nav class="menu menu-1">
 			<div class="logo">
@@ -25,12 +25,10 @@ String ruolo = (String) session.getAttribute("ruolo");
 				</div>
 			</div>
 			<div class="lista">
-				<ul>
-					<li><a href="home.jsp">Home</a></li>
-					<li><form action="Catalogo" method="get"><a class="prop"><button class="no-style" name="azioneCatalogo" value="apriCatalogo">Catalogo</button></a></form></li>
-					<li><a href="contatti.jsp">Contatti</a></li>
-					<li><a href="about.jsp">Chi siamo</a></li>
-				</ul>
+				<a href="home.jsp">Home</a>
+				<form action="Catalogo" method="get"><a class="prop"><button class="no-style" name="azioneCatalogo" value="apriCatalogo">Catalogo</button></a></form>
+				<a href="contatti.jsp">Contatti</a>
+				<a href="about.jsp">Chi siamo</a>
 			</div>
 			<div class="icone">
 				<% if (ruolo==null) {%>
