@@ -17,18 +17,12 @@
 
 <body>
 	<%@ include file="header.jsp"%>
-
-
-		
-				<div class="title-home">
-					<p class="size-title">Specialisti del settore automobili</p>
-					<p class="size-title2">Motor Crispy</p>
-				</div>
-		
-
-
 	<!-- Inizio sezioni -->
 	<section>
+		<div class="title-home">
+			<p class="size-title">Specialisti del settore automobili</p>
+			<p class="size-title2">Motor Crispy</p>
+		</div>
 		<!-- Sezione carousel -->
 		<div class="crousel">
 			<div class="container" id='imgs'>

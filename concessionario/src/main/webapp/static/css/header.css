@@ -17,13 +17,9 @@ header {
 	width: 100%;
 	position: fixed !important;
 	top: 0;
+	background-color: rgba(255, 255, 255, 0.7);
 }
 
-.lista{
-	display: flex;
-    width: 30%;
-    justify-content: space-evenly;
-}
 
 .menu {
 	padding: 0px;
@@ -34,6 +30,13 @@ header {
 	transition: 0.5s;
 	color: black;
 }
+
+.menu:hover {
+	background-color: black;
+	transition: 0.5s;
+}
+
+/* Parte sinistra della navbar */
 
 .logo {
 	height: 50px;
@@ -64,21 +67,13 @@ header {
 	width: 100%;
 }
 
-.icone {
+
+/* Parte centrale della navbar */
+
+.lista{
 	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	padding: 0px 0px 5px 0px !important;
-}
-
-.icone a {
-	padding: 10px 10px 0px 10px !important;
-}
-
-.menu:hover {
-	background-color: black;
-	transition: 0.5s;
+    width: 30%;
+    justify-content: space-evenly;
 }
 
 .menu:hover a{
@@ -111,31 +106,36 @@ header {
 	transform: scale3d(1, 1, 1);
 }
 
+
+/* Parte destra della navbar */
+
+
+.icone {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 0px 0px 5px 0px !important;
+}
+
+.icone a {
+	padding: 0px 10px !important;
+}
+
 .no-style{
 	border:none;
 	background: transparent;
 }
 
-
-.icone .no-style::before{
-	content: "";
-	width: 100%;
-	height: 4px;
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	background: white;
-	transition: 0.5s transform ease;
-	transform: scale3d(0, 1, 1);
-	transform-origin: 0 50%;
+.support{
+	padding-top:5px;
 }
 
-.icone .no-style:hover::before{
-	transform: scale3d(1, 1, 1);
+.support lord-icon {
+    height: 36px !important;
+    width: 36px !important;
 }
 
-
-/*qui*/
 .menu a button{
 	font-size: 18px;
 	text-decoration: none;
@@ -145,19 +145,11 @@ header {
 	padding: 4px 0;
 }
 
-.menu button::before {
-	content: "";
-	width: 100%;
-	height: 4px;
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	background: white;
-	transition: 0.5s transform ease;
-	transform: scale3d(0, 1, 1);
-	transform-origin: 0 50%;
-}
-
-.menu:hover button{
+.menu:hover a button{
+	font-size: 18px;
+	text-decoration: none;
 	color: white;
+	display: block;
+	position: relative;
+	padding: 4px 0;
 }

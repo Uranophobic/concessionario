@@ -22,7 +22,7 @@ String ruolo = (String) session.getAttribute("ruolo");
 					<img src="static/images/logoblack.png">
 				</div>
 				<div class="retro">
-					<img src="static/images/logowhite.png" class="img">
+					<img src="static/images/logowhite.png">
 				</div>
 			</div>
 			<div class="lista">
@@ -33,16 +33,16 @@ String ruolo = (String) session.getAttribute("ruolo");
 			</div>
 			<div class="icone">
 				<% if (ruolo==null) {%>
-					<a href="login.jsp"><button class="no-style"><lord-icon src="https://cdn.lordicon.com/bhfjfgqz.json" trigger="hover" colors="primary:white" style="width:35px;height:35px;"></lord-icon></button></a>
+					<a href="login.jsp"><button class="no-style"><lord-icon src="https://cdn.lordicon.com/bhfjfgqz.json" trigger="hover" colors="primary:black" style="width:35px;height:35px;"></lord-icon></button></a>
 				<%}%> 
 				<% if (ruolo!=null && ruolo.equals("acquirente")) {%>
-					<form action="Acquirente" method="post"><button class="no-style" name="azioneAcq" value="visualizzaProfilo" type="submit"><lord-icon src="https://cdn.lordicon.com/bhfjfgqz.json" trigger="hover" colors="primary:white" style="width:35px;height:35px;"> </lord-icon></button></form>
+					<form action="Acquirente" method="post"><a><button class="no-style" name="azioneAcq" value="visualizzaProfilo" type="submit"><lord-icon src="https://cdn.lordicon.com/bhfjfgqz.json" trigger="hover" colors="primary:black" style="width:35px;height:35px;"> </lord-icon></button></a></form>
 				<%}%>
 				<% if (ruolo!=null && ruolo.equals("amministratore")) {%>
-					<form action="Amministratore" method="get"><button class="no-style" name="azioneAmm" value="visualizzaProf" type="submit" ><lord-icon src="https://cdn.lordicon.com/bhfjfgqz.json" trigger="hover" colors="primary:white" style="width:35px;height:35px;"> </lord-icon></button></form>
+					<form action="Amministratore" method="get"><a><button class="no-style" name="azioneAmm" value="visualizzaProf" type="submit" ><lord-icon src="https://cdn.lordicon.com/bhfjfgqz.json" trigger="hover" colors="primary:black" style="width:35px;height:35px;"> </lord-icon></button></a></form>
 				<%}%>
 				
-				<a href="#"><lord-icon src="https://cdn.lordicon.com/enzmygww.json" trigger="hover" colors="primary:white" style="width:35px;height:35px"> </lord-icon></a>
+				<div class="support"><a href="#"><lord-icon src="https://cdn.lordicon.com/enzmygww.json" trigger="hover" colors="primary:black" style="width:35px;height:35px"> </lord-icon></a></div>
 			</div>
 		</nav>
 	</header>
