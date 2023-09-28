@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,700;1,300;1,500;1,700&display=swap');
 
 .opacity{
-	opacity: 50%;
-	position: fixed;
+/*	opacity: 50%;
+	position: fixed;*/
 	top: 0;
 	left: 0;
 	width: 100%;
