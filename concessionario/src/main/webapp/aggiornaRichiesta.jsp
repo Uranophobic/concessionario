@@ -19,7 +19,7 @@
 					<form class="form" action="Amministratore" method="post">
 						<div class="left">
 							<div class="header">
-								<h2 class="animation a1">Caro amministratore, qu� puoi gestire la richiesta da
+								<h2 class="animation a1">Caro amministratore, qui puoi gestire la richiesta da
 									parte dell'utente
 									<%=r.getEmail_utente() %>
 								</h2>

@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Aggiorna Ticket</title>
 </head>
 <% Ticket t = (Ticket) session.getAttribute("ticketDaAggiornare");%>
 <body>
 
-<p> Caro amministratore, quì potrai risponde al ticket dell'utente  <%=t.getEmail_utente()%> </p>
+<p> Caro amministratore, qui potrai risponde al ticket dell'utente  <%=t.getEmail_utente()%> </p>
 
 <form action="Amministratore" method="post">
 

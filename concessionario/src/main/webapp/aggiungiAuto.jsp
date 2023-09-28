@@ -15,7 +15,7 @@
                 <form class="form" action="Amministratore" method="post">
                     <div class="left">
                         <div class="header"></div>
-                        <h2>Ciao amministratore, qu� potrai aggiungere una nuva auto al catalogo</h1>
+                        <h2>Ciao amministratore, qui potrai aggiungere una nuva auto al catalogo</h1>
                             <p style="margin-bottom: 2%;">Per proseguire compila il form sottostante.</p>
                     </div>
                     <div class="gridAdd">
