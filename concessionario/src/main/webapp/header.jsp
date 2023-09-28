@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -33,16 +33,15 @@ String ruolo = (String) session.getAttribute("ruolo");
 				</ul>
 			</div>
 			<div class="icone">
-				<% if (ruolo==null) {%>
-					<a href="login.jsp"><lord-icon src="https://cdn.lordicon.com/bhfjfgqz.json" trigger="hover" colors="primary:white" style="width:35px;height:35px;"> </lord-icon></a>
-				<%}%> 
-				<% if (ruolo!=null && ruolo.equals("acquirente")) {%>
+				<% if (ruolo.equals("acquirente")) {%>
 					<form action="Acquirente" method="post"><button class="no-style" name="azioneAcq" value="visualizzaProfilo" type="submit" class="no-style"><lord-icon src="https://cdn.lordicon.com/bhfjfgqz.json" trigger="hover" colors="primary:white" style="width:35px;height:35px;"> </lord-icon></button></form>
 				<%}%>
-				<% if (ruolo!=null && ruolo.equals("amministratore")) {%>
+				<% if (ruolo.equals("amministratore")) {%>
 					<form action="Amministratore" method="get"><button class="no-style" name="azioneAmm" value="visualizzaProf" type="submit" ><lord-icon src="https://cdn.lordicon.com/bhfjfgqz.json" trigger="hover" colors="primary:white" style="width:35px;height:35px;"> </lord-icon></button></form>
 				<%}%>
-				
+				<% if (ruolo == null) {%>
+					<a href="login.jsp"><lord-icon src="https://cdn.lordicon.com/bhfjfgqz.json" trigger="hover" colors="primary:white" style="width:35px;height:35px;"> </lord-icon></a>
+				<%}%>
 				<a href="#"><lord-icon src="https://cdn.lordicon.com/enzmygww.json" trigger="hover" colors="primary:white" style="width:35px;height:35px"> </lord-icon></a>
 			</div>
 		</nav>
