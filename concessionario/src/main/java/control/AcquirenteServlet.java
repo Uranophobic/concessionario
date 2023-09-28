@@ -108,6 +108,15 @@ public class AcquirenteServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		
+		if(azioneAcq.equals("logout")) {
+			HttpSession session = request.getSession(false);
+			session.invalidate();
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");
+			dispatcher.forward(request, response);
+			
+		}
 	}
 	
 

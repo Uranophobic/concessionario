@@ -143,6 +143,10 @@ Amministratore amm = (Amministratore) session.getAttribute("amm");
 				<p>Apri un ticket</p></button></a>
 	</form></li>  </ul>
 	<%}%></div>
+	
+	
+	<form action="Acquirente" method="get">
+<div class="buttonCenter">  <button class="btn btn__secondary" name="azioneAcq" value="logout"> LOGOUT </button></form></div>
 	<%}%>
 	
 	
@@ -335,9 +339,10 @@ Amministratore amm = (Amministratore) session.getAttribute("amm");
 	<p class="domanda"> Non è presente alcun ticket a cui rispondere. Attendi che un utente apra un ticket. </p>
 		</li>  </ul>
 	<%}%></div>
-
-    <%}else{
-    System.out.println("lista dei ticket vuota");}%>
+	
+	<form action="Amministratore" method="get">
+ 	<div class="buttonCenter"> <button  class="btn btn__secondary" name="azioneAmm" value="logout"> LOGOUT </button></div></form>
+    <%}%>
 	<%@ include file="footer.jsp"%>
 </body>
 </html>

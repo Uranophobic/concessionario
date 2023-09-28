@@ -175,6 +175,15 @@ public class AmministratoreServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		
+		if(azioneAmm.equals("logout")) {
+			HttpSession session = request.getSession(false);
+			session.invalidate();
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");
+			dispatcher.forward(request, response);
+			
+		}
 	}
 
 	/**

@@ -24,7 +24,7 @@
 		
 		</div>
 </fieldset>
-		<div class="buttonRichiesta">
+		<div class="buttonCenter">
 		<form action="Acquirente" method="post">
 			<a><button class="btn btn__secondary" name="azioneAcq" value="addTicket">Invia</button></a>
 		</form>
