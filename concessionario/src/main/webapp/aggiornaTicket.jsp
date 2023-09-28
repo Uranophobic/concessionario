@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
 	<%@page import="bean.Ticket" %>
 		<!DOCTYPE html>
@@ -9,6 +10,10 @@
 			<link rel="stylesheet" href="static/css/stylesheet.css">
 		</head>
 		<% Ticket t=(Ticket) session.getAttribute("ticketDaAggiornare");%>
+
+
+
+
 
 			<body>
 				<%@ include file="header.jsp" %>

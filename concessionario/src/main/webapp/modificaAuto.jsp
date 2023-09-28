@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Modifca auto</title>
+<title>Modifica auto</title>
 
 </head>
 <%Macchina mac= (Macchina)session.getAttribute("autoDaModificare"); %>
