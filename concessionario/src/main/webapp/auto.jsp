@@ -39,9 +39,16 @@
 					<p><%= mVisual.getkW()%> KW</p>
 				</div>
 				<div class="bottone">
+				<% if(email == null){ %>
+					<a href="login.jsp">
+						<button>Richiedi</button>
+					</a>
+					<% } %>
+				<% if(email != null){ %>
 					<a href="Acquirente?azioneAcq=richiesta&id_auto=<%=mVisual.getId_auto()%>">
 						<button>Richiedi</button>
 					</a>
+					<% } %>
 				</div>
 			</div>	
 		</section>

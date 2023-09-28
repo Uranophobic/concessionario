@@ -70,17 +70,19 @@ public class AcquirenteServlet extends HttpServlet {
 		if(azioneAcq.equals("visualizzaAuto")) {
 			String id_auto = request.getParameter("id_auto");
 			int id = Integer.parseInt(id_auto);
-			Macchina m = new Macchina();
 			
-			ArrayList<Macchina> allMacchine = new ArrayList<>();
+			Macchina m = new Macchina();
 			MacchinaImplement macImpl = new MacchinaImplement();
+			
 			HttpSession session = request.getSession(false);
+			
 			try {
 				m=macImpl.doRetrieveByKey(id);
 				session.setAttribute("macchinaVisual", m);
-
+				
 				RequestDispatcher dispatcher = request.getRequestDispatcher("auto.jsp");
 				dispatcher.forward(request, response);
+				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
