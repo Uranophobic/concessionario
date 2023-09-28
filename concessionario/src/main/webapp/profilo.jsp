@@ -21,7 +21,8 @@ ArrayList<Richiesta> rAttese = (ArrayList<Richiesta>) session.getAttribute("rich
 %>
 
 <%
-String email = (String) session.getAttribute("email");
+
+//String email = (String) session.getAttribute("email");
 //String ruolo =(String) session.getAttribute("ruolo");
 
 Acquirente acq = (Acquirente) session.getAttribute("acq");

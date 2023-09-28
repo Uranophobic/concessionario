@@ -18,7 +18,7 @@
 	<% 
 	 Macchina mVisual = (Macchina) session.getAttribute("macchinaVisual");
      ArrayList<Macchina> m = (ArrayList<Macchina>) session.getAttribute("allMacchine");
-     String email = (String) session.getAttribute("email");
+    // String email = (String) session.getAttribute("email");
      //String ruolo =(String) session.getAttribute("ruolo");
      Acquirente acq = (Acquirente) session.getAttribute("acq");
      Amministratore amm = (Amministratore) session.getAttribute("amm");

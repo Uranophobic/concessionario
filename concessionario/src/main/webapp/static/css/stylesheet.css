@@ -277,3 +277,35 @@ h2 {
 	border:none;
 	background: transparent;
 }
+
+
+/******* RICHIESTA *******/
+.containerRichiesta {
+	position: relative;
+	top: 50px;
+	width: 50%;
+	margin: auto;
+}
+.field{
+	padding:20px
+}
+
+.field legend{
+	font-size: 20px;
+font-weight: bold;
+}
+
+.tab-richiesta {
+	display: grid;
+	grid-template-columns: 20% 75%;
+	padding: 5px;
+	margin: auto;
+	grid-gap: 15px;
+	width: 90%;
+}
+
+.buttonRichiesta {
+	width: 25%;
+	margin: auto;
+	padding: 10px;
+}
