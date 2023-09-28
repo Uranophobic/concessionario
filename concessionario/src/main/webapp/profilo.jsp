@@ -7,6 +7,7 @@
 <meta charset="ISO-8859-1">
 <title>Area Personale</title>
 <link rel="stylesheet" href="static/css/stylesheet.css">
+<script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
 </head>
 <%
 ArrayList<Richiesta> r = (ArrayList<Richiesta>) session.getAttribute("richieste_utente");
@@ -206,10 +207,11 @@ Amministratore amm = (Amministratore) session.getAttribute("amm");
 <%-- 	  <div class="col-big col-4" data-label="Risposta dell'assistenza"><span><%=m.get(i).getImg()%></span></div> --%>
     
       <div class="col-big col-2" data-label="Descrizione"><span> <a href="Amministratore?azioneAmm=upAuto&id_auto=<%=m.get(i).getId_auto()%>">
-	            <button  class="no-style" name="azioneAmm" value="upAuto"><img width="32" height="32" src="https://img.icons8.com/cotton/32/edit--v2.png" alt="edit--v2"/></button>
+	            <button  class="no-style" name="azioneAmm" value="upAuto"><lord-icon src="https://cdn.lordicon.com/kulwmpzs.json" trigger="hover" colors="primary:black" style="width:32px;height:32px"></lord-icon></button>
 	         </a>
 			<a href="Amministratore?azioneAmm=delAuto&id_auto=<%=m.get(i).getId_auto()%>">
-	            <button  class="no-style" name="azioneAmm" value="delAuto"><img width="32" height="32" src="https://img.icons8.com/cotton/32/trash--v2.png" alt="trash--v2"/></button>
+	            <button  class="no-style" name="azioneAmm" value="delAuto"><lord-icon src="https://cdn.lordicon.com/kfzfxczd.json" trigger="hover" colors="primary:black" style="width:32px;height:32px">
+</lord-icon></button>
 	         </a> </span></div>
     
     </li>
@@ -262,9 +264,15 @@ Amministratore amm = (Amministratore) session.getAttribute("amm");
 			<div class="col-big col-2" data-label="Status"><span><%=rAttese.get(i).getStatus() %></span></div>
 			<div class="col-big col-2" data-label="Email del richiedente"><span><%=rAttese.get(i).getEmail_utente() %></span></div>
 			<div class="col-big col-2" data-label="Identificativo dell'auto richiesta "><span><%=rAttese.get(i).getId_auto() %></span></div>
-    	    <div class="col-big col-2" data-label="Aggiorna la richiesta"><span><a href="Amministratore?azioneAmm=aggiornaRichiesta&id_richiesta=<%=rAttese.get(i).getId_richiesta()%>">
-	            <button class="no-style" name="azioneAmm" value="aggiornaRichiesta"><img width="32" height="32" src="https://img.icons8.com/cotton/64/submit-document.png" alt="submit-document"/>
-	            </button></a></span></div>
+    	    <div class="col-big col-2" data-label="Aggiorna la richiesta">
+	    	    <span>
+		    	    <a href="Amministratore?azioneAmm=aggiornaRichiesta&id_richiesta=<%=rAttese.get(i).getId_richiesta()%>">
+			            <button class="no-style" name="azioneAmm" value="aggiornaRichiesta">
+			            	<lord-icon src="https://cdn.lordicon.com/iiixgoqp.json" trigger="hover" colors="primary:black" style="width:32px;height:32px"></lord-icon>
+			            </button>
+			        </a>
+		        </span>
+		    </div>
     
     
     </li>
@@ -316,7 +324,7 @@ Amministratore amm = (Amministratore) session.getAttribute("amm");
 	
 	<div class="col-big col-2" data-label="Aggiorna la richiesta"><span><a href="Amministratore?azioneAmm=aggiornaTicket&id_ticket=<%=allTicket.get(i).getId_ticket()%>">
 	            <button class="no-style" name="azioneAmm" value="aggiornaTicket">
-	              <img width="32" height="32" src="https://img.icons8.com/cotton/32/reply.png" alt="reply"/>
+	              <lord-icon src="https://cdn.lordicon.com/itnlluqc.json" trigger="hover" colors="primary:black" style="width:32px;height:32px"></lord-icon>
 	            </button></a></span></div>
 
     </li>
