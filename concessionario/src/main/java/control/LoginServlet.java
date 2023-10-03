@@ -56,6 +56,8 @@ public class LoginServlet extends HttpServlet {
 
 		String azioneLogin = request.getParameter("azioneLogin");
 
+		//CIAO SONO UN COMMENTO DI PROVA
+		
 		if (azioneLogin.equals("login")) {
 
 			// ricaviamo email e password inseriti dall'utente nel login
